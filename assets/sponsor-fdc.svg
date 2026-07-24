@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-label="Illustration of colorful Brooklyn rowhouses">
+  <defs>
+    <linearGradient id="fdcbg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#17140f"/><stop offset="1" stop-color="#0b0a08"/>
+    </linearGradient>
+    <radialGradient id="fdcglow" cx="50%" cy="30%" r="55%">
+      <stop offset="0" stop-color="#ff7a45" stop-opacity=".16"/><stop offset="1" stop-color="#ff7a45" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="520" fill="url(#fdcbg)"/>
+  <rect width="1200" height="520" fill="url(#fdcglow)"/>
+  <circle cx="1010" cy="120" r="52" fill="#f2b632" opacity=".85"/>
+
+  <g>
+    <rect x="120" y="230" width="150" height="230" fill="#2f8f8f"/>
+    <path d="M120 230 L195 176 L270 230 Z" fill="#267575"/>
+    <rect x="150" y="270" width="34" height="42" fill="#0b0a08"/><rect x="206" y="270" width="34" height="42" fill="#ffd9a0"/>
+    <rect x="150" y="340" width="34" height="42" fill="#ffd9a0"/><rect x="206" y="340" width="34" height="42" fill="#0b0a08"/>
+    <rect x="176" y="410" width="38" height="50" fill="#0b0a08"/>
+
+    <rect x="270" y="190" width="150" height="270" fill="#e8792b"/>
+    <path d="M270 190 L345 150 L420 190 Z" fill="#c9631d"/>
+    <rect x="300" y="230" width="34" height="42" fill="#ffd9a0"/><rect x="356" y="230" width="34" height="42" fill="#0b0a08"/>
+    <rect x="300" y="300" width="34" height="42" fill="#0b0a08"/><rect x="356" y="300" width="34" height="42" fill="#ffd9a0"/>
+    <rect x="326" y="410" width="38" height="50" fill="#0b0a08"/>
+
+    <rect x="420" y="250" width="150" height="210" fill="#f2b632"/>
+    <path d="M420 250 L495 206 L570 250 Z" fill="#d69a1f"/>
+    <rect x="450" y="288" width="34" height="42" fill="#0b0a08"/><rect x="506" y="288" width="34" height="42" fill="#3a2a10"/>
+    <rect x="476" y="410" width="38" height="50" fill="#0b0a08"/>
+
+    <rect x="570" y="200" width="150" height="260" fill="#d5473b"/>
+    <path d="M570 200 L645 158 L720 200 Z" fill="#b23528"/>
+    <rect x="600" y="240" width="34" height="42" fill="#ffd9a0"/><rect x="656" y="240" width="34" height="42" fill="#0b0a08"/>
+    <rect x="600" y="310" width="34" height="42" fill="#0b0a08"/><rect x="656" y="310" width="34" height="42" fill="#ffd9a0"/>
+    <rect x="626" y="410" width="38" height="50" fill="#0b0a08"/>
+
+    <rect x="720" y="240" width="150" height="220" fill="#3a6ea5"/>
+    <path d="M720 240 L795 198 L870 240 Z" fill="#2c5680"/>
+    <rect x="750" y="278" width="34" height="42" fill="#ffd9a0"/><rect x="806" y="278" width="34" height="42" fill="#0b0a08"/>
+    <rect x="776" y="410" width="38" height="50" fill="#0b0a08"/>
+
+    <rect x="870" y="270" width="150" height="190" fill="#8a5bd6"/>
+    <path d="M870 270 L945 232 L1020 270 Z" fill="#6f45b3"/>
+    <rect x="900" y="308" width="34" height="42" fill="#0b0a08"/><rect x="956" y="308" width="34" height="42" fill="#ffd9a0"/>
+    <rect x="926" y="410" width="38" height="50" fill="#0b0a08"/>
+  </g>
+
+  <g fill="#12241a">
+    <circle cx="1080" cy="430" r="46"/><rect x="1072" y="430" width="16" height="40"/>
+    <circle cx="90" cy="440" r="40"/><rect x="82" y="440" width="14" height="34"/>
+  </g>
+  <rect x="0" y="458" width="1200" height="62" fill="#070605"/>
+</svg>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-label="Illustration of a fresh neighborhood market">
+  <defs>
+    <linearGradient id="nfbg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#17140f"/><stop offset="1" stop-color="#0b0a08"/>
+    </linearGradient>
+    <radialGradient id="nfglow" cx="50%" cy="34%" r="55%">
+      <stop offset="0" stop-color="#8fd14f" stop-opacity=".18"/><stop offset="1" stop-color="#8fd14f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="520" fill="url(#nfbg)"/>
+  <rect width="1200" height="520" fill="url(#nfglow)"/>
+
+  <g>
+    <rect x="120" y="70" width="960" height="26" rx="8" fill="#0f0d0a"/>
+    <g>
+      <path d="M140 96 h80 v40 a40 40 0 0 1 -80 0 Z" fill="#7cc242"/>
+      <path d="M220 96 h80 v40 a40 40 0 0 1 -80 0 Z" fill="#f4efe2"/>
+      <path d="M300 96 h80 v40 a40 40 0 0 1 -80 0 Z" fill="#7cc242"/>
+      <path d="M380 96 h80 v40 a40 40 0 0 1 -80 0 Z" fill="#f4efe2"/>
+      <path d="M460 96 h80 v40 a40 40 0 0 1 -80 0 Z" fill="#7cc242"/>
+      <path d="M540 96 h80 v40 a40 40 0 0 1 -80 0 Z" fill="#f4efe2"/>
+      <path d="M620 96 h80 v40 a40 40 0 0 1 -80 0 Z" fill="#7cc242"/>
+      <path d="M700 96 h80 v40 a40 40 0 0 1 -80 0 Z" fill="#f4efe2"/>
+      <path d="M780 96 h80 v40 a40 40 0 0 1 -80 0 Z" fill="#7cc242"/>
+      <path d="M860 96 h80 v40 a40 40 0 0 1 -80 0 Z" fill="#f4efe2"/>
+      <path d="M940 96 h80 v40 a40 40 0 0 1 -80 0 Z" fill="#7cc242"/>
+    </g>
+  </g>
+
+  <text x="600" y="196" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="800" font-size="34" letter-spacing="6" fill="#f4efe2">FRESH · ORGANIC · LOCAL</text>
+
+  <g>
+    <rect x="180" y="300" width="240" height="150" rx="10" fill="#3a2a1a"/>
+    <rect x="180" y="300" width="240" height="20" rx="8" fill="#4a3620"/>
+    <g>
+      <circle cx="230" cy="352" r="26" fill="#e24b3a"/><circle cx="288" cy="352" r="26" fill="#e24b3a"/><circle cx="346" cy="352" r="26" fill="#e24b3a"/>
+      <circle cx="260" cy="400" r="26" fill="#ef7d2a"/><circle cx="318" cy="400" r="26" fill="#ef7d2a"/><circle cx="374" cy="400" r="26" fill="#ef7d2a"/>
+    </g>
+  </g>
+  <g>
+    <rect x="480" y="300" width="240" height="150" rx="10" fill="#3a2a1a"/>
+    <rect x="480" y="300" width="240" height="20" rx="8" fill="#4a3620"/>
+    <g>
+      <circle cx="530" cy="352" r="26" fill="#8fd14f"/><circle cx="588" cy="352" r="26" fill="#8fd14f"/><circle cx="646" cy="352" r="26" fill="#8fd14f"/>
+      <circle cx="560" cy="400" r="26" fill="#f2b632"/><circle cx="618" cy="400" r="26" fill="#f2b632"/><circle cx="676" cy="400" r="26" fill="#f2b632"/>
+    </g>
+  </g>
+  <g>
+    <rect x="780" y="300" width="240" height="150" rx="10" fill="#3a2a1a"/>
+    <rect x="780" y="300" width="240" height="20" rx="8" fill="#4a3620"/>
+    <g>
+      <circle cx="830" cy="352" r="26" fill="#8a5bd6"/><circle cx="888" cy="352" r="26" fill="#8a5bd6"/><circle cx="946" cy="352" r="26" fill="#8a5bd6"/>
+      <circle cx="860" cy="400" r="26" fill="#e24b3a"/><circle cx="918" cy="400" r="26" fill="#ef7d2a"/><circle cx="976" cy="400" r="26" fill="#8fd14f"/>
+    </g>
+  </g>
+
+  <g>
+    <path d="M1050 300 q-40 -70 6 -150 q46 80 -6 150 Z" fill="#5aa832"/>
+    <path d="M1050 300 q40 -60 4 -120" fill="none" stroke="#2f6d1c" stroke-width="4"/>
+    <rect x="1044" y="300" width="12" height="140" rx="4" fill="#3a2a1a"/>
+  </g>
+  <rect x="120" y="450" width="960" height="10" rx="5" fill="#0f0d0a"/>
+</svg>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cortelyou Road Radio | Brooklyn's Daily Soundtrack</title>
+<meta name="description" content="Cortelyou Road Radio is Ditmas Park's daily soundtrack: live radio, Brooklyn stories, neighborhood updates, playlist submissions, and local culture." />
+<meta name="theme-color" content="#0b0a09" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body data-page="home">
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="./index.html">
+      <img src="./assets/logo.png" alt="Cortelyou Road Radio" />
+      <div><b>Cortelyou Road Radio</b><span>Ditmas Park, Brooklyn</span></div>
+    </a>
+    <nav class="links">
+      <a href="./index.html" aria-current="page">Home</a>
+      <a href="./listen-live.html">Listen Live</a>
+      <a href="./music-news.html">Music News</a>
+      <a href="./ditmas-park.html">Ditmas Park</a>
+      <a href="./brooklyn-events.html">Brooklyn</a>
+      <a href="./sponsor.html">Sponsor</a>
+      <a href="./about.html">About</a>
+    </nav>
+    <div class="nav-right">
+      <button class="btn-live js-listen"><span class="dot"></span> <span class="js-listen-label">Listen Live</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">Brooklyn · Live now</span>
+      <h1 class="display">The sound of<br /><em>Ditmas Park.</em></h1>
+      <p class="lead">Neighborhood radio, current culture, and tonight's best local signal — playing live all day on Cortelyou Road.</p>
+      <div class="hero-actions">
+        <button class="btn-live js-listen"><span class="dot"></span> <span class="js-listen-label">Listen Live</span></button>
+        <a class="btn-ghost" href="./listen-live.html">See what's on →</a>
+      </div>
+    </div>
+    <div class="player">
+      <div class="player-top">
+        <span class="onair"><span class="dot"></span> On air now</span>
+        <span class="pill" style="padding:6px 12px;">192kbps</span>
+      </div>
+      <div class="np">
+        <img id="npArt" src="./assets/logo.png" alt="Now playing artwork" />
+        <div>
+          <div class="t" id="npTitle">Live on Cortelyou</div>
+          <div class="a" id="npArtist">Cortelyou Road Radio</div>
+          <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+      <div class="recent">
+        <h4>Recently played</h4>
+        <ul id="recentList"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ticker">
+  <div class="wrap">
+    <span class="tag">Tonight in Brooklyn</span>
+    <div class="ticker-viewport">
+      <div class="items">
+        <span><b>Keith Sweat</b> at Barclays Center — Sat, 8pm</span>
+        <span><b>KokoFest 2026</b> at the Navy Yard — Sat, noon</span>
+        <span><b>SummerStarz movies</b> at Transmitter Park — Fri, 7pm</span>
+        <span><b>Disco Tehran</b> at the Sultan Room — Sat night</span>
+        <span><b>Maker's market</b> at Industry City — Sat &amp; Sun</span>
+        <span aria-hidden="true"><b>Keith Sweat</b> at Barclays Center — Sat, 8pm</span>
+        <span aria-hidden="true"><b>KokoFest 2026</b> at the Navy Yard — Sat, noon</span>
+        <span aria-hidden="true"><b>SummerStarz movies</b> at Transmitter Park — Fri, 7pm</span>
+        <span aria-hidden="true"><b>Disco Tehran</b> at the Sultan Room — Sat night</span>
+        <span aria-hidden="true"><b>Maker's market</b> at Industry City — Sat &amp; Sun</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="block wrap">
+  <div class="head-row">
+    <div><span class="kicker">Top story</span><h2 class="display">Music News</h2></div>
+    <a class="see" href="./music-news.html">See all →</a>
+  </div>
+  <div class="lead-grid">
+    <div data-pool="music" data-count="1" data-variant="feature"></div>
+    <div class="lead-side" data-pool="music" data-offset="1" data-count="3" data-variant="mini"></div>
+  </div>
+</section>
+
+<section class="block wrap" style="padding-top:0;">
+  <div class="head-row">
+    <div><span class="kicker">On the charts</span><h2 class="display">Playing heavy right now</h2></div>
+    <a class="see" href="./music-news.html">More music →</a>
+  </div>
+  <div class="grid cols-3" data-pool="chart" data-count="3" data-variant="card"></div>
+</section>
+
+<section class="block wrap" style="padding-top:0;">
+  <div class="head-row">
+    <div><span class="kicker">The neighborhood</span><h2 class="display">Ditmas Park</h2></div>
+    <a class="see" href="./ditmas-park.html">See all →</a>
+  </div>
+  <div class="grid cols-3" data-pool="ditmas" data-count="3" data-variant="card"></div>
+</section>
+
+<section class="block wrap" style="padding-top:0;">
+  <div class="head-row">
+    <div><span class="kicker">Tonight in Brooklyn</span><h2 class="display">Brooklyn &amp; Events</h2></div>
+    <a class="see" href="./brooklyn-events.html">See all →</a>
+  </div>
+  <div class="lead-grid">
+    <div data-pool="brooklyn" data-count="1" data-variant="feature"></div>
+    <div class="lead-side" data-pool="brooklyn" data-offset="1" data-count="3" data-variant="mini"></div>
+  </div>
+</section>
+
+<div class="sponsor" style="margin-top:20px;">
+  <div class="wrap">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:36px 0;">
+      <div>
+        <span class="kicker">Neighborhood playlist call</span>
+        <h2 class="display" style="font-family:'Archivo';font-weight:800;font-size:clamp(24px,3vw,34px);margin-top:8px;">What does your block sound like?</h2>
+        <p style="color:var(--muted);max-width:34rem;margin-top:8px;">Send one neighborhood playlist and we may put it on air.</p>
+      </div>
+      <a class="btn-live" href="./ditmas-park.html#playlist-call">Submit a Ditmas playlist</a>
+    </div>
+  </div>
+</div>
+
+<div class="sponsor">
+  <div class="wrap">
+    <div class="grid cols-2" style="padding:40px 0;">
+      <a class="spot" href="./sponsor.html#natural-frontier">
+        <div class="logo"><img src="./assets/natural-frontier-logo.png" alt="Natural Frontier Market logo" /></div>
+        <div>
+          <div class="k">Sponsor Spotlight</div>
+          <h4>Natural Frontier Market</h4>
+          <p>Cortelyou's neighborhood market, supporting the station and the block.</p>
+          <span class="spot-cta">Learn more →</span>
+        </div>
+      </a>
+      <a class="spot" href="./sponsor.html#fdc">
+        <div class="logo"><img src="./assets/fdc-logo.png" alt="Flatbush Development Corporation logo" /></div>
+        <div>
+          <div class="k">Community Support</div>
+          <h4>Flatbush Development Corporation</h4>
+          <p>Flatbush support for youth, housing, and neighborhood development.</p>
+          <span class="spot-cta">Learn more →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="./index.html">
+        <img src="./assets/logo.png" alt="Cortelyou Road Radio" style="width:52px;height:52px;border-radius:13px;" />
+        <div><b>Cortelyou Road Radio</b><span>Ditmas Park and Brooklyn, live all day.</span></div>
+      </a>
+      <div class="fcol"><h5>Listen</h5><a href="./listen-live.html">Listen Live</a><a href="./listen-live.html">Now Playing</a><a href="./listen-live.html">What's On</a></div>
+      <div class="fcol"><h5>Read</h5><a href="./music-news.html">Music News</a><a href="./ditmas-park.html">Ditmas Park</a><a href="./brooklyn-events.html">Brooklyn &amp; Events</a></div>
+      <div class="fcol"><h5>Station</h5><a href="./sponsor.html">Sponsor</a><a href="./about.html">About / Contact</a><a href="./ditmas-park.html">Submit a Playlist</a></div>
+    </div>
+    <div class="foot-base">
+      <span>info@cortelyouroadradio.com · 718.600.6638</span>
+      <span>© 2026 Cortelyou Road Radio · Supported by Natural Frontier Market</span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-player" id="stickyPlayer">
+  <div class="wrap">
+    <img src="./assets/logo.png" alt="" />
+    <div>
+      <div class="sp-title" id="stickyTitle">Live on Cortelyou</div>
+      <div class="sp-artist" id="stickyArtist">Cortelyou Road Radio</div>
+    </div>
+    <div class="eq" aria-hidden="true" style="margin-left:8px"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="sp-status" style="display:flex;align-items:center;gap:12px;">
+      <span class="pill" id="stickyStatus">Paused</span>
+      <button class="btn-live js-listen"><span class="dot"></span> <span class="js-listen-label">Listen Live</span></button>
+    </div>
+  </div>
+</div>
+
+<audio id="radioStream" src="https://streamer.radio.co/s82969a5e0/listen" preload="none"></audio>
+<script src="./app.js"></script>
+</body>
+</html>

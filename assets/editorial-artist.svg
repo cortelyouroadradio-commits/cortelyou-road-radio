@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="Microphone under a stage spotlight">
+  <defs>
+    <linearGradient id="abg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#241511"/><stop offset=".6" stop-color="#130c09"/><stop offset="1" stop-color="#0b0908"/>
+    </linearGradient>
+    <linearGradient id="aspot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffb066" stop-opacity=".38"/><stop offset="1" stop-color="#ffb066" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="amic" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff7a45"/><stop offset="1" stop-color="#c9371a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" rx="44" fill="url(#abg)"/>
+  <path d="M600 90 L340 700 L860 700 Z" fill="url(#aspot)"/>
+  <circle cx="600" cy="120" r="30" fill="#ffd9a0" opacity=".9"/>
+  <g transform="translate(600,300)">
+    <rect x="-52" y="-120" width="104" height="200" rx="52" fill="url(#amic)"/>
+    <g stroke="#0a0807" stroke-width="6" opacity=".5">
+      <path d="M-52 -70 H52 M-52 -30 H52 M-52 10 H52 M-52 50 H52"/>
+    </g>
+    <rect x="-16" y="80" width="32" height="90" rx="10" fill="#160d0a"/>
+    <path d="M-70 40 a70 70 0 0 0 140 0" fill="none" stroke="#ff6a3d" stroke-width="10" stroke-linecap="round"/>
+    <rect x="-14" y="150" width="28" height="150" rx="8" fill="#120c09"/>
+    <rect x="-120" y="300" width="240" height="20" rx="10" fill="#0a0807"/>
+  </g>
+  <g fill="none" stroke="#ff5a36" stroke-opacity=".5" stroke-width="7" stroke-linecap="round">
+    <path d="M470 300 a70 70 0 0 0 0 90"/><path d="M420 288 a120 120 0 0 0 0 114"/>
+    <path d="M730 300 a70 70 0 0 1 0 90"/><path d="M780 288 a120 120 0 0 1 0 114"/>
+  </g>
+</svg>

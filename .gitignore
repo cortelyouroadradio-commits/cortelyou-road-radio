@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+build/node_modules/
+
+# macOS junk
+.DS_Store
+**/.DS_Store
+
+# Leftover from earlier setup — not part of the live site
+/package.json
+content-data.js
+config/
+scripts/
+netlify/
+Documents/
+redesign-preview.html

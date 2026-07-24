@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 320" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Ditmas Park rooftops with a broadcast tower">
+  <g fill="#ff6a3d">
+    <path d="M0 320 V210 h120 v110 Z" opacity=".16"/>
+    <path d="M150 320 V150 l70 -60 l70 60 v170 Z" opacity=".18"/>
+    <path d="M330 320 V190 h130 v130 Z" opacity=".14"/>
+    <path d="M700 320 V120 l80 -70 l80 70 v200 Z" opacity=".20"/>
+    <path d="M900 320 V180 h150 v140 Z" opacity=".13"/>
+    <path d="M1300 320 V150 l70 -64 l70 64 v170 Z" opacity=".17"/>
+    <path d="M1470 320 V210 h130 v110 Z" opacity=".14"/>
+  </g>
+  <g fill="none" stroke="#ff6a3d" stroke-width="4" opacity=".5" stroke-linecap="round">
+    <path d="M560 120 L586 20 L612 120"/>
+    <path d="M586 20 m-40 -18 a60 60 0 0 0 0 36"/>
+    <path d="M586 20 m40 -18 a60 60 0 0 1 0 36"/>
+    <path d="M586 20 m-72 -32 a108 108 0 0 0 0 64"/>
+    <path d="M586 20 m72 -32 a108 108 0 0 1 0 64"/>
+  </g>
+  <circle cx="586" cy="20" r="7" fill="#ff6a3d" opacity=".8"/>
+</svg>

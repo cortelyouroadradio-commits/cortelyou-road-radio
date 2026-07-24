@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About / Contact | Cortelyou Road Radio</title>
+<meta name="description" content="Cortelyou Road Radio is a local-first station rooted in Ditmas Park, Brooklyn — live radio, local stories, and Brooklyn events in one daily check-in." />
+<meta name="theme-color" content="#0b0a09" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body data-page="about">
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="./index.html">
+      <img src="./assets/logo.png" alt="Cortelyou Road Radio" />
+      <div><b>Cortelyou Road Radio</b><span>Ditmas Park, Brooklyn</span></div>
+    </a>
+    <nav class="links">
+      <a href="./index.html">Home</a>
+      <a href="./listen-live.html">Listen Live</a>
+      <a href="./music-news.html">Music News</a>
+      <a href="./ditmas-park.html">Ditmas Park</a>
+      <a href="./brooklyn-events.html">Brooklyn</a>
+      <a href="./sponsor.html">Sponsor</a>
+      <a href="./about.html" aria-current="page">About</a>
+    </nav>
+    <div class="nav-right">
+      <button class="btn-live js-listen"><span class="dot"></span> <span class="js-listen-label">Listen Live</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="wrap">
+    <span class="kicker">Your neighborhood, on air</span>
+    <h1>About Cortelyou Road Radio</h1>
+    <p>A local-first station rooted in Ditmas Park, Brooklyn — live radio, local stories, and Brooklyn events all in one daily check-in.</p>
+  </div>
+</div>
+
+<section class="block wrap" style="padding-top:12px;">
+  <div class="grid cols-2">
+    <div class="panel">
+      <h3>What we are</h3>
+      <p>Cortelyou Road Radio is a daily soundtrack and a local signal at the same time — a place to hear the neighborhood and hear it reflected back with a little more shape.</p>
+      <p>Live music, neighborhood updates, and a short list of Brooklyn events, curated with a point of view instead of an endless scroll.</p>
+    </div>
+    <div class="panel">
+      <h3>Contact</h3>
+      <p>Questions, sponsorships, playlists, or shout-outs — reach the station directly.</p>
+      <p><strong style="color:var(--text)">Email:</strong> <a href="mailto:info@cortelyouroadradio.com" style="color:var(--ember)">info@cortelyouroadradio.com</a></p>
+      <p><strong style="color:var(--text)">Phone:</strong> <a href="tel:+17186006638" style="color:var(--ember)">718.600.6638</a></p>
+      <p><strong style="color:var(--text)">Social:</strong>
+        <a href="https://www.facebook.com/cortelyouroadradio" style="color:var(--ember)">Facebook</a> ·
+        <a href="https://www.instagram.com/cortelyouroadradio/" style="color:var(--ember)">Instagram</a>
+      </p>
+      <a class="btn-live" href="./ditmas-park.html#playlist-call" style="margin-top:8px;">Submit a playlist</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="./index.html">
+        <img src="./assets/logo.png" alt="Cortelyou Road Radio" style="width:52px;height:52px;border-radius:13px;" />
+        <div><b>Cortelyou Road Radio</b><span>Ditmas Park and Brooklyn, live all day.</span></div>
+      </a>
+      <div class="fcol"><h5>Listen</h5><a href="./listen-live.html">Listen Live</a><a href="./listen-live.html">Now Playing</a><a href="./listen-live.html">What's On</a></div>
+      <div class="fcol"><h5>Read</h5><a href="./music-news.html">Music News</a><a href="./ditmas-park.html">Ditmas Park</a><a href="./brooklyn-events.html">Brooklyn &amp; Events</a></div>
+      <div class="fcol"><h5>Station</h5><a href="./sponsor.html">Sponsor</a><a href="./about.html">About / Contact</a><a href="./ditmas-park.html#playlist-call">Submit a Playlist</a></div>
+    </div>
+    <div class="foot-base">
+      <span>info@cortelyouroadradio.com · 718.600.6638</span>
+      <span>© 2026 Cortelyou Road Radio · Supported by Natural Frontier Market</span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-player" id="stickyPlayer">
+  <div class="wrap">
+    <img src="./assets/logo.png" alt="" />
+    <div>
+      <div class="sp-title" id="stickyTitle">Live on Cortelyou</div>
+      <div class="sp-artist" id="stickyArtist">Cortelyou Road Radio</div>
+    </div>
+    <div class="eq" aria-hidden="true" style="margin-left:8px"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="sp-status" style="display:flex;align-items:center;gap:12px;">
+      <span class="pill" id="stickyStatus">Paused</span>
+      <button class="btn-live js-listen"><span class="dot"></span> <span class="js-listen-label">Listen Live</span></button>
+    </div>
+  </div>
+</div>
+
+<audio id="radioStream" src="https://streamer.radio.co/s82969a5e0/listen" preload="none"></audio>
+<script src="./app.js"></script>
+</body>
+</html>

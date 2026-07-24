@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="Ditmas Park Victorian rooftops at dusk">
+  <defs>
+    <linearGradient id="dsky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a1710"/><stop offset=".55" stop-color="#160d0a"/><stop offset="1" stop-color="#0b0908"/>
+    </linearGradient>
+    <radialGradient id="dsun" cx="76%" cy="26%" r="40%">
+      <stop offset="0" stop-color="#ff7a45" stop-opacity=".8"/><stop offset="1" stop-color="#ff7a45" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="dember" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff6a3d"/><stop offset="1" stop-color="#d43a18"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" rx="44" fill="url(#dsky)"/>
+  <rect width="1200" height="760" rx="44" fill="url(#dsun)"/>
+  <circle cx="912" cy="196" r="66" fill="#ffb066" opacity=".9"/>
+  <circle cx="912" cy="196" r="66" fill="none" stroke="#ff7a45" stroke-opacity=".4" stroke-width="10"/>
+  <g fill="#0a0807">
+    <path d="M120 620 h150 v-150 l-75 -70 l-75 70 Z"/>
+    <path d="M300 620 h180 v-210 l-90 -80 l-90 80 Z"/>
+    <path d="M520 620 h150 v-130 l-75 -66 l-75 66 Z"/>
+    <path d="M710 620 h200 v-240 l-100 -86 l-100 86 Z"/>
+    <path d="M950 620 h160 v-170 l-80 -74 l-80 74 Z"/>
+  </g>
+  <g fill="none" stroke="#ff5a36" stroke-opacity=".55" stroke-width="4">
+    <path d="M120 620 v-150 l75 -70 l75 70 v150"/>
+    <path d="M300 620 v-210 l90 -80 l90 80 v210"/>
+    <path d="M710 620 v-240 l100 -86 l100 86 v240"/>
+  </g>
+  <g fill="#ffb066">
+    <rect x="168" y="500" width="26" height="34" rx="4"/>
+    <rect x="360" y="470" width="30" height="40" rx="4"/>
+    <rect x="410" y="470" width="30" height="40" rx="4"/>
+    <rect x="560" y="516" width="26" height="34" rx="4"/>
+    <rect x="770" y="446" width="32" height="44" rx="4"/>
+    <rect x="822" y="446" width="32" height="44" rx="4"/>
+    <rect x="1000" y="500" width="28" height="36" rx="4"/>
+  </g>
+  <rect x="0" y="618" width="1200" height="142" fill="#070605"/>
+  <g fill="#120c09">
+    <circle cx="240" cy="600" r="70"/><circle cx="620" cy="606" r="58"/><circle cx="1040" cy="602" r="64"/>
+  </g>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="Mixing board faders and a waveform">
+  <defs>
+    <linearGradient id="mbbg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#221410"/><stop offset=".6" stop-color="#120b09"/><stop offset="1" stop-color="#0b0908"/>
+    </linearGradient>
+    <radialGradient id="mbg" cx="50%" cy="30%" r="55%">
+      <stop offset="0" stop-color="#ff6a3d" stop-opacity=".4"/><stop offset="1" stop-color="#ff6a3d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="760" rx="44" fill="url(#mbbg)"/>
+  <rect width="1200" height="760" rx="44" fill="url(#mbg)"/>
+  <g fill="none" stroke="#ff6a3d" stroke-width="9" stroke-linecap="round" opacity=".9">
+    <path d="M150 210 q40 -80 80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0"/>
+  </g>
+  <g>
+    <g stroke="#ff5a36" stroke-opacity=".4" stroke-width="6" stroke-linecap="round">
+      <path d="M260 360 V660"/><path d="M400 360 V660"/><path d="M540 360 V660"/><path d="M680 360 V660"/><path d="M820 360 V660"/><path d="M960 360 V660"/>
+    </g>
+    <g fill="#ff6a3d">
+      <rect x="238" y="440" width="44" height="30" rx="8"/>
+      <rect x="378" y="540" width="44" height="30" rx="8"/>
+      <rect x="518" y="400" width="44" height="30" rx="8"/>
+      <rect x="658" y="500" width="44" height="30" rx="8"/>
+      <rect x="798" y="450" width="44" height="30" rx="8"/>
+      <rect x="938" y="580" width="44" height="30" rx="8"/>
+    </g>
+  </g>
+  <rect x="0" y="700" width="1200" height="60" fill="#070605"/>
+</svg>

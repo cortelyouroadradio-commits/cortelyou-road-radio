@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="Neighborhood park at dusk with a lamppost and bench">
+  <defs>
+    <linearGradient id="psky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a1811"/><stop offset=".55" stop-color="#150d0a"/><stop offset="1" stop-color="#0b0908"/>
+    </linearGradient>
+    <radialGradient id="plamp" cx="30%" cy="34%" r="26%">
+      <stop offset="0" stop-color="#ffb066" stop-opacity=".85"/><stop offset="1" stop-color="#ffb066" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="760" rx="44" fill="url(#psky)"/>
+  <rect width="1200" height="760" rx="44" fill="url(#plamp)"/>
+  <circle cx="884" cy="180" r="52" fill="#ffb066" opacity=".8"/>
+  <path d="M0 636 H1200 V760 H0 Z" fill="#0a0807"/>
+  <path d="M420 636 C540 560 720 560 900 636 L900 700 L420 700 Z" fill="#100b08"/>
+  <g fill="#0d0906">
+    <circle cx="1000" cy="520" r="96"/><rect x="988" y="520" width="24" height="120"/>
+    <circle cx="180" cy="540" r="78"/><rect x="170" y="540" width="20" height="100"/>
+  </g>
+  <g stroke="#0a0807" stroke-width="12" fill="none" stroke-linecap="round">
+    <path d="M360 636 V300"/>
+  </g>
+  <path d="M360 300 q-44 6 -44 46 h88 q0 -40 -44 -46 Z" fill="#ff6a3d"/>
+  <circle cx="360" cy="330" r="16" fill="#ffd9a0"/>
+  <g fill="#0a0807">
+    <rect x="520" y="560" width="180" height="16" rx="6"/>
+    <rect x="520" y="512" width="180" height="14" rx="6"/>
+    <rect x="528" y="576" width="14" height="60"/><rect x="678" y="576" width="14" height="60"/>
+    <rect x="520" y="524" width="12" height="44"/><rect x="688" y="524" width="12" height="44"/>
+  </g>
+  <rect x="0" y="694" width="1200" height="66" fill="#070605"/>
+</svg>
