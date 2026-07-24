@@ -214,11 +214,10 @@ function setHTML(id, html) { const el = document.getElementById(id); if (el) el.
 function renderStory() {
   const p = new URLSearchParams(location.search);
   const name = p.get("section") || "music";
-  const pool = pools[name];
-  if (!pool || !pool.length) return;
   const index = Number(p.get("index") || 0);
-  const base = pool[(((index % pool.length) + pool.length) % pool.length)];
-  const item = { ...base, poolName: name, index };
+  // Use the same daily rotation the cards use, so a card always opens its own story.
+  const item = itemAt(name, index);
+  if (!item) return;
   const src = item.image?.src || ART(item.art || "editorial-station");
   setHTML("storyHero", `<img src="${src}" alt="${item.image?.alt || item.title}" />`);
   setText("storyTag", item.tag);
