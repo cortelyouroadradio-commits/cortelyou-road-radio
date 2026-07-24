@@ -303,7 +303,11 @@ function isInternalPageLink(a) {
   let url;
   try { url = new URL(href, location.href); } catch (e) { return false; }
   if (url.origin !== location.origin) return false;
-  return /\.html($|[?#])/.test(url.pathname) || url.pathname === "/" || url.pathname.endsWith("/");
+  // A page link is same-origin and either extensionless (Netlify clean URLs
+  // like /music-news) or ends in .html. Skip links to other files (assets).
+  const last = url.pathname.split("/").pop();
+  if (last.includes(".") && !/\.html$/i.test(last)) return false;
+  return true;
 }
 
 function setupNavigation() {
