@@ -16,8 +16,16 @@ daily-refreshed editorial feed.
 - `.github/workflows/daily-content.yml` — runs the builder every morning
 
 ## Deploy
-Connected to Netlify; every push to `main` publishes automatically. Publish
-directory is the repo root (`.`), no build command.
+Connected to Netlify; every push to `main` publishes automatically. On each
+deploy Netlify runs `build/build-content.js` (see the `command` in
+`netlify.toml`) to regenerate `content.json` from live feeds. The committed
+`content.json` is just a seed/fallback — if a feed hiccups, the last good copy
+ships instead (`|| true` guard).
 
 ## Daily updates
-See `build/SETUP-DAILY.md`.
+The daily refresh no longer commits to the repo. A GitHub Action
+(`.github/workflows/daily-content.yml`) simply POSTs to a Netlify build hook
+(stored as the `NETLIFY_BUILD_HOOK` repo secret) every morning, which triggers
+a fresh Netlify build. Because nothing is committed by the bot, **only you ever
+write to `main`** — your manual pushes can never collide with the daily job.
+You can also trigger it by hand from the repo's Actions tab ("Run workflow").

@@ -1,5 +1,9 @@
 [build]
   publish = "."
+  # Regenerate content.json from live feeds on every deploy. The "|| true"
+  # guard means a feed hiccup never fails the deploy — it just ships the
+  # last committed content.json instead.
+  command = "cd build && npm install --no-audit --no-fund && npm run build || true"
 
 [[redirects]]
   from = "/thanks"

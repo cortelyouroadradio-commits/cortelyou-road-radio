@@ -1,42 +1,17 @@
-name: Daily content refresh
+name: Daily content rebuild
 
-# Pulls fresh stories every morning and commits content.json.
-# Netlify (connected to this repo) redeploys automatically on the push.
+# Triggers a Netlify rebuild every morning. Netlify regenerates content.json
+# from live feeds during its own build (see netlify.toml), so this job never
+# commits to the repo — your manual pushes to main can never collide with it.
 
 on:
   schedule:
     - cron: "10 9 * * *"   # ~5:10 AM ET (cron is UTC). Adjust as you like.
   workflow_dispatch: {}    # lets you run it by hand from the Actions tab
 
-permissions:
-  contents: write
-
 jobs:
-  refresh:
+  trigger:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
-      - name: Install deps
-        working-directory: build
-        run: npm install --no-audit --no-fund
-
-      - name: Build content.json
-        working-directory: build
-        run: npm run build
-
-      - name: Commit if changed
-        run: |
-          if [[ -n "$(git status --porcelain content.json)" ]]; then
-            git config user.name  "crr-content-bot"
-            git config user.email "bot@cortelyouroadradio.com"
-            git add content.json
-            git commit -m "chore: daily content refresh"
-            git push
-          else
-            echo "No content changes today."
-          fi
+      - name: Trigger Netlify build
+        run: curl -fsS -X POST -d '{}' "${{ secrets.NETLIFY_BUILD_HOOK }}"
