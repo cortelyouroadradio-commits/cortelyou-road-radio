@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-24T11:03:38.157Z",
+  "generatedAt": "2026-07-24T12:10:10.163Z",
   "music": [
     {
       "tag": "Music News",
@@ -116,45 +116,62 @@
   "ditmas": [
     {
       "tag": "Neighborhood",
-      "title": "Ditmas Park's Victorian blocks anchor a summer of stoop life",
-      "summary": "One of the country's largest collections of freestanding Victorians, at its best in warm months.",
-      "body": "Summer is when Ditmas Park shows off. The neighborhood holds one of the largest concentrations of freestanding Victorian houses in the country — wide porches, turrets and deep front yards under a thick tree canopy — and in warm months that architecture becomes a stage for daily life. Stoops fill up, kids bike the side streets, and neighbors linger on the avenue. It's the kind of low-key, front-porch sociability that gives the area its village-in-the-city feel, just a few subway stops from downtown Brooklyn.",
-      "source": "Homes.com neighborhood guide",
-      "sourceUrl": "https://www.homes.com/local-guide/brooklyn-ny/ditmas-park-neighborhood/",
+      "title": "Two-alarm fire burns vacant Flatbush home long slated for redevelopment",
+      "summary": "A two-alarm fire burned through a long-vacant Flatbush building on Saturday morning. Firefighters arrived at 1952 Nostrand Ave. just after 6:40 a.m on July 18 to find the three-story wood-framed home…",
+      "body": "A two-alarm fire burned through a long-vacant Flatbush building on Saturday morning. Firefighters arrived at 1952 Nostrand Ave. just after 6:40 a.m on July 18 to find the three-story wood-framed home enveloped in thick smoke. The blaze had begun in the building’s basement, per the FDNY, and spread up to the first floor and over... Read More",
+      "source": "Brooklyn Paper",
+      "sourceUrl": "https://www.brooklynpaper.com/two-alarm-fire-vacant-flatbush-home/",
       "image": {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Ditmas_Av_Rugby_Rd_house_sunny_jeh.jpg",
-        "alt": "Victorian house in Ditmas Park",
-        "credit": "Wikimedia Commons"
-      }
+        "src": "https://www.brooklynpaper.com/wp-content/uploads/2026/07/DSC_7847.jpg?quality=51&w=384",
+        "alt": "Two-alarm fire burns vacant Flatbush home long slated for redevelopment",
+        "credit": "Brooklyn Paper"
+      },
+      "publishedAt": "2026-07-20T16:29:51.000Z"
     },
     {
       "tag": "Neighborhood",
-      "title": "Cortelyou Road stays the neighborhood's main stage",
-      "summary": "Dining, bars and indie shops anchored by the long-running Flatbush Food Co-op.",
-      "body": "Cortelyou Road is the beating heart of Ditmas Park. The walkable commercial strip mixes restaurants, bars and independent shops, with the long-running Flatbush Food Co-op as a community anchor. It's where the neighborhood runs its errands, meets for coffee and gathers after dark — a main street that still feels genuinely local. In summer, the sidewalk tables and open doors make it the natural center of gravity for a neighborhood that prizes its small, owner-run businesses.",
-      "source": "Homes.com neighborhood guide",
-      "sourceUrl": "https://www.homes.com/local-guide/brooklyn-ny/ditmas-park-neighborhood/",
+      "title": "Back-to-back Bed-Stuy blazes among series of weekend Brooklyn blazes",
+      "summary": "Fire marshals are investigating multiple Brooklyn fires that broke out over the weekend, including back-to-back blazes in Bedford-Stuyvesant on Saturday. Firefighters first responded just after 12:45…",
+      "body": "Fire marshals are investigating multiple Brooklyn fires that broke out over the weekend, including back-to-back blazes in Bedford-Stuyvesant on Saturday. Firefighters first responded just after 12:45 p.m. to an apartment fire at 210 Stuyvesant Ave. near Gates Avenue in Bed-Stuy. Units from the 57th Battalion arrived to find fire in an apartment and quickly deployed... Read More",
+      "source": "Brooklyn Paper",
+      "sourceUrl": "https://www.brooklynpaper.com/back-to-back-bed-stuy-fires-weekend-brooklyn-blazes/",
       "image": {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Cortelyou_Road_-_Coney_Island_Bound_Platform.jpg",
-        "alt": "Cortelyou Road subway station platform",
-        "credit": "Wikimedia Commons"
-      }
+        "src": "https://www.brooklynpaper.com/wp-content/uploads/2026/05/DSC_1167.jpg?quality=51&w=384",
+        "alt": "Back-to-back Bed-Stuy blazes among series of weekend Brooklyn blazes",
+        "credit": "Brooklyn Paper"
+      },
+      "publishedAt": "2026-05-18T16:53:54.000Z"
     },
     {
-      "tag": "Community Board",
-      "title": "Maker's market returns to Industry City, July 25–26",
-      "summary": "Handmade art, design and vintage from local makers, 11am–4pm both days.",
-      "body": "Weekend plans, sorted. A maker's market takes over Industry City on Saturday and Sunday, July 25–26, from 11am to 4pm, with local vendors showing handmade art, design and vintage finds. Industry City's sprawling former manufacturing complex has become a South Brooklyn destination for exactly this kind of gathering, and the market is an easy, low-commitment way to support neighborhood makers and browse for something one-of-a-kind.",
-      "source": "Ditmas Park–Flatbush Patch",
-      "sourceUrl": "https://patch.com/new-york/ditmaspark/around-town",
+      "tag": "Neighborhood",
+      "title": "New mosaics combine Flatbush’s theatrical history and vibrant culture at Church Avenue station",
+      "summary": "In a subway station that has served Flatbush for over a century, a series of lush mosaics marry the neighborhood’s theatrical history with the vibrant cultures of its present. The MTA and artist…",
+      "body": "In a subway station that has served Flatbush for over a century, a series of lush mosaics marry the neighborhood’s theatrical history with the vibrant cultures of its present. The MTA and artist Christopher Myers unveiled the pieces, titled “If you don’t want your children to know the truth about life don’t send ‘em to... Read More",
+      "source": "Brooklyn Paper",
+      "sourceUrl": "https://www.brooklynpaper.com/mosaics-history-flatbush-church-avenue/",
       "image": {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Bush_Terminal_-_North_aerial_-_1958.jpg",
-        "alt": "Industry City / Bush Terminal in Brooklyn",
-        "credit": "Wikimedia Commons"
-      }
+        "src": "https://www.brooklynpaper.com/wp-content/uploads/2026/04/A010-042426_Erica_Price.jpg?quality=51&w=384",
+        "alt": "New mosaics combine Flatbush’s theatrical history and vibrant culture at Church Avenue station",
+        "credit": "Brooklyn Paper"
+      },
+      "publishedAt": "2026-04-29T21:06:56.000Z"
     }
   ],
   "brooklyn": [
+    {
+      "tag": "Brooklyn",
+      "title": "Larger than life rock meets burlesque side show ‘Cherry Hellodies 7: South of Heaven’ coming to Coney Island",
+      "summary": "A one-of-a-kind spectacular that combines heavy metal, death-defying stunts and sideshow is returning to Coney Island. On Aug. 1 at 9 p.m., “Cherry Hellodies 7: South of Heaven” will make its way to…",
+      "body": "A one-of-a-kind spectacular that combines heavy metal, death-defying stunts and sideshow is returning to Coney Island. On Aug. 1 at 9 p.m., “Cherry Hellodies 7: South of Heaven” will make its way to the sideshow stage at Coney Island USA. This year promises to be bigger and better than ever. “I think that Hellodies… Read More",
+      "source": "Brooklyn Paper",
+      "sourceUrl": "https://www.amny.com/entertainment/rock-burlesque-side-show-cherry-hellodies-7-coney-island/",
+      "image": {
+        "src": "https://www.amny.com/wp-content/uploads/2026/07/@coney.island.usa-presentsCherry-Hellodies-7-SOUTH-OF-HEAVEN🔥🔥🔥🔥🔥We-are-entering-the-7th-.jpg?quality=51&amp;w=560",
+        "alt": "Larger than life rock meets burlesque side show ‘Cherry Hellodies 7: South of Heaven’ coming to Coney Island",
+        "credit": "Brooklyn Paper"
+      },
+      "publishedAt": "2026-07-24T12:00:14.000Z"
+    },
     {
       "tag": "Brooklyn",
       "title": "Things to do this weekend in NYC, July 24-26: Block parties, Pokémon, free ice cream and more!",
@@ -196,20 +213,6 @@
         "credit": "amNewYork"
       },
       "publishedAt": "2026-07-23T21:15:43.000Z"
-    },
-    {
-      "tag": "Brooklyn",
-      "title": "Elevators finally open at Brooklyn Borough Hall subway stop after yearslong project drawn out by structural work",
-      "summary": "The MTA completed its work to make Brooklyn’s Borough Hall subway hub accessible for disabled riders by adding new elevators to the station — a project that had been drawn out over several years due…",
-      "body": "The MTA completed its work to make Brooklyn’s Borough Hall subway hub accessible for disabled riders by adding new elevators to the station — a project that had been drawn out over several years due to structural updates agency officials said it needed. Janno Lieber, the MTA’s chair and CEO, stood with other local leaders on July 22 to... Read More",
-      "source": "Brooklyn Paper",
-      "sourceUrl": "https://www.brooklynpaper.com/elevators-finally-open-borough-hall-station/",
-      "image": {
-        "src": "https://www.brooklynpaper.com/wp-content/uploads/2026/07/55411810468_583673968e_5k.jpg?quality=51&w=384",
-        "alt": "Elevators finally open at Brooklyn Borough Hall subway stop after yearslong project drawn out by structural work",
-        "credit": "Brooklyn Paper"
-      },
-      "publishedAt": "2026-07-23T20:33:06.000Z"
     }
   ]
 }
