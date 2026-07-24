@@ -1,50 +1,75 @@
 {
-  "generatedAt": "2026-07-23T12:00:00Z",
+  "generatedAt": "2026-07-24T11:03:38.157Z",
   "music": [
     {
-      "tag": "New Release",
-      "title": "Madonna returns with 'Confessions II,' a sequel to her 2005 dance classic",
-      "summary": "Out July 3, the album reunites Madonna with producer Stuart Price for a direct follow-up to 'Confessions on a Dance Floor.'",
-      "body": "Madonna is heading back to the dance floor. 'Confessions II,' out July 3, is billed as a direct sequel to 2005's 'Confessions on a Dance Floor' — the disco-forward album that gave her 'Hung Up' and remains a fan favorite two decades on. She's reunited with producer Stuart Price, who shaped that record's pulsing, four-on-the-floor sound, which points to a deliberate return to euphoric club-pop rather than reinvention. It lands in what is shaping up as one of the busiest new-music months of the year, and for longtime fans it reads as Madonna leaning back into the sound that defined her mid-2000s renaissance.",
-      "source": "Ultimate Classic Rock",
-      "sourceUrl": "https://ultimateclassicrock.com/july-2026-new-music-releases/",
-      "image": { "src": "https://upload.wikimedia.org/wikipedia/commons/7/78/MadonnaO2171023_%2897_of_133%29_%2853269593787%29_%28cropped%29.jpg", "alt": "Madonna performing live", "credit": "Wikimedia Commons" }
+      "tag": "Music News",
+      "title": "Listen to Orville Peck’s New Song “Too Little, Too Late”",
+      "summary": "Emmylou Harris, Noah Cyrus, and Allison Russell feature on the singer's second LP, due out September 18",
+      "body": "Emmylou Harris, Noah Cyrus, and Allison Russell feature on the singer's second LP, due out September 18",
+      "source": "Pitchfork",
+      "sourceUrl": "https://pitchfork.com/story/listen-to-orville-pecks-new-song-too-little-too-late/",
+      "image": {
+        "src": "https://media.pitchfork.com/photos/6a62a500ee03086d8ecea647/master/pass/Orville%20Peck%20-%20Mule.jpeg",
+        "alt": "Listen to Orville Peck’s New Song “Too Little, Too Late”",
+        "credit": "Pitchfork"
+      },
+      "publishedAt": "2026-07-24T04:25:08.000Z"
     },
     {
-      "tag": "New Release",
-      "title": "The Rolling Stones line up 'Foreign Tongues,' their first album since 2023",
-      "summary": "Due July 10, the record arrives with a star-studded guest list including Paul McCartney and Robert Smith.",
-      "body": "The Rolling Stones aren't slowing down. 'Foreign Tongues,' due July 10, is their first album since 2023's 'Hackney Diamonds,' the well-received comeback that proved the band still had a studio record in them. This one lands with an unusually star-studded guest list: Paul McCartney, Steve Winwood, The Cure's Robert Smith and Red Hot Chili Peppers drummer Chad Smith all appear. For a band this deep into its career, a quick follow-up packed with collaborators signals a genuine late-period creative streak — and gives the summer one of its biggest legacy-rock events.",
-      "source": "Ultimate Classic Rock",
-      "sourceUrl": "https://ultimateclassicrock.com/july-2026-new-music-releases/",
-      "image": { "src": "https://upload.wikimedia.org/wikipedia/commons/1/10/The_Rolling_Stones_Summerfest_in_Milwaukee_-_2015.jpg", "alt": "The Rolling Stones performing live", "credit": "Wikimedia Commons" }
+      "tag": "Music News",
+      "title": "U2 and DJ Martin Garrix Unveil New Single “Fireflies”: Stream",
+      "summary": "Members of the Irish band, which is gearing up for an album drop later this year, and the Dutch DJ have collaborated in the past U2 and DJ Martin Garrix Unveil New Single “Fireflies”: Stream Travis…",
+      "body": "Members of the Irish band, which is gearing up for an album drop later this year, and the Dutch DJ have collaborated in the past U2 and DJ Martin Garrix Unveil New Single “Fireflies”: Stream Travis Bland",
+      "source": "Consequence",
+      "sourceUrl": "https://consequence.net/2026/07/u2-martin-garrix-release-fireflies/",
+      "image": {
+        "src": "https://consequence.net/wp-content/uploads/2026/07/SHOT_03_0054_2_OUT.jpg?quality=80",
+        "alt": "U2 and DJ Martin Garrix Unveil New Single “Fireflies”: Stream",
+        "credit": "Consequence"
+      },
+      "publishedAt": "2026-07-24T04:02:58.000Z"
     },
     {
-      "tag": "New Release",
-      "title": "Steve Lacy breaks his silence with 'Oh Yeah?', his first album since 'Gemini Rights'",
-      "summary": "Arriving July 17, his first full-length since the Grammy-winning 'Gemini Rights' is framed as a quieter, more inward record.",
-      "body": "Steve Lacy is finally breaking his silence. 'Oh Yeah?', out July 17, is his first full-length since 2022's Grammy-winning 'Gemini Rights,' the album that turned 'Bad Habit' into an inescapable No. 1 and made him a festival headliner. Early framing describes a more inward record, written in the aftermath of a 2025 breakup and centered on emotional isolation — a contrast to the loose, funk-leaning charm of his breakthrough. After a long, deliberate gap, it's one of July's most anticipated returns, and a real test of how the guitarist-producer follows a genuine cultural moment.",
-      "source": "Album of the Year",
-      "sourceUrl": "https://www.albumoftheyear.org/2026/releases/july-07/",
-      "image": { "src": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Steve_Lacy_%40_Rialto_Theatre.jpg", "alt": "Steve Lacy performing live", "credit": "Wikimedia Commons" }
+      "tag": "Music News",
+      "title": "Johnny Depp Is Basically Jack Sparrow as Scrooge in Trailer for Ebenezer: Watch",
+      "summary": "The film marks Depp's first major studio project since his lengthy legal battle with Amber Heard. Johnny Depp Is Basically Jack Sparrow as Scrooge in Trailer for Ebenezer: Watch Alex Young",
+      "body": "The film marks Depp's first major studio project since his lengthy legal battle with Amber Heard. Johnny Depp Is Basically Jack Sparrow as Scrooge in Trailer for Ebenezer: Watch Alex Young",
+      "source": "Consequence",
+      "sourceUrl": "https://consequence.net/2026/07/ebenezer-trailer-johnny-depp/",
+      "image": {
+        "src": "https://consequence.net/wp-content/uploads/2026/07/Johnny-Depp-in-Ebenezer.jpeg?quality=80",
+        "alt": "Johnny Depp Is Basically Jack Sparrow as Scrooge in Trailer for Ebenezer: Watch",
+        "credit": "Consequence"
+      },
+      "publishedAt": "2026-07-24T02:07:22.000Z"
     },
     {
-      "tag": "New Release",
-      "title": "Ariana Grande closes out July with 'Petal'",
-      "summary": "Out July 31 and led by 'hate that i made you love me,' which debuted at No. 1 on the Hot 100.",
-      "body": "Ariana Grande closes out the month in style. 'Petal,' out July 31, is led by 'hate that i made you love me,' a single that wasted no time debuting at No. 1 on the Billboard Hot 100. The quick chart-topping start sets high expectations for the full album, arriving as Grande balances music with a high-profile acting run. For a pop star who has spent recent years moving between screen and studio, 'Petal' marks a firm return to the front of the pop conversation — and gives July a blockbuster finish.",
-      "source": "Official Charts",
-      "sourceUrl": "https://www.officialcharts.com/chart-news/new-album-releases-2026/",
-      "image": { "src": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Ariana_Grande_promoting_Wicked_%282024%29.jpg", "alt": "Ariana Grande", "credit": "Wikimedia Commons" }
+      "tag": "Music News",
+      "title": "Charli XCX Gives Her Top 5 Underrated Films",
+      "summary": "Sofia Coppola and David Lynch films made the pop singer's list. Charli XCX Gives Her Top 5 Underrated Films Travis Bland",
+      "body": "Sofia Coppola and David Lynch films made the pop singer's list. Charli XCX Gives Her Top 5 Underrated Films Travis Bland",
+      "source": "Consequence",
+      "sourceUrl": "https://consequence.net/2026/07/charli-xcx-names-top-5-underrated-films/",
+      "image": {
+        "src": "https://consequence.net/wp-content/uploads/2026/07/Charli-XCX-Music-Fashion-Film-Tour-Sold-Out-Guide-How-to-Get-Tickets-to-Sold-Out-Charli-XCX-Shows.jpg?quality=80",
+        "alt": "Charli XCX Gives Her Top 5 Underrated Films",
+        "credit": "Consequence"
+      },
+      "publishedAt": "2026-07-24T01:59:51.000Z"
     },
     {
-      "tag": "New Release",
-      "title": "Bring Me the Horizon revisit their debut on 'Count Your Blessings | Repented'",
-      "summary": "Out July 10, the reworked record returns the band to a heavier early chapter.",
-      "body": "Bring Me the Horizon are looking back to move forward. 'Count Your Blessings | Repented,' out July 10, reworks the British band's 2006 debut — the deathcore-leaning record that launched them before they evolved into one of rock's biggest crossover acts. Revisiting an early, heavier chapter is a bold move for a band that has spent years broadening its sound, and it offers longtime fans a fresh take on where it all began while nodding to how far they've traveled since.",
-      "source": "Album of the Year",
-      "sourceUrl": "https://www.albumoftheyear.org/2026/releases/july-07/",
-      "image": { "src": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Bring_Me_The_Horizon_Tons_of_Rock_2026.jpg", "alt": "Bring Me the Horizon performing live", "credit": "Wikimedia Commons" }
+      "tag": "Music News",
+      "title": "Conor Oberst Says He’s Finding It “Almost Impossible” To Write About Trump Era",
+      "summary": "\"You can’t satirize, or whatever, what’s already like a parody,\" the Bright Eyes frontman said. Conor Oberst Says He’s Finding It “Almost Impossible” To Write About Trump Era Travis Bland",
+      "body": "\"You can’t satirize, or whatever, what’s already like a parody,\" the Bright Eyes frontman said. Conor Oberst Says He’s Finding It “Almost Impossible” To Write About Trump Era Travis Bland",
+      "source": "Consequence",
+      "sourceUrl": "https://consequence.net/2026/07/conor-oberst-on-writing-about-trump-era/",
+      "image": {
+        "src": "https://consequence.net/wp-content/uploads/2026/07/Oberst-and-Trump-scaled.jpg?quality=80",
+        "alt": "Conor Oberst Says He’s Finding It “Almost Impossible” To Write About Trump Era",
+        "credit": "Consequence"
+      },
+      "publishedAt": "2026-07-24T00:43:29.000Z"
     }
   ],
   "chart": [
@@ -55,7 +80,11 @@
       "body": "Ella Langley isn't giving up the top spot. 'Choosin' Texas' holds at No. 1 on the Billboard Hot 100 for a 14th week as of the July 25 chart — one of the longest runs of 2026 and a milestone for a country crossover. Extended reigns like this have become rare in a streaming era of fast turnover, which makes Langley's staying power notable: the song has settled into the kind of everyday rotation — cars, cookouts, group chats — that keeps a record on top long after its debut. It's shaping up as the defining hit of her summer.",
       "source": "Billboard",
       "sourceUrl": "https://www.billboard.com/charts/hot-100/",
-      "image": { "src": "https://upload.wikimedia.org/wikipedia/commons/5/56/Ella_Langley_2026_%28cropped%29.jpg", "alt": "Ella Langley", "credit": "Wikimedia Commons" }
+      "image": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/5/56/Ella_Langley_2026_%28cropped%29.jpg",
+        "alt": "Ella Langley",
+        "credit": "Wikimedia Commons"
+      }
     },
     {
       "tag": "Hot 100",
@@ -64,7 +93,11 @@
       "body": "Olivia Dean is having the kind of summer that turns a rising name into a household one. This week she holds two songs inside the Billboard Hot 100's top 10 — 'Man I Need' and 'So Easy' — a rare double for an artist still early in her American breakthrough. Known for warm, soul-inflected pop, Dean has built momentum the patient way, through touring and word of mouth rather than a single viral spike. Two top-10 hits at once suggest she's crossing firmly from critics' favorite to mainstream mainstay.",
       "source": "Billboard",
       "sourceUrl": "https://www.billboard.com/charts/hot-100/",
-      "image": { "src": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Olivia_Dean_-_Sabrina_Carpenter_at_BST_Hyde_Park_-_20250706_-_115_%28cropped%29_%28cropped%29.jpg", "alt": "Olivia Dean", "credit": "Wikimedia Commons" }
+      "image": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Olivia_Dean_-_Sabrina_Carpenter_at_BST_Hyde_Park_-_20250706_-_115_%28cropped%29_%28cropped%29.jpg",
+        "alt": "Olivia Dean",
+        "credit": "Wikimedia Commons"
+      }
     },
     {
       "tag": "Hot 100",
@@ -73,7 +106,11 @@
       "body": "Taylor Swift remains a fixture near the summit of the Billboard Hot 100, holding a place high in the top 10 on the July 25 chart. Even in a crowded summer of country crossovers and pop returns, Swift's staying power on the singles chart is its own kind of constant — a reminder of how durably her music sits in heavy rotation across radio and streaming alike.",
       "source": "Billboard",
       "sourceUrl": "https://www.billboard.com/charts/hot-100/",
-      "image": { "src": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_%283%29.png", "alt": "Taylor Swift", "credit": "Wikimedia Commons" }
+      "image": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_%283%29.png",
+        "alt": "Taylor Swift",
+        "credit": "Wikimedia Commons"
+      }
     }
   ],
   "ditmas": [
@@ -84,7 +121,11 @@
       "body": "Summer is when Ditmas Park shows off. The neighborhood holds one of the largest concentrations of freestanding Victorian houses in the country — wide porches, turrets and deep front yards under a thick tree canopy — and in warm months that architecture becomes a stage for daily life. Stoops fill up, kids bike the side streets, and neighbors linger on the avenue. It's the kind of low-key, front-porch sociability that gives the area its village-in-the-city feel, just a few subway stops from downtown Brooklyn.",
       "source": "Homes.com neighborhood guide",
       "sourceUrl": "https://www.homes.com/local-guide/brooklyn-ny/ditmas-park-neighborhood/",
-      "image": { "src": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Ditmas_Av_Rugby_Rd_house_sunny_jeh.jpg", "alt": "Victorian house in Ditmas Park", "credit": "Wikimedia Commons" }
+      "image": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Ditmas_Av_Rugby_Rd_house_sunny_jeh.jpg",
+        "alt": "Victorian house in Ditmas Park",
+        "credit": "Wikimedia Commons"
+      }
     },
     {
       "tag": "Neighborhood",
@@ -93,7 +134,11 @@
       "body": "Cortelyou Road is the beating heart of Ditmas Park. The walkable commercial strip mixes restaurants, bars and independent shops, with the long-running Flatbush Food Co-op as a community anchor. It's where the neighborhood runs its errands, meets for coffee and gathers after dark — a main street that still feels genuinely local. In summer, the sidewalk tables and open doors make it the natural center of gravity for a neighborhood that prizes its small, owner-run businesses.",
       "source": "Homes.com neighborhood guide",
       "sourceUrl": "https://www.homes.com/local-guide/brooklyn-ny/ditmas-park-neighborhood/",
-      "image": { "src": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Cortelyou_Road_-_Coney_Island_Bound_Platform.jpg", "alt": "Cortelyou Road subway station platform", "credit": "Wikimedia Commons" }
+      "image": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Cortelyou_Road_-_Coney_Island_Bound_Platform.jpg",
+        "alt": "Cortelyou Road subway station platform",
+        "credit": "Wikimedia Commons"
+      }
     },
     {
       "tag": "Community Board",
@@ -102,45 +147,69 @@
       "body": "Weekend plans, sorted. A maker's market takes over Industry City on Saturday and Sunday, July 25–26, from 11am to 4pm, with local vendors showing handmade art, design and vintage finds. Industry City's sprawling former manufacturing complex has become a South Brooklyn destination for exactly this kind of gathering, and the market is an easy, low-commitment way to support neighborhood makers and browse for something one-of-a-kind.",
       "source": "Ditmas Park–Flatbush Patch",
       "sourceUrl": "https://patch.com/new-york/ditmaspark/around-town",
-      "image": { "src": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Bush_Terminal_-_North_aerial_-_1958.jpg", "alt": "Industry City / Bush Terminal in Brooklyn", "credit": "Wikimedia Commons" }
+      "image": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Bush_Terminal_-_North_aerial_-_1958.jpg",
+        "alt": "Industry City / Bush Terminal in Brooklyn",
+        "credit": "Wikimedia Commons"
+      }
     }
   ],
   "brooklyn": [
     {
-      "tag": "Featured Event",
-      "title": "Keith Sweat headlines Barclays Center this Saturday",
-      "summary": "The R&B legend brings decades of slow jams to Barclays on July 25 at 8pm.",
-      "body": "The weekend's biggest ticket belongs to an R&B legend. Keith Sweat headlines Barclays Center on Saturday, July 25 at 8pm, bringing decades of slow jams and new-jack-swing classics to the borough's marquee arena. A hitmaker since the late 1980s, Sweat remains a reliable live draw, and a Barclays date puts one of R&B's most enduring voices at the center of Brooklyn's weekend.",
-      "source": "Brooklyn Magazine",
-      "sourceUrl": "https://www.bkmag.com/2026/07/01/things-to-do-in-brooklyn-this-weekend-guide/",
-      "image": { "src": "https://upload.wikimedia.org/wikipedia/commons/4/46/Barclays_Center_-_May_2_2025.jpg", "alt": "Barclays Center in Brooklyn", "credit": "Wikimedia Commons" }
+      "tag": "Brooklyn",
+      "title": "Things to do this weekend in NYC, July 24-26: Block parties, Pokémon, free ice cream and more!",
+      "summary": "Don’t just sit at home! There are plenty of great things to do around New York City this weekend. Here’s a look at some of the best events happening around town between July 24-26! Friday, July 24:…",
+      "body": "Don’t just sit at home! There are plenty of great things to do around New York City this weekend. Here’s a look at some of the best events happening around town between July 24-26! Friday, July 24: Block party fun! Rough Trade NYC & WMG Vinyl Take-Back Event: Drop into Rough Trade NYC for an... Read More",
+      "source": "amNewYork",
+      "sourceUrl": "https://www.amny.com/entertainment/things-to-do/things-to-do-this-weekend-new-york-city/",
+      "image": {
+        "src": "https://www.amny.com/wp-content/uploads/2022/04/GettyImages-965401258.jpg?quality=51&w=384",
+        "alt": "Things to do this weekend in NYC, July 24-26: Block parties, Pokémon, free ice cream and more!",
+        "credit": "amNewYork"
+      },
+      "publishedAt": "2026-07-24T11:00:29.000Z"
     },
     {
-      "tag": "Culture",
-      "title": "KokoFest 2026 brings 'The Cultural Experience' to the Navy Yard",
-      "summary": "A full day of music, food and community at Building 77, July 25 from noon.",
-      "body": "Culture takes center stage at KokoFest 2026. Billed as 'The Cultural Experience,' the festival lands at Building 77 in the Brooklyn Navy Yard on July 25 from noon, blending music, food and community programming. Events like this have made the Navy Yard's revitalized industrial spaces a hub for large-scale cultural gatherings, and KokoFest is one of the weekend's most ambitious — a full day built around celebration and community.",
-      "source": "AllEvents Brooklyn",
-      "sourceUrl": "https://allevents.in/brooklyn/this-weekend",
-      "image": { "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Navy_Yard%2C_Brooklyn._New_York._1918_-_NH_117794.jpg/2560px-Navy_Yard%2C_Brooklyn._New_York._1918_-_NH_117794.jpg", "alt": "Brooklyn Navy Yard", "credit": "Wikimedia Commons" }
+      "tag": "Brooklyn",
+      "title": "Transportation advocates urge Mamdani to release new Vision Zero plan, expand Sammy’s law",
+      "summary": "Transportation advocates on Thursday urged Mayor Zohran Mamdani to release a new plan for Vision Zero, the city’s program to eliminate fatalities and serious injuries from traffic crashes, while…",
+      "body": "Transportation advocates on Thursday urged Mayor Zohran Mamdani to release a new plan for Vision Zero, the city’s program to eliminate fatalities and serious injuries from traffic crashes, while unveiling new data showing a rise in traffic deaths during the first half of 2026. The advocates, with the groups Transportation Alternatives (TA) and Families for... Read More",
+      "source": "amNewYork",
+      "sourceUrl": "https://www.amny.com/news/transportation-advocates-mamdani-vision-zero-sammys-law/",
+      "image": {
+        "src": "https://www.amny.com/wp-content/uploads/2026/07/55393533164_2a0c10874e_c.jpg?quality=51&w=384",
+        "alt": "Transportation advocates urge Mamdani to release new Vision Zero plan, expand Sammy’s law",
+        "credit": "amNewYork"
+      },
+      "publishedAt": "2026-07-23T21:45:09.000Z"
     },
     {
-      "tag": "Outdoors",
-      "title": "SummerStarz movies light up Transmitter Park",
-      "summary": "Free outdoor films with East River views in Greenpoint, July 24 at 7pm.",
-      "body": "Grab a blanket and head to the water. The SummerStarz outdoor movie series screens at Greenpoint's Transmitter Park on Friday, July 24 at 7pm, free to all. Waterfront film nights have become a Brooklyn summer staple, pairing a big screen with East River views as the sun goes down — an easy, family-friendly way to spend a warm evening outside without spending a dime.",
-      "source": "AllEvents Brooklyn",
-      "sourceUrl": "https://allevents.in/brooklyn/this-weekend",
-      "image": { "src": "https://upload.wikimedia.org/wikipedia/commons/9/90/735_Manhattan_Av_Grnpt_jeh.jpg", "alt": "Greenpoint, Brooklyn street", "credit": "Wikimedia Commons" }
+      "tag": "Brooklyn",
+      "title": "Mamdani selects 18 former judges, law school professors, advocate attorneys to join group helping to pick new judges",
+      "summary": "Mayor Zohran Mamdani took a step toward fulfilling a campaign promise to demystify how city judges are appointed on Wednesday, announcing a group of 18 former judges, law school professors, Legal Aid…",
+      "body": "Mayor Zohran Mamdani took a step toward fulfilling a campaign promise to demystify how city judges are appointed on Wednesday, announcing a group of 18 former judges, law school professors, Legal Aid attorneys, public defenders and youth, consumer and worker rights lawyers to join a group tasked with recommending people to be the city’s next... Read More",
+      "source": "amNewYork",
+      "sourceUrl": "https://www.amny.com/new-york/mamdani-appointments-pick-city-judges/",
+      "image": {
+        "src": "https://www.amny.com/wp-content/uploads/2026/07/DSC_7627_440ccd.jpg?quality=51&w=384",
+        "alt": "Mamdani selects 18 former judges, law school professors, advocate attorneys to join group helping to pick new judges",
+        "credit": "amNewYork"
+      },
+      "publishedAt": "2026-07-23T21:15:43.000Z"
     },
     {
-      "tag": "Nightlife",
-      "title": "Disco Tehran throws a summer party at the Sultan Room",
-      "summary": "A globe-spanning dance night in Bushwick on July 25.",
-      "body": "For a later night out, Disco Tehran brings its globe-spanning dance party to the Sultan Room on July 25. The roving series is known for mixing disco, funk and sounds from across the Middle East and beyond into one warm, come-as-you-are dance floor — a distinctly Brooklyn kind of night that turns a summer Saturday into something a little more worldly.",
-      "source": "AllEvents Brooklyn",
-      "sourceUrl": "https://allevents.in/brooklyn/this-weekend",
-      "image": { "src": "https://upload.wikimedia.org/wikipedia/commons/a/a4/McCarren_Park_house_Bettina_jeh.jpg", "alt": "North Brooklyn scene", "credit": "Wikimedia Commons" }
+      "tag": "Brooklyn",
+      "title": "Elevators finally open at Brooklyn Borough Hall subway stop after yearslong project drawn out by structural work",
+      "summary": "The MTA completed its work to make Brooklyn’s Borough Hall subway hub accessible for disabled riders by adding new elevators to the station — a project that had been drawn out over several years due…",
+      "body": "The MTA completed its work to make Brooklyn’s Borough Hall subway hub accessible for disabled riders by adding new elevators to the station — a project that had been drawn out over several years due to structural updates agency officials said it needed. Janno Lieber, the MTA’s chair and CEO, stood with other local leaders on July 22 to... Read More",
+      "source": "Brooklyn Paper",
+      "sourceUrl": "https://www.brooklynpaper.com/elevators-finally-open-borough-hall-station/",
+      "image": {
+        "src": "https://www.brooklynpaper.com/wp-content/uploads/2026/07/55411810468_583673968e_5k.jpg?quality=51&w=384",
+        "alt": "Elevators finally open at Brooklyn Borough Hall subway stop after yearslong project drawn out by structural work",
+        "credit": "Brooklyn Paper"
+      },
+      "publishedAt": "2026-07-23T20:33:06.000Z"
     }
   ]
 }
