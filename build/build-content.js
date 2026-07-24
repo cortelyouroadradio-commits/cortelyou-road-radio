@@ -83,8 +83,15 @@ function normalize(item, tag, source) {
   };
 }
 
+function withTimeout(promise, ms) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error("feed timeout")), ms)),
+  ]);
+}
+
 async function pull(group) {
-  const results = await Promise.allSettled(group.feeds.map((f) => parser.parseURL(f.url).then((feed) => ({ feed, source: f.source }))));
+  const results = await Promise.allSettled(group.feeds.map((f) => withTimeout(parser.parseURL(f.url), 12000).then((feed) => ({ feed, source: f.source }))));
   let items = [];
   for (const r of results) {
     if (r.status === "fulfilled" && r.value.feed?.items?.length) {
@@ -125,4 +132,4 @@ async function main() {
   console.log(`\nWrote ${OUTPUT} — pools: ${Object.keys(content).filter((k) => k !== "generatedAt").join(", ")}`);
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+main().then(() => process.exit(0)).catch((e) => { console.error(e); process.exit(1); });
