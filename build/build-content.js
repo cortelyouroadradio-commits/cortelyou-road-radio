@@ -43,8 +43,9 @@ const GROUPS = {
   ditmas: {
     tag: "Neighborhood",
     feeds: [
-      { url: "https://patch.com/feeds/aggregate/ditmas-park", source: "Ditmas Park Patch" },
-      { url: "https://patch.com/feeds/aggregate/flatbush", source: "Flatbush Patch" },
+      { url: "https://www.brooklynpaper.com/category/neighborhoods/ditmas-park/feed/", source: "Brooklyn Paper" },
+      { url: "https://www.brooklynpaper.com/category/neighborhoods/flatbush/feed/", source: "Brooklyn Paper" },
+      { url: "https://bklyner.com/feed/", source: "Bklyner" },
     ],
     count: 3,
   },

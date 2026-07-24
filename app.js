@@ -251,16 +251,86 @@ function renderAll() {
   else { renderPools(); renderBriefing(); setupReveal(); }
 }
 
+/* ---------- In-place navigation (keeps the stream alive) ---------- */
+// The <audio> element and header/footer/sticky-player live outside the swapped
+// region, so internal links change the page content without a full reload and
+// playback never stops. Any failure falls back to a normal page load.
+function updateNavActive() {
+  const page = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+  document.querySelectorAll("nav.links a").forEach((a) => {
+    const target = (a.getAttribute("href") || "").replace(/^\.\//, "").split(/[?#]/)[0].toLowerCase() || "index.html";
+    if (target === page || (page === "" && target === "index.html")) a.setAttribute("aria-current", "page");
+    else a.removeAttribute("aria-current");
+  });
+}
+
+async function spaNavigate(url, push) {
+  const res = await fetch(url, { cache: "no-store" });
+  if (!res.ok) throw new Error("nav fetch failed");
+  const doc = new DOMParser().parseFromString(await res.text(), "text/html");
+  const newHeader = doc.querySelector("header");
+  const newFooter = doc.querySelector("footer.site");
+  const curHeader = document.querySelector("header");
+  const curFooter = document.querySelector("footer.site");
+  if (!newHeader || !newFooter || !curHeader || !curFooter) throw new Error("unexpected structure");
+
+  let n = curHeader.nextSibling;
+  while (n && n !== curFooter) { const next = n.nextSibling; n.remove(); n = next; }
+  let m = newHeader.nextSibling;
+  while (m && m !== newFooter) { const next = m.nextSibling; curFooter.parentNode.insertBefore(document.importNode(m, true), curFooter); m = next; }
+
+  document.title = doc.title;
+  document.body.dataset.page = doc.body.dataset.page || "home";
+  if (doc.body.dataset.section) document.body.dataset.section = doc.body.dataset.section;
+  else delete document.body.dataset.section;
+
+  if (push) history.pushState({}, "", url);
+  updateNavActive();
+  renderAll();
+  setPlaying(playing);
+  fetchMeta();
+
+  const hash = new URL(url, location.href).hash;
+  const target = hash && document.querySelector(hash);
+  if (target) target.scrollIntoView();
+  else window.scrollTo(0, 0);
+}
+
+function isInternalPageLink(a) {
+  if (!a || a.target === "_blank" || a.hasAttribute("download")) return false;
+  const href = a.getAttribute("href") || "";
+  if (!href || href.startsWith("#") || /^(mailto:|tel:)/i.test(href)) return false;
+  let url;
+  try { url = new URL(href, location.href); } catch (e) { return false; }
+  if (url.origin !== location.origin) return false;
+  return /\.html($|[?#])/.test(url.pathname) || url.pathname === "/" || url.pathname.endsWith("/");
+}
+
+function setupNavigation() {
+  document.addEventListener("click", (e) => {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (e.target.closest(".js-listen")) { e.preventDefault(); togglePlay(); return; }
+    const a = e.target.closest("a");
+    if (!isInternalPageLink(a)) return;
+    const url = new URL(a.getAttribute("href"), location.href);
+    if (url.pathname === location.pathname && url.hash) return; // same-page anchor
+    e.preventDefault();
+    spaNavigate(url.href, true).catch(() => { window.location.href = url.href; });
+  });
+  window.addEventListener("popstate", () => {
+    spaNavigate(location.href, false).catch(() => { window.location.reload(); });
+  });
+}
+
 async function init() {
-  document.querySelectorAll(".js-listen").forEach((b) => b.addEventListener("click", togglePlay));
   if (audio) {
     audio.addEventListener("play", () => setPlaying(true));
     audio.addEventListener("pause", () => setPlaying(false));
   }
+  setupNavigation();
   setPlaying(false);
 
-  // Render immediately from built-in content so sections are never empty,
-  // even when the page is opened directly from a file (no server).
+  // Render immediately from built-in content so sections are never empty.
   renderAll();
 
   // Then try to layer live daily content on top; re-render if it loads.
