@@ -233,7 +233,7 @@ function renderStory() {
 
 /* ---------- Init ---------- */
 function setupReveal() {
-  const els = document.querySelectorAll(".c-card, .c-mini, .c-story");
+  const els = document.querySelectorAll(".c-card, .c-mini, .c-story, .mix-feature");
   if (!("IntersectionObserver" in window)) return;
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
