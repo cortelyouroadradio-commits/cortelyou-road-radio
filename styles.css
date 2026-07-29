@@ -163,6 +163,7 @@ section.block { padding: 54px 0; }
 .grid { display: grid; gap: 22px; }
 .grid.cols-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
 .grid.cols-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.grid.cols-4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
 .lead-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 22px; }
 .lead-side { display: grid; gap: 22px; align-content: start; }
 
@@ -336,8 +337,120 @@ footer.site { padding: 54px 0 40px; border-top: 1px solid var(--line); margin-to
 .mix-cta .panel { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .mix-cta .panel h3 { margin-bottom: 6px; }
 
+/* ---------- Today in Music History ---------- */
+.hist-art, .hist-hero { position: relative; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface-2); }
+.hist-art svg, .hist-hero svg { display: block; width: 100%; height: 100%; }
+.hist-art { aspect-ratio: 16/9; }
+.hist-hero { aspect-ratio: 16/9; }
+.hist-kind {
+  position: absolute; left: 12px; top: 12px; z-index: 2; font-family:"Archivo"; font-weight: 800;
+  font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: #1a0b06; background: var(--ember);
+  padding: 5px 11px; border-radius: 999px;
+}
+.hist-kind.big { font-size: 12px; padding: 7px 14px; left: 16px; top: 16px; }
+.hist-feature { display: grid; grid-template-columns: 1.05fr 1fr; gap: 34px; align-items: start; }
+.hist-meta { display: flex; gap: 14px; flex-wrap: wrap; font-family:"Archivo"; font-weight: 700; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted-2); }
+.hist-meta .on { color: var(--ember); }
+.hist-lead h2 { font-family:"Archivo"; font-weight: 900; font-size: clamp(26px, 3.4vw, 40px); line-height: 1.04; letter-spacing: -.02em; margin: 14px 0 14px; }
+.hist-story { font-size: 17px; color: #e6e0d7; margin-bottom: 22px; }
+.hist-facts { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--ember); border-radius: var(--radius-sm); padding: 18px 20px; margin-bottom: 20px; }
+.hist-facts h3 { font-family:"Archivo"; font-weight: 800; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--ember); margin-bottom: 10px; }
+.hist-facts ul { list-style: none; display: grid; gap: 9px; }
+.hist-facts li { position: relative; padding-left: 18px; color: var(--muted); font-size: 14.5px; }
+.hist-facts li::before { content: "›"; position: absolute; left: 0; color: var(--ember); font-weight: 700; }
+
+/* Sample chain */
+.hist-sample { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 18px 20px; margin-bottom: 20px; }
+.hist-sample b { display: block; font-family:"Archivo"; font-weight: 700; font-size: 16px; margin-top: 5px; }
+.hs-arrow { color: var(--ember); font-size: 20px; margin: 10px 0; }
+.hs-hits ul { list-style: none; display: grid; gap: 6px; margin-top: 6px; }
+.hs-hits li { color: var(--muted); font-size: 14px; padding-left: 16px; position: relative; }
+.hs-hits li::before { content: "•"; position: absolute; left: 0; color: var(--ember); }
+
+/* Version face-off */
+.hist-versus { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: stretch; margin-bottom: 12px; }
+.vs-btn {
+  text-align: left; cursor: pointer; font-family: inherit; color: var(--text);
+  background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); padding: 15px 16px;
+  transition: border-color .18s ease, background .18s ease, transform .18s ease;
+}
+.vs-btn:hover { border-color: var(--ember); transform: translateY(-2px); }
+.vs-btn b { display: block; font-family:"Archivo"; font-weight: 700; font-size: 15px; margin: 5px 0 9px; }
+.vs-pick { font-size: 12px; color: var(--muted-2); }
+.vs-btn.picked { border-color: var(--ember); background: var(--ember-soft); }
+.vs-btn.picked .vs-pick { color: var(--ember); font-weight: 600; }
+.vs-or { align-self: center; font-family:"Archivo"; font-weight: 800; color: var(--muted-2); font-size: 13px; }
+.vs-result { color: var(--muted); font-size: 13.5px; margin-bottom: 18px; min-height: 18px; }
+
+/* History cards + teaser */
+.hist-card { display: block; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: transform .18s ease, border-color .18s ease; }
+.hist-card:hover { transform: translateY(-3px); border-color: var(--line-strong); }
+.hist-card .hist-art { border: none; border-radius: 0; }
+.hist-card-body { padding: 16px 18px; }
+.hist-card-body h4 { font-family:"Archivo"; font-weight: 700; font-size: 16px; line-height: 1.2; margin-top: 8px; }
+.hist-teaser { display: grid; grid-template-columns: 1fr 1.1fr; gap: 26px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; transition: border-color .18s ease; }
+.hist-teaser:hover { border-color: var(--line-strong); }
+.hist-teaser-body h3 { font-family:"Archivo"; font-weight: 800; font-size: clamp(20px, 2.4vw, 27px); line-height: 1.1; margin: 10px 0 10px; }
+.hist-teaser-body p { color: var(--muted); font-size: 15px; margin-bottom: 12px; }
+
+/* Date picker row */
+.hist-jump { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.hist-jump input { background: var(--bg-soft); border: 1px solid var(--line-strong); border-radius: 999px; color: var(--text); padding: 10px 16px; font-family: inherit; font-size: 14px; }
+.hist-jump input:focus { outline: none; border-color: var(--ember); }
+
+.a-readmeta { font-family:"Archivo"; font-weight: 700; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 14px; }
+
+/* ---------- Share ---------- */
+.share-row { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; margin-top: 8px; }
+.share-label { font-family:"Archivo"; font-weight: 800; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted-2); }
+.share-btn {
+  font-family: inherit; font-size: 12.5px; font-weight: 500; color: var(--muted); cursor: pointer;
+  border: 1px solid var(--line-strong); background: rgba(255,255,255,.03); padding: 7px 14px; border-radius: 999px;
+  transition: color .16s ease, border-color .16s ease;
+}
+.share-btn:hover { color: var(--ember); border-color: var(--ember); }
+
+/* ---------- Schedule ---------- */
+.onair { display: grid; grid-template-columns: 1.6fr 1fr; gap: 22px; }
+.oa-now, .oa-next { background: linear-gradient(180deg, var(--surface-2), var(--surface)); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+.oa-now { border-left: 3px solid var(--ember); }
+.oa-now h3 { font-family:"Archivo"; font-weight: 800; font-size: clamp(20px,2.6vw,28px); margin: 10px 0 8px; }
+.oa-now p { color: var(--muted); font-size: 15px; margin-bottom: 10px; }
+.oa-next h4 { font-family:"Archivo"; font-weight: 700; font-size: 18px; margin: 10px 0 8px; }
+.oa-time { font-family:"Archivo"; font-weight: 700; font-size: 12px; letter-spacing: .1em; color: var(--muted-2); }
+.sch-grid { display: grid; grid-template-columns: repeat(7, minmax(0,1fr)); gap: 14px; }
+.sch-day { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 15px 14px; }
+.sch-day.is-today { border-color: var(--ember); background: var(--surface-2); }
+.sch-day h4 { font-family:"Archivo"; font-weight: 800; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 12px; }
+.sch-day.is-today h4 { color: var(--ember); }
+.sch-day ul { list-style: none; display: grid; gap: 12px; }
+.sch-day li { display: grid; gap: 2px; }
+.sch-t { font-family:"Archivo"; font-weight: 700; font-size: 11px; color: var(--muted-2); letter-spacing: .06em; }
+.sch-n { font-size: 13.5px; color: var(--text); line-height: 1.25; }
+.sch-day li.live .sch-n { color: var(--ember); font-weight: 600; }
+.sch-live { font-style: normal; font-size: 10px; font-family:"Archivo"; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; background: var(--ember); color: #1a0b06; padding: 2px 6px; border-radius: 999px; margin-left: 4px; }
+
+/* ---------- Newsletter ---------- */
+.signup { background: linear-gradient(180deg, var(--surface-2), var(--surface)); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: center; }
+.signup h3 { font-family:"Archivo"; font-weight: 800; font-size: clamp(21px,2.6vw,29px); line-height: 1.1; margin: 10px 0 10px; }
+.signup p { color: var(--muted); font-size: 15px; }
+.signup-form { display: flex; gap: 10px; flex-wrap: wrap; }
+.signup-form input {
+  flex: 1 1 220px; background: var(--bg-soft); border: 1px solid var(--line-strong); border-radius: 999px;
+  color: var(--text); padding: 13px 18px; font-family: inherit; font-size: 15px;
+}
+.signup-form input:focus { outline: none; border-color: var(--ember); }
+.signup-note { color: var(--muted-2); font-size: 12.5px; margin-top: 10px; }
+
 /* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .sch-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .grid.cols-4 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
 @media (max-width: 900px) {
+  .hist-feature, .hist-teaser, .onair, .signup { grid-template-columns: 1fr; gap: 22px; }
+  .hist-versus { grid-template-columns: 1fr; }
+  .vs-or { justify-self: center; }
   .hero-grid, .lead-grid, .grid.cols-2, .grid.cols-3 { grid-template-columns: 1fr; }
   .mix-feature, .mix-feature.rev { grid-template-columns: 1fr; gap: 22px; }
   .mix-feature.rev .mix-stage { order: 0; }

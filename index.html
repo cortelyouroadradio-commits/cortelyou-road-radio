@@ -3,13 +3,35 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cortelyou Road Radio | Brooklyn's Daily Soundtrack</title>
-<meta name="description" content="Cortelyou Road Radio is Ditmas Park's daily soundtrack: live radio, Brooklyn stories, neighborhood updates, playlist submissions, and local culture." />
+<title>Cortelyou Road Radio | Ditmas Park & Brooklyn Community Radio</title>
+<meta name="description" content="Ditmas Park's own community radio station. Live music around the clock, Brooklyn news, neighborhood stories, DJ mixes and Today in Music History." />
 <meta name="theme-color" content="#0b0a09" />
+<link rel="canonical" href="https://cortelyouroadradio.com/" />
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="./assets/logo.png" />
+<meta property="og:site_name" content="Cortelyou Road Radio" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Cortelyou Road Radio | Ditmas Park & Brooklyn Community Radio" />
+<meta property="og:description" content="Ditmas Park's own community radio station. Live music around the clock, Brooklyn news, neighborhood stories, DJ mixes and Today in Music History." />
+<meta property="og:url" content="https://cortelyouroadradio.com/" />
+<meta property="og:image" content="https://cortelyouroadradio.com/assets/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Cortelyou Road Radio | Ditmas Park & Brooklyn Community Radio" />
+<meta name="twitter:description" content="Ditmas Park's own community radio station. Live music around the clock, Brooklyn news, neighborhood stories, DJ mixes and Today in Music History." />
+<meta name="twitter:image" content="https://cortelyouroadradio.com/assets/og-image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="./styles.css" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"RadioStation","@id":"https://cortelyouroadradio.com/#station","name":"Cortelyou Road Radio","alternateName":"CRR","url":"https://cortelyouroadradio.com/","logo":"https://cortelyouroadradio.com/assets/logo.png","image":"https://cortelyouroadradio.com/assets/og-image.png","email":"info@cortelyouroadradio.com","telephone":"+1-718-600-6638","slogan":"Ditmas Park and Brooklyn, live all day.","description":"Ditmas Park's own community radio station: live music around the clock, Brooklyn news, neighborhood stories, DJ mixes and Today in Music History.","areaServed":{"@type":"Place","name":"Ditmas Park, Brooklyn, New York"},"address":{"@type":"PostalAddress","addressLocality":"Brooklyn","addressRegion":"NY","addressCountry":"US"},"sameAs":["https://www.facebook.com/cortelyouroadradio","https://www.instagram.com/cortelyouroadradio/","https://www.youtube.com/@CortelyouRoadRadio","https://soundcloud.com/cortelyou-road-radio"]},
+{"@type":"WebSite","@id":"https://cortelyouroadradio.com/#website","url":"https://cortelyouroadradio.com/","name":"Cortelyou Road Radio","publisher":{"@id":"https://cortelyouroadradio.com/#station"}},
+{"@type":"BroadcastService","name":"Cortelyou Road Radio Live Stream","broadcastDisplayName":"Cortelyou Road Radio","areaServed":"Brooklyn, New York","provider":{"@id":"https://cortelyouroadradio.com/#station"},"hasBroadcastChannel":{"@type":"BroadcastChannel","broadcastServiceTier":"Free"}}
+]}
+</script>
 </head>
 <body data-page="home">
 
@@ -22,11 +44,12 @@
     <nav class="links">
       <a href="./index.html" aria-current="page">Home</a>
       <a href="./listen-live.html">Listen Live</a>
+      <a href="./schedule.html">Schedule</a>
       <a href="./mixes.html">Mixes</a>
+      <a href="./music-history.html">Music History</a>
       <a href="./music-news.html">Music News</a>
       <a href="./ditmas-park.html">Ditmas Park</a>
       <a href="./brooklyn-events.html">Brooklyn</a>
-      <a href="./sponsor.html">Sponsor</a>
       <a href="./about.html">About</a>
     </nav>
     <div class="nav-right">
@@ -86,6 +109,18 @@
     </div>
   </div>
 </div>
+
+<section class="block wrap" style="padding-bottom:0;">
+  <div class="onair" id="onAirNow"></div>
+</section>
+
+<section class="block wrap">
+  <div class="head-row">
+    <div><span class="kicker">Did you know</span><h2 class="display">Today in Music History</h2></div>
+    <a class="see" href="./music-history.html">Full archive →</a>
+  </div>
+  <div id="historyTeaser"></div>
+</section>
 
 <section class="block wrap">
   <div class="head-row">
@@ -163,6 +198,27 @@
   </div>
 </div>
 
+<section class="mix-cta">
+  <div class="block wrap">
+    <div class="signup">
+      <div>
+        <span class="kicker">Stay on the block</span>
+        <h3 class="display">Get the Cortelyou dispatch</h3>
+        <p>One email a week: the best music history story, what's spinning on the station, and what's happening around Ditmas Park and Brooklyn.</p>
+      </div>
+      <div>
+        <form class="signup-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks">
+          <input type="hidden" name="form-name" value="newsletter" />
+          <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+          <input type="email" name="email" placeholder="you@email.com" aria-label="Your email address" required />
+          <button class="btn-live" type="submit">Subscribe</button>
+        </form>
+        <p class="signup-note">No spam, unsubscribe anytime. Just the neighborhood and the music.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer class="site">
   <div class="wrap">
     <div class="foot">
@@ -170,9 +226,9 @@
         <img src="./assets/logo.png" alt="Cortelyou Road Radio" style="width:52px;height:52px;border-radius:13px;" />
         <div><b>Cortelyou Road Radio</b><span>Ditmas Park and Brooklyn, live all day.</span></div>
       </a>
-      <div class="fcol"><h5>Listen</h5><a href="./listen-live.html">Listen Live</a><a href="./mixes.html">Mixes</a><a href="./listen-live.html">Now Playing</a><a href="./listen-live.html">What's On</a></div>
-      <div class="fcol"><h5>Read</h5><a href="./music-news.html">Music News</a><a href="./ditmas-park.html">Ditmas Park</a><a href="./brooklyn-events.html">Brooklyn &amp; Events</a></div>
-      <div class="fcol"><h5>Station</h5><a href="./sponsor.html">Sponsor</a><a href="./about.html">About / Contact</a><a href="./ditmas-park.html">Submit a Playlist</a></div>
+            <div class="fcol"><h5>Listen</h5><a href="./listen-live.html">Listen Live</a><a href="./schedule.html">Schedule</a><a href="./mixes.html">Mixes</a></div>
+      <div class="fcol"><h5>Read</h5><a href="./music-history.html">Music History</a><a href="./music-news.html">Music News</a><a href="./ditmas-park.html">Ditmas Park</a></div>
+      <div class="fcol"><h5>Station</h5><a href="./sponsor.html">Sponsor</a><a href="./about.html">About / Contact</a><a href="./brooklyn-events.html">Brooklyn &amp; Events</a></div>
     </div>
     <div class="foot-base">
       <span>info@cortelyouroadradio.com · 718.600.6638</span>

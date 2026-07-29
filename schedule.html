@@ -3,30 +3,28 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Music News | Cortelyou Road Radio</title>
-<meta name="description" content="Fresh artist and music news with the Cortelyou Road Radio point of view: chart pulse, new releases and Brooklyn artist watch." />
+<title>Schedule &amp; On Air | Cortelyou Road Radio</title>
+<meta name="description" content="What's on air right now and the full weekly lineup for Cortelyou Road Radio — Ditmas Park and Brooklyn's community station, broadcasting around the clock." />
 <meta name="theme-color" content="#0b0a09" />
-<link rel="canonical" href="https://cortelyouroadradio.com/music-news" />
+<link rel="canonical" href="https://cortelyouroadradio.com/schedule" />
 <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="./assets/logo.png" />
 <meta property="og:site_name" content="Cortelyou Road Radio" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Music News | Cortelyou Road Radio" />
-<meta property="og:description" content="Fresh artist and music news with the Cortelyou Road Radio point of view: chart pulse, new releases and Brooklyn artist watch." />
-<meta property="og:url" content="https://cortelyouroadradio.com/music-news" />
+<meta property="og:title" content="Schedule &amp; On Air | Cortelyou Road Radio" />
+<meta property="og:description" content="What's on air right now and the full weekly lineup from Ditmas Park, Brooklyn." />
+<meta property="og:url" content="https://cortelyouroadradio.com/schedule" />
 <meta property="og:image" content="https://cortelyouroadradio.com/assets/og-image.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Music News | Cortelyou Road Radio" />
-<meta name="twitter:description" content="Fresh artist and music news with the Cortelyou Road Radio point of view: chart pulse, new releases and Brooklyn artist watch." />
+<meta name="twitter:title" content="Schedule &amp; On Air | Cortelyou Road Radio" />
+<meta name="twitter:description" content="What's on air right now and the full weekly lineup from Ditmas Park, Brooklyn." />
 <meta name="twitter:image" content="https://cortelyouroadradio.com/assets/og-image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="./styles.css" />
 </head>
-<body data-page="section">
+<body data-page="schedule">
 
 <header>
   <div class="wrap nav">
@@ -37,10 +35,10 @@
     <nav class="links">
       <a href="./index.html">Home</a>
       <a href="./listen-live.html">Listen Live</a>
-      <a href="./schedule.html">Schedule</a>
+      <a href="./schedule.html" aria-current="page">Schedule</a>
       <a href="./mixes.html">Mixes</a>
       <a href="./music-history.html">Music History</a>
-      <a href="./music-news.html" aria-current="page">Music News</a>
+      <a href="./music-news.html">Music News</a>
       <a href="./ditmas-park.html">Ditmas Park</a>
       <a href="./brooklyn-events.html">Brooklyn</a>
       <a href="./about.html">About</a>
@@ -53,22 +51,40 @@
 
 <div class="page-hero">
   <div class="wrap">
-    <span class="kicker">Fresh artist &amp; music news</span>
-    <h1>Music News</h1>
-    <p>A daily music front page with a point of view — what's big, what's rising, and what actually sounds right on a neighborhood station.</p>
+    <span class="kicker">Around the clock from Ditmas Park</span>
+    <h1>Schedule</h1>
+    <p>Cortelyou Road Radio runs 24 hours a day. Here's what's playing right now, what's coming up next, and the full week ahead.</p>
   </div>
 </div>
 
-<section class="block wrap" style="padding-top:12px;">
-  <div class="lead-grid">
-    <div data-pool="music" data-count="1" data-variant="feature"></div>
-    <div class="lead-side" data-pool="music" data-offset="1" data-count="4" data-variant="mini"></div>
-  </div>
+<section class="block wrap" style="padding-top:10px;">
+  <div class="onair" id="onAirNow"></div>
 </section>
 
 <section class="block wrap" style="padding-top:0;">
-  <div class="head-row"><div><span class="kicker">On the charts</span><h2 class="display">Playing heavy right now</h2></div></div>
-  <div class="grid cols-3" data-pool="chart" data-count="3" data-variant="card"></div>
+  <div class="head-row"><div><span class="kicker">The week ahead</span><h2 class="display">Full lineup</h2></div></div>
+  <div class="sch-grid" id="scheduleGrid"></div>
+</section>
+
+<section class="mix-cta">
+  <div class="block wrap">
+    <div class="signup">
+      <div>
+        <span class="kicker">Know what's coming</span>
+        <h3 class="display">Get the Cortelyou dispatch</h3>
+        <p>One email a week with the schedule highlights, the best music history story, and what's happening around the neighborhood.</p>
+      </div>
+      <div>
+        <form class="signup-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks">
+          <input type="hidden" name="form-name" value="newsletter" />
+          <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+          <input type="email" name="email" placeholder="you@email.com" aria-label="Your email address" required />
+          <button class="btn-live" type="submit">Subscribe</button>
+        </form>
+        <p class="signup-note">No spam, unsubscribe anytime. Just the neighborhood and the music.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer class="site">
@@ -78,7 +94,7 @@
         <img src="./assets/logo.png" alt="Cortelyou Road Radio" style="width:52px;height:52px;border-radius:13px;" />
         <div><b>Cortelyou Road Radio</b><span>Ditmas Park and Brooklyn, live all day.</span></div>
       </a>
-            <div class="fcol"><h5>Listen</h5><a href="./listen-live.html">Listen Live</a><a href="./schedule.html">Schedule</a><a href="./mixes.html">Mixes</a></div>
+      <div class="fcol"><h5>Listen</h5><a href="./listen-live.html">Listen Live</a><a href="./schedule.html">Schedule</a><a href="./mixes.html">Mixes</a></div>
       <div class="fcol"><h5>Read</h5><a href="./music-history.html">Music History</a><a href="./music-news.html">Music News</a><a href="./ditmas-park.html">Ditmas Park</a></div>
       <div class="fcol"><h5>Station</h5><a href="./sponsor.html">Sponsor</a><a href="./about.html">About / Contact</a><a href="./brooklyn-events.html">Brooklyn &amp; Events</a></div>
     </div>

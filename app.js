@@ -228,7 +228,290 @@ function renderStory() {
     ? `<p class="a-credit">Reporting by ${item.sourceUrl ? `<a href="${item.sourceUrl}" target="_blank" rel="noreferrer">${item.source}</a>` : item.source}. Summary written by Cortelyou Road Radio.</p>`
     : "";
   const photoCredit = item.image?.credit ? `<p class="a-credit">Photo: ${item.image.credit}.</p>` : "";
-  setHTML("storyBody", `<p>${item.body || item.summary}</p>${credit}${photoCredit}`);
+
+  // Reading time + share row + related stories keep readers on the page.
+  const words = String(item.body || item.summary || "").split(/\s+/).filter(Boolean).length;
+  const mins = Math.max(1, Math.round(words / 200));
+  setText("storyRead", `${mins} min read`);
+
+  const share = shareHTML(location.href, `${item.title} — Cortelyou Road Radio`);
+  setHTML("storyBody", `<p>${item.body || item.summary}</p>${credit}${photoCredit}${share}`);
+
+  // Related: other items from the same pool.
+  const rel = document.getElementById("storyRelated");
+  if (rel) {
+    const out = [];
+    for (let i = 1; i <= 3; i++) {
+      const other = itemAt(name, index + i);
+      if (other && other.title !== item.title) out.push(cardHTML(other, "card"));
+    }
+    rel.innerHTML = out.join("");
+  }
+  setupReveal();
+}
+
+/* ============================================================
+   Today in Music History
+   ============================================================ */
+let HISTORY = null;
+
+function histKey(d) {
+  const dt = d || new Date();
+  return String(dt.getMonth() + 1).padStart(2, "0") + "-" + String(dt.getDate()).padStart(2, "0");
+}
+function histLongDate(key) {
+  const M = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const [m, d] = key.split("-").map(Number);
+  return M[m - 1] + " " + d;
+}
+async function loadHistory() {
+  if (HISTORY) return HISTORY;
+  const res = await fetch("./music-history.json", { cache: "no-cache" });
+  HISTORY = await res.json();
+  return HISTORY;
+}
+function histEntry(key) {
+  if (!HISTORY || !HISTORY.calendar) return null;
+  return HISTORY.calendar[key] || null;
+}
+
+/* --- Generative artwork: every entry gets its own graphic --- */
+function histHue(seed) {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) % 360;
+  return h;
+}
+function histArt(theme, seed) {
+  const h = histHue(seed || theme);
+  const c1 = `hsl(${h},70%,58%)`;
+  const c2 = `hsl(${(h + 42) % 360},75%,46%)`;
+  const em = "#ff4d2b";
+  const bg1 = `hsl(${h},34%,11%)`;
+  const bg2 = "#0b0a09";
+  const P = {
+    vinyl: `<circle cx="450" cy="253" r="150" fill="none" stroke="${c1}" stroke-width="2" opacity=".7"/><circle cx="450" cy="253" r="110" fill="none" stroke="${c2}" stroke-width="1.5" opacity=".6"/><circle cx="450" cy="253" r="70" fill="none" stroke="${c1}" stroke-width="1.5" opacity=".5"/><circle cx="450" cy="253" r="34" fill="${em}"/><circle cx="450" cy="253" r="6" fill="${bg2}"/>`,
+    turntable: `<circle cx="400" cy="253" r="140" fill="none" stroke="${c1}" stroke-width="2"/><circle cx="400" cy="253" r="30" fill="${em}"/><rect x="560" y="120" width="14" height="190" rx="7" fill="${c2}" transform="rotate(22 567 215)"/><circle cx="596" cy="128" r="12" fill="${c1}"/>`,
+    drums: `<circle cx="330" cy="300" r="96" fill="none" stroke="${c1}" stroke-width="3"/><circle cx="540" cy="230" r="66" fill="none" stroke="${c2}" stroke-width="3"/><circle cx="650" cy="320" r="48" fill="none" stroke="${em}" stroke-width="3"/><rect x="300" y="150" width="150" height="5" rx="2" fill="${c2}"/>`,
+    piano: Array.from({length:14},(_,i)=>`<rect x="${210+i*34}" y="170" width="30" height="170" rx="4" fill="${i%7===2||i%7===5?bg2:c1}" opacity="${i%7===2||i%7===5?1:.85}"/>`).join("")+`<rect x="205" y="150" width="490" height="14" rx="6" fill="${em}"/>`,
+    guitar: `<path d="M300 340 q-70 -10 -70 -70 t70 -70 q40 0 52 30 l150 -110" fill="none" stroke="${c1}" stroke-width="6" stroke-linecap="round"/><circle cx="300" cy="270" r="30" fill="${bg2}" stroke="${em}" stroke-width="4"/><path d="M502 120 l70 -40" stroke="${c2}" stroke-width="10" stroke-linecap="round" fill="none"/>`,
+    horn: `<path d="M270 300 q120 -140 260 -110 t120 90" fill="none" stroke="${c1}" stroke-width="8" stroke-linecap="round"/><path d="M650 280 l90 -50 v100 z" fill="${em}" opacity=".9"/><circle cx="380" cy="238" r="9" fill="${c2}"/><circle cx="440" cy="222" r="9" fill="${c2}"/><circle cx="500" cy="224" r="9" fill="${c2}"/>`,
+    strings: `<path d="M420 110 q-90 90 -60 200 t130 80" fill="none" stroke="${c1}" stroke-width="7"/><path d="M470 110 q90 90 60 200 t-130 80" fill="none" stroke="${c1}" stroke-width="7"/>${Array.from({length:4},(_,i)=>`<line x1="${418+i*12}" y1="130" x2="${418+i*12}" y2="370" stroke="${em}" stroke-width="1.6" opacity=".8"/>`).join("")}`,
+    synth: Array.from({length:9},(_,i)=>`<circle cx="${240+i*52}" cy="180" r="17" fill="none" stroke="${i%3?c1:em}" stroke-width="3"/>`).join("")+Array.from({length:9},(_,i)=>`<rect x="${228+i*52}" y="240" width="24" height="${40+((i*37)%90)}" rx="6" fill="${c2}" opacity=".85"/>`).join(""),
+    sampler: `<rect x="270" y="150" width="360" height="210" rx="16" fill="none" stroke="${c1}" stroke-width="3"/>${Array.from({length:16},(_,i)=>`<rect x="${300+(i%4)*78}" y="${180+Math.floor(i/4)*45}" width="60" height="32" rx="6" fill="${i%5===0?em:c2}" opacity="${i%5===0?1:.6}"/>`).join("")}`,
+    mixer: Array.from({length:8},(_,i)=>`<line x1="${250+i*58}" y1="140" x2="${250+i*58}" y2="360" stroke="${c1}" stroke-width="2" opacity=".55"/><rect x="${238+i*58}" y="${170+((i*53)%150)}" width="24" height="16" rx="5" fill="${i%3===0?em:c2}"/>`).join(""),
+    tape: `<circle cx="340" cy="253" r="86" fill="none" stroke="${c1}" stroke-width="4"/><circle cx="340" cy="253" r="26" fill="${c2}"/><circle cx="600" cy="253" r="58" fill="none" stroke="${c1}" stroke-width="4"/><circle cx="600" cy="253" r="20" fill="${c2}"/><path d="M340 339 q130 46 260 -28" stroke="${em}" stroke-width="5" fill="none"/>`,
+    mic: `<rect x="415" y="120" width="70" height="140" rx="35" fill="none" stroke="${c1}" stroke-width="5"/>${Array.from({length:5},(_,i)=>`<line x1="420" y1="${145+i*22}" x2="480" y2="${145+i*22}" stroke="${c2}" stroke-width="2.5"/>`).join("")}<path d="M380 240 a70 70 0 0 0 140 0" fill="none" stroke="${em}" stroke-width="6"/><line x1="450" y1="310" x2="450" y2="370" stroke="${c1}" stroke-width="6"/>`,
+    radio: `<rect x="250" y="160" width="400" height="200" rx="18" fill="none" stroke="${c1}" stroke-width="3"/><circle cx="345" cy="260" r="52" fill="none" stroke="${c2}" stroke-width="3"/><circle cx="345" cy="260" r="14" fill="${em}"/>${Array.from({length:6},(_,i)=>`<line x1="440" y1="${210+i*20}" x2="610" y2="${210+i*20}" stroke="${c2}" stroke-width="2" opacity=".7"/>`).join("")}<line x1="600" y1="160" x2="660" y2="90" stroke="${em}" stroke-width="4"/>`,
+    crowd: Array.from({length:22},(_,i)=>{const x=180+i*26,y=300+((i*47)%40);return `<circle cx="${x}" cy="${y}" r="13" fill="${i%4===0?em:c1}" opacity=".8"/><path d="M${x-11} ${y+52} q11 -30 22 0" stroke="${c2}" stroke-width="4" fill="none"/>`}).join(""),
+    boombox: `<rect x="230" y="170" width="440" height="180" rx="14" fill="none" stroke="${c1}" stroke-width="3"/><circle cx="320" cy="260" r="48" fill="none" stroke="${c2}" stroke-width="4"/><circle cx="580" cy="260" r="48" fill="none" stroke="${c2}" stroke-width="4"/><rect x="400" y="220" width="100" height="52" rx="6" fill="${em}" opacity=".85"/><path d="M280 170 l60 -60 M620 170 l-60 -60" stroke="${c1}" stroke-width="4"/>`,
+  };
+  const motif = P[theme] || P.vinyl;
+  const bars = Array.from({length:40},(_,i)=>`<rect x="${i*23}" y="${470-((i*61)%120)}" width="12" height="${((i*61)%120)+36}" fill="${em}" opacity=".13"/>`).join("");
+  return `<svg viewBox="0 0 900 506" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${theme} illustration" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="g${h}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient>
+<radialGradient id="r${h}" cx="30%" cy="25%"><stop offset="0" stop-color="${c1}" stop-opacity=".30"/><stop offset="1" stop-color="${c1}" stop-opacity="0"/></radialGradient></defs>
+<rect width="900" height="506" fill="url(#g${h})"/><rect width="900" height="506" fill="url(#r${h})"/>${bars}${motif}</svg>`;
+}
+
+/* --- Version face-off voting (stored on this device) --- */
+function histVoteKey(date) { return "crr-vote-" + date; }
+function histVote(date, side) {
+  try { localStorage.setItem(histVoteKey(date), side); } catch (e) {}
+  histPaintVotes(date);
+}
+function histPaintVotes(date) {
+  let choice = null;
+  try { choice = localStorage.getItem(histVoteKey(date)); } catch (e) {}
+  document.querySelectorAll(".vs-btn").forEach((b) => {
+    b.classList.toggle("picked", !!choice && b.dataset.side === choice);
+  });
+  const out = document.getElementById("vsResult");
+  if (out) out.textContent = choice ? "You picked " + (choice === "a" ? "the original" : "the remake") + ". Tap the other to switch." : "";
+}
+
+function histKindLabel(k) {
+  return { sample: "Sample story", versus: "Which version wins?", producer: "Behind the board", writer: "The writer", story: "Did you know" }[k] || "Did you know";
+}
+
+function histCardHTML(key, entry, opts) {
+  if (!entry) return "";
+  const o = opts || {};
+  const art = histArt(entry.art, entry.date + entry.title);
+  return `<a class="hist-card" href="./music-history.html?d=${key}">
+    <div class="hist-art">${art}<span class="hist-kind">${histKindLabel(entry.kind)}</span></div>
+    <div class="hist-card-body">
+      <div class="hist-meta"><span>${histLongDate(key)}</span><span>${entry.genre}</span><span>${entry.year}</span></div>
+      <h4>${entry.title}</h4>
+    </div></a>`;
+}
+
+function histExtraHTML(entry) {
+  if (entry.kind === "sample" && entry.extra && entry.extra.src) {
+    const hits = (entry.extra.hits || []).map((x) => `<li>${x}</li>`).join("");
+    return `<div class="hist-sample">
+      <div class="hs-src"><span class="kicker">The original</span><b>${entry.extra.src}</b></div>
+      <div class="hs-arrow" aria-hidden="true">↓</div>
+      <div class="hs-hits"><span class="kicker">Turned into</span><ul>${hits}</ul></div>
+    </div>`;
+  }
+  if (entry.kind === "versus" && entry.extra && entry.extra.a) {
+    return `<div class="hist-versus">
+      <button class="vs-btn" data-side="a" data-date="${entry.date}"><span class="kicker">Version A</span><b>${entry.extra.a}</b><span class="vs-pick">Pick this</span></button>
+      <span class="vs-or">vs</span>
+      <button class="vs-btn" data-side="b" data-date="${entry.date}"><span class="kicker">Version B</span><b>${entry.extra.b}</b><span class="vs-pick">Pick this</span></button>
+    </div><p class="vs-result" id="vsResult"></p>`;
+  }
+  return "";
+}
+
+function shareHTML(url, text) {
+  const u = encodeURIComponent(url), t = encodeURIComponent(text);
+  return `<div class="share-row">
+    <span class="share-label">Share</span>
+    <a class="share-btn" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${u}" aria-label="Share on Facebook">Facebook</a>
+    <a class="share-btn" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=${u}&text=${t}" aria-label="Share on X">X</a>
+    <a class="share-btn" target="_blank" rel="noopener" href="https://wa.me/?text=${t}%20${u}" aria-label="Share on WhatsApp">WhatsApp</a>
+    <button class="share-btn js-copy" data-url="${url}">Copy link</button>
+  </div>`;
+}
+
+async function renderHistory() {
+  const host = document.getElementById("historyMain");
+  if (!host) return;
+  try { await loadHistory(); } catch (e) { host.innerHTML = "<p class='c-none'>History archive unavailable right now.</p>"; return; }
+
+  const p = new URLSearchParams(location.search);
+  const key = /^\d{2}-\d{2}$/.test(p.get("d") || "") ? p.get("d") : histKey();
+  const entry = histEntry(key);
+  if (!entry) { host.innerHTML = "<p class='c-none'>Nothing filed for this date yet.</p>"; return; }
+
+  const isToday = key === histKey();
+  const url = location.origin + "/music-history?d=" + key;
+  host.innerHTML = `
+    <article class="hist-feature">
+      <div class="hist-hero">${histArt(entry.art, entry.date + entry.title)}
+        <span class="hist-kind big">${histKindLabel(entry.kind)}</span>
+      </div>
+      <div class="hist-lead">
+        <div class="hist-meta"><span class="on">${isToday ? "Today" : histLongDate(key)}</span><span>${entry.genre}</span><span>${entry.year}</span></div>
+        <h2>${entry.title}</h2>
+        <p class="hist-story">${entry.story}</p>
+        ${histExtraHTML(entry)}
+        <div class="hist-facts"><h3>Did you know</h3><ul>${entry.facts.map((f) => `<li>${f}</li>`).join("")}</ul></div>
+        ${shareHTML(url, entry.title + " — Today in Music History on Cortelyou Road Radio")}
+      </div>
+    </article>`;
+
+  // This week strip
+  const strip = document.getElementById("historyWeek");
+  if (strip) {
+    const base = new Date();
+    const out = [];
+    for (let i = 1; i <= 4; i++) {
+      const d = new Date(base); d.setDate(base.getDate() - i);
+      const k = histKey(d); const e = histEntry(k);
+      if (e) out.push(histCardHTML(k, e));
+    }
+    strip.innerHTML = out.join("");
+  }
+  histPaintVotes(entry.date);
+  setupReveal();
+}
+
+async function renderHistoryTeaser() {
+  const el = document.getElementById("historyTeaser");
+  if (!el) return;
+  try { await loadHistory(); } catch (e) { return; }
+  const key = histKey();
+  const entry = histEntry(key);
+  if (!entry) return;
+  el.innerHTML = `
+    <a class="hist-teaser" href="./music-history.html">
+      <div class="hist-art">${histArt(entry.art, entry.date + entry.title)}<span class="hist-kind">${histKindLabel(entry.kind)}</span></div>
+      <div class="hist-teaser-body">
+        <span class="kicker">Today in Music History · ${histLongDate(key)}</span>
+        <h3>${entry.title}</h3>
+        <p>${entry.story}</p>
+        <span class="see">Read today's entry →</span>
+      </div>
+    </a>`;
+}
+
+/* ============================================================
+   Schedule / on-air lineup  (edit schedule.json to change shows)
+   ============================================================ */
+let SCHEDULE = null;
+const DAY_NAMES = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+async function loadSchedule() {
+  if (SCHEDULE) return SCHEDULE;
+  const res = await fetch("./schedule.json", { cache: "no-cache" });
+  SCHEDULE = await res.json();
+  return SCHEDULE;
+}
+function minsNow() { const d = new Date(); return d.getHours() * 60 + d.getMinutes(); }
+function hhmmToMins(s) { const [h, m] = s.split(":").map(Number); return h * 60 + m; }
+function fmtTime(s) {
+  const [h, m] = s.split(":").map(Number);
+  const ap = h >= 12 ? "PM" : "AM";
+  const hh = h % 12 === 0 ? 12 : h % 12;
+  return hh + (m ? ":" + String(m).padStart(2, "0") : "") + " " + ap;
+}
+function slotsForDay(idx) {
+  if (!SCHEDULE) return [];
+  return (SCHEDULE.week && SCHEDULE.week[String(idx)]) || SCHEDULE.default || [];
+}
+function currentSlot() {
+  const now = minsNow(), day = new Date().getDay();
+  const slots = slotsForDay(day);
+  for (const s of slots) {
+    const a = hhmmToMins(s.start), b = hhmmToMins(s.end);
+    if (b > a ? now >= a && now < b : now >= a || now < b) return s;
+  }
+  return null;
+}
+function nextSlot() {
+  const now = minsNow(), day = new Date().getDay();
+  const slots = slotsForDay(day).slice().sort((x, y) => hhmmToMins(x.start) - hhmmToMins(y.start));
+  for (const s of slots) if (hhmmToMins(s.start) > now) return s;
+  const tomorrow = slotsForDay((day + 1) % 7).slice().sort((x, y) => hhmmToMins(x.start) - hhmmToMins(y.start));
+  return tomorrow[0] || null;
+}
+
+async function renderSchedule() {
+  const nowEl = document.getElementById("onAirNow");
+  const gridEl = document.getElementById("scheduleGrid");
+  if (!nowEl && !gridEl) return;
+  try { await loadSchedule(); } catch (e) { return; }
+
+  if (nowEl) {
+    const cur = currentSlot(), nxt = nextSlot();
+    nowEl.innerHTML = `
+      <div class="oa-now">
+        <span class="kicker">On air now</span>
+        <h3>${cur ? cur.name : "Cortelyou Road Radio"}</h3>
+        <p>${cur ? cur.blurb : "Music around the clock from Ditmas Park."}</p>
+        ${cur ? `<span class="oa-time">${fmtTime(cur.start)} – ${fmtTime(cur.end)}</span>` : ""}
+      </div>
+      ${nxt ? `<div class="oa-next"><span class="kicker">Up next</span><h4>${nxt.name}</h4><span class="oa-time">${fmtTime(nxt.start)}</span></div>` : ""}`;
+  }
+
+  if (gridEl) {
+    const today = new Date().getDay();
+    const cur = currentSlot();
+    let html = "";
+    for (let i = 0; i < 7; i++) {
+      const d = (today + i) % 7;
+      const slots = slotsForDay(d).slice().sort((x, y) => hhmmToMins(x.start) - hhmmToMins(y.start));
+      html += `<div class="sch-day${i === 0 ? " is-today" : ""}">
+        <h4>${i === 0 ? "Today" : DAY_NAMES[d]}</h4>
+        <ul>${slots.map((s) => {
+          const live = i === 0 && cur && cur.name === s.name && cur.start === s.start;
+          return `<li class="${live ? "live" : ""}"><span class="sch-t">${fmtTime(s.start)}</span><span class="sch-n">${s.name}${live ? ' <em class="sch-live">On air</em>' : ""}</span></li>`;
+        }).join("")}</ul></div>`;
+    }
+    gridEl.innerHTML = html;
+  }
 }
 
 /* ---------- Init ---------- */
@@ -247,7 +530,8 @@ function setupReveal() {
 function renderAll() {
   const page = document.body.dataset.page;
   if (page === "story") renderStory();
-  else { renderPools(); renderBriefing(); setupReveal(); }
+  else if (page === "history") { renderHistory(); }
+  else { renderPools(); renderBriefing(); renderHistoryTeaser(); renderSchedule(); setupReveal(); }
 }
 
 /* ---------- In-place navigation (keeps the stream alive) ---------- */
@@ -313,6 +597,16 @@ function setupNavigation() {
   document.addEventListener("click", (e) => {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     if (e.target.closest(".js-listen")) { e.preventDefault(); togglePlay(); return; }
+    const vs = e.target.closest(".vs-btn");
+    if (vs) { e.preventDefault(); histVote(vs.dataset.date, vs.dataset.side); return; }
+    const cp = e.target.closest(".js-copy");
+    if (cp) {
+      e.preventDefault();
+      const done = () => { const t = cp.textContent; cp.textContent = "Copied"; setTimeout(() => { cp.textContent = t; }, 1600); };
+      if (navigator.clipboard) navigator.clipboard.writeText(cp.dataset.url).then(done).catch(() => {});
+      else done();
+      return;
+    }
     const a = e.target.closest("a");
     if (!isInternalPageLink(a)) return;
     const url = new URL(a.getAttribute("href"), location.href);

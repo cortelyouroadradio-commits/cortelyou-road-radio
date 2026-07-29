@@ -1,0 +1,33 @@
+{
+  "note": "Edit this file to change the on-air lineup. Times are 24-hour, station local time. 'default' runs on any day not listed in 'week'. Day keys: 0=Sunday ... 6=Saturday.",
+  "default": [
+    { "start": "06:00", "end": "10:00", "name": "The Morning Ride", "host": "Cortelyou Road Radio", "blurb": "Wake-up soul, classic R&B and the day's neighborhood headlines." },
+    { "start": "10:00", "end": "14:00", "name": "Midday on Cortelyou", "host": "Cortelyou Road Radio", "blurb": "Wall-to-wall music with Ditmas Park updates on the hour." },
+    { "start": "14:00", "end": "18:00", "name": "The Afternoon Set", "host": "Cortelyou Road Radio", "blurb": "Motown, funk and the records that built the block." },
+    { "start": "18:00", "end": "22:00", "name": "Brooklyn After Dark", "host": "Cortelyou Road Radio", "blurb": "Evening grooves, new releases and what's happening around the borough." },
+    { "start": "22:00", "end": "06:00", "name": "Overnight Rotation", "host": "Automated", "blurb": "Deep cuts and long-play mixes straight through till morning." }
+  ],
+  "week": {
+    "0": [
+      { "start": "06:00", "end": "10:00", "name": "Sunday Morning Gospel", "host": "Cortelyou Road Radio", "blurb": "Gospel, spirituals and the roots of soul music." },
+      { "start": "10:00", "end": "14:00", "name": "The Sunday Sit-Down", "host": "Cortelyou Road Radio", "blurb": "Slow-burn soul and jazz for a quiet Ditmas Park morning." },
+      { "start": "14:00", "end": "18:00", "name": "Today in Music History", "host": "Cortelyou Road Radio", "blurb": "The stories behind the records, the samples and the studio sessions." },
+      { "start": "18:00", "end": "22:00", "name": "Sunday Mix Session", "host": "Cortelyou Road Radio", "blurb": "Long-play DJ mixes end to end." },
+      { "start": "22:00", "end": "06:00", "name": "Overnight Rotation", "host": "Automated", "blurb": "Deep cuts through till morning." }
+    ],
+    "5": [
+      { "start": "06:00", "end": "10:00", "name": "The Morning Ride", "host": "Cortelyou Road Radio", "blurb": "Wake-up soul and the day's neighborhood headlines." },
+      { "start": "10:00", "end": "14:00", "name": "Midday on Cortelyou", "host": "Cortelyou Road Radio", "blurb": "Wall-to-wall music with Ditmas Park updates on the hour." },
+      { "start": "14:00", "end": "18:00", "name": "Friday Warm-Up", "host": "Cortelyou Road Radio", "blurb": "Building toward the weekend with funk, disco and party records." },
+      { "start": "18:00", "end": "23:00", "name": "Friday Night Block Party", "host": "Cortelyou Road Radio", "blurb": "The weekend starts here — dance floor classics all night." },
+      { "start": "23:00", "end": "06:00", "name": "Late Night Mixes", "host": "Automated", "blurb": "Uninterrupted long-play mixes." }
+    ],
+    "6": [
+      { "start": "08:00", "end": "12:00", "name": "Saturday Soul Kitchen", "host": "Cortelyou Road Radio", "blurb": "Classic soul while the neighborhood wakes up slow." },
+      { "start": "12:00", "end": "16:00", "name": "Brooklyn Roots", "host": "Cortelyou Road Radio", "blurb": "Reggae, calypso and the Caribbean sound of Flatbush." },
+      { "start": "16:00", "end": "20:00", "name": "The Crate Dig", "host": "Cortelyou Road Radio", "blurb": "Rare grooves, breaks and the samples that built hip-hop." },
+      { "start": "20:00", "end": "01:00", "name": "Saturday Night Live Set", "host": "Cortelyou Road Radio", "blurb": "Extended mixes straight through the night." },
+      { "start": "01:00", "end": "08:00", "name": "Overnight Rotation", "host": "Automated", "blurb": "Deep cuts till sunrise." }
+    ]
+  }
+}
