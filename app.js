@@ -275,42 +275,291 @@ function histEntry(key) {
   return HISTORY.calendar[key] || null;
 }
 
-/* --- Generative artwork: every entry gets its own graphic --- */
+/* --- Cinematic animated artwork: every entry gets its own scene --- */
 function histHue(seed) {
   let h = 0;
   for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) % 360;
   return h;
 }
+function histStill() {
+  return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+}
 function histArt(theme, seed) {
-  const h = histHue(seed || theme);
-  const c1 = `hsl(${h},70%,58%)`;
-  const c2 = `hsl(${(h + 42) % 360},75%,46%)`;
-  const em = "#ff4d2b";
-  const bg1 = `hsl(${h},34%,11%)`;
-  const bg2 = "#0b0a09";
-  const P = {
-    vinyl: `<circle cx="450" cy="253" r="150" fill="none" stroke="${c1}" stroke-width="2" opacity=".7"/><circle cx="450" cy="253" r="110" fill="none" stroke="${c2}" stroke-width="1.5" opacity=".6"/><circle cx="450" cy="253" r="70" fill="none" stroke="${c1}" stroke-width="1.5" opacity=".5"/><circle cx="450" cy="253" r="34" fill="${em}"/><circle cx="450" cy="253" r="6" fill="${bg2}"/>`,
-    turntable: `<circle cx="400" cy="253" r="140" fill="none" stroke="${c1}" stroke-width="2"/><circle cx="400" cy="253" r="30" fill="${em}"/><rect x="560" y="120" width="14" height="190" rx="7" fill="${c2}" transform="rotate(22 567 215)"/><circle cx="596" cy="128" r="12" fill="${c1}"/>`,
-    drums: `<circle cx="330" cy="300" r="96" fill="none" stroke="${c1}" stroke-width="3"/><circle cx="540" cy="230" r="66" fill="none" stroke="${c2}" stroke-width="3"/><circle cx="650" cy="320" r="48" fill="none" stroke="${em}" stroke-width="3"/><rect x="300" y="150" width="150" height="5" rx="2" fill="${c2}"/>`,
-    piano: Array.from({length:14},(_,i)=>`<rect x="${210+i*34}" y="170" width="30" height="170" rx="4" fill="${i%7===2||i%7===5?bg2:c1}" opacity="${i%7===2||i%7===5?1:.85}"/>`).join("")+`<rect x="205" y="150" width="490" height="14" rx="6" fill="${em}"/>`,
-    guitar: `<path d="M300 340 q-70 -10 -70 -70 t70 -70 q40 0 52 30 l150 -110" fill="none" stroke="${c1}" stroke-width="6" stroke-linecap="round"/><circle cx="300" cy="270" r="30" fill="${bg2}" stroke="${em}" stroke-width="4"/><path d="M502 120 l70 -40" stroke="${c2}" stroke-width="10" stroke-linecap="round" fill="none"/>`,
-    horn: `<path d="M270 300 q120 -140 260 -110 t120 90" fill="none" stroke="${c1}" stroke-width="8" stroke-linecap="round"/><path d="M650 280 l90 -50 v100 z" fill="${em}" opacity=".9"/><circle cx="380" cy="238" r="9" fill="${c2}"/><circle cx="440" cy="222" r="9" fill="${c2}"/><circle cx="500" cy="224" r="9" fill="${c2}"/>`,
-    strings: `<path d="M420 110 q-90 90 -60 200 t130 80" fill="none" stroke="${c1}" stroke-width="7"/><path d="M470 110 q90 90 60 200 t-130 80" fill="none" stroke="${c1}" stroke-width="7"/>${Array.from({length:4},(_,i)=>`<line x1="${418+i*12}" y1="130" x2="${418+i*12}" y2="370" stroke="${em}" stroke-width="1.6" opacity=".8"/>`).join("")}`,
-    synth: Array.from({length:9},(_,i)=>`<circle cx="${240+i*52}" cy="180" r="17" fill="none" stroke="${i%3?c1:em}" stroke-width="3"/>`).join("")+Array.from({length:9},(_,i)=>`<rect x="${228+i*52}" y="240" width="24" height="${40+((i*37)%90)}" rx="6" fill="${c2}" opacity=".85"/>`).join(""),
-    sampler: `<rect x="270" y="150" width="360" height="210" rx="16" fill="none" stroke="${c1}" stroke-width="3"/>${Array.from({length:16},(_,i)=>`<rect x="${300+(i%4)*78}" y="${180+Math.floor(i/4)*45}" width="60" height="32" rx="6" fill="${i%5===0?em:c2}" opacity="${i%5===0?1:.6}"/>`).join("")}`,
-    mixer: Array.from({length:8},(_,i)=>`<line x1="${250+i*58}" y1="140" x2="${250+i*58}" y2="360" stroke="${c1}" stroke-width="2" opacity=".55"/><rect x="${238+i*58}" y="${170+((i*53)%150)}" width="24" height="16" rx="5" fill="${i%3===0?em:c2}"/>`).join(""),
-    tape: `<circle cx="340" cy="253" r="86" fill="none" stroke="${c1}" stroke-width="4"/><circle cx="340" cy="253" r="26" fill="${c2}"/><circle cx="600" cy="253" r="58" fill="none" stroke="${c1}" stroke-width="4"/><circle cx="600" cy="253" r="20" fill="${c2}"/><path d="M340 339 q130 46 260 -28" stroke="${em}" stroke-width="5" fill="none"/>`,
-    mic: `<rect x="415" y="120" width="70" height="140" rx="35" fill="none" stroke="${c1}" stroke-width="5"/>${Array.from({length:5},(_,i)=>`<line x1="420" y1="${145+i*22}" x2="480" y2="${145+i*22}" stroke="${c2}" stroke-width="2.5"/>`).join("")}<path d="M380 240 a70 70 0 0 0 140 0" fill="none" stroke="${em}" stroke-width="6"/><line x1="450" y1="310" x2="450" y2="370" stroke="${c1}" stroke-width="6"/>`,
-    radio: `<rect x="250" y="160" width="400" height="200" rx="18" fill="none" stroke="${c1}" stroke-width="3"/><circle cx="345" cy="260" r="52" fill="none" stroke="${c2}" stroke-width="3"/><circle cx="345" cy="260" r="14" fill="${em}"/>${Array.from({length:6},(_,i)=>`<line x1="440" y1="${210+i*20}" x2="610" y2="${210+i*20}" stroke="${c2}" stroke-width="2" opacity=".7"/>`).join("")}<line x1="600" y1="160" x2="660" y2="90" stroke="${em}" stroke-width="4"/>`,
-    crowd: Array.from({length:22},(_,i)=>{const x=180+i*26,y=300+((i*47)%40);return `<circle cx="${x}" cy="${y}" r="13" fill="${i%4===0?em:c1}" opacity=".8"/><path d="M${x-11} ${y+52} q11 -30 22 0" stroke="${c2}" stroke-width="4" fill="none"/>`}).join(""),
-    boombox: `<rect x="230" y="170" width="440" height="180" rx="14" fill="none" stroke="${c1}" stroke-width="3"/><circle cx="320" cy="260" r="48" fill="none" stroke="${c2}" stroke-width="4"/><circle cx="580" cy="260" r="48" fill="none" stroke="${c2}" stroke-width="4"/><rect x="400" y="220" width="100" height="52" rx="6" fill="${em}" opacity=".85"/><path d="M280 170 l60 -60 M620 170 l-60 -60" stroke="${c1}" stroke-width="4"/>`,
+  const s = seed || theme || "crr";
+  const h = histHue(s);
+  const u = "x" + Math.abs((h * 7919) % 99991).toString(36) + (s.length % 89).toString(36) + (s.charCodeAt(0) % 61).toString(36);
+  const P  = `hsl(${h},88%,64%)`;
+  const P2 = `hsl(${h},70%,44%)`;
+  const S  = `hsl(${(h + 40) % 360},92%,58%)`;
+  const D  = `hsl(${(h + 14) % 360},58%,13%)`;
+  const EM = "#ff4d2b";
+  const still = histStill();
+  const AN = (x) => (still ? "" : x);
+  const spin = (dur, cx, cy) => AN(`<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 ${cx} ${cy}" to="360 ${cx} ${cy}" dur="${dur}s" repeatCount="indefinite"/>`);
+  const pulse = (attr, a, b, dur, begin) => AN(`<animate attributeName="${attr}" values="${a};${b};${a}" dur="${dur}s" begin="${begin || 0}s" repeatCount="indefinite"/>`);
+
+  // equalizer bars used by several scenes
+  const eqBars = (x0, y0, n, w, gap, maxH) =>
+    Array.from({ length: n }, (_, i) => {
+      const lo = 14 + ((i * 37) % Math.max(18, maxH - 30));
+      const hi = 30 + ((i * 61) % maxH);
+      const c = i % 4 === 0 ? EM : (i % 3 === 0 ? S : P);
+      return `<rect x="${x0 + i * (w + gap)}" y="${y0 - lo}" width="${w}" height="${lo}" rx="${w / 2}" fill="${c}" opacity=".9">
+        ${AN(`<animate attributeName="height" values="${lo};${hi};${Math.round(hi * 0.45)};${lo}" dur="${(1.1 + (i % 5) * 0.19).toFixed(2)}s" repeatCount="indefinite"/>`)}
+        ${AN(`<animate attributeName="y" values="${y0 - lo};${y0 - hi};${y0 - Math.round(hi * 0.45)};${y0 - lo}" dur="${(1.1 + (i % 5) * 0.19).toFixed(2)}s" repeatCount="indefinite"/>`)}
+      </rect>`;
+    }).join("");
+
+  const grooves = Array.from({ length: 13 }, (_, i) =>
+    `<circle r="${68 + i * 7}" fill="none" stroke="#fff" stroke-opacity="${0.05 + (i % 3) * 0.018}" stroke-width="1"/>`).join("");
+
+  const SCENES = {
+    /* Spinning record with tonearm and a specular light sweep */
+    vinyl: `
+      <g transform="translate(430,258)">
+        <ellipse cx="0" cy="186" rx="196" ry="20" fill="#000" opacity=".5"/>
+        <circle r="176" fill="#0a0908" stroke="${P}" stroke-opacity=".22"/>
+        <g>${spin(7, 0, 0)}
+          <circle r="168" fill="#131111"/>
+          ${grooves}
+          <circle r="54" fill="${EM}"/>
+          <path d="M-54 0 A54 54 0 0 1 54 0 Z" fill="#fff" opacity=".10"/>
+          <circle r="7" fill="#070605"/>
+          <rect x="-2" y="-168" width="4" height="26" fill="#fff" opacity=".18"/>
+        </g>
+        <path d="M-176 -40 A176 176 0 0 1 40 -172" fill="none" stroke="url(#sh${u})" stroke-width="34" opacity=".5">
+          ${pulse("opacity", ".18", ".55", 3.6)}
+        </path>
+      </g>
+      <g transform="translate(742,96)">
+        <g>${AN(`<animateTransform attributeName="transform" attributeType="XML" type="rotate" values="-6;2;-6" dur="9s" repeatCount="indefinite"/>`)}
+          <rect x="-9" y="-9" width="18" height="18" rx="4" fill="${P2}"/>
+          <rect x="-4" y="0" width="8" height="212" rx="4" fill="#c9c2b8"/>
+          <rect x="-16" y="206" width="32" height="24" rx="6" fill="${S}"/>
+        </g>
+      </g>`,
+
+    /* DJ setup: platter, tonearm, moving crossfader */
+    turntable: `
+      <rect x="120" y="120" width="660" height="290" rx="22" fill="#111010" stroke="${P}" stroke-opacity=".2"/>
+      <g transform="translate(320,266)">
+        <circle r="118" fill="#0b0a09" stroke="${P}" stroke-opacity=".3"/>
+        <g>${spin(4.5, 0, 0)}
+          <circle r="110" fill="#161313"/>${grooves}
+          <circle r="34" fill="${EM}"/><circle r="5" fill="#070605"/>
+          <rect x="-1.5" y="-110" width="3" height="20" fill="#fff" opacity=".2"/>
+        </g>
+      </g>
+      ${Array.from({length:12},(_,i)=>`<circle cx="${320+112*Math.cos(i*Math.PI/6)}" cy="${266+112*Math.sin(i*Math.PI/6)}" r="2.4" fill="${S}" opacity=".8"/>`).join("")}
+      <g transform="translate(452,168)">
+        <g>${AN(`<animateTransform attributeName="transform" attributeType="XML" type="rotate" values="14;24;14" dur="3.2s" repeatCount="indefinite"/>`)}
+          <circle r="11" fill="${P2}"/><rect x="-3" y="0" width="6" height="150" rx="3" fill="#cfc8be"/>
+          <rect x="-11" y="146" width="22" height="18" rx="5" fill="${EM}"/>
+        </g>
+      </g>
+      <rect x="560" y="180" width="180" height="180" rx="12" fill="#0d0c0b" stroke="${P}" stroke-opacity=".18"/>
+      ${eqBars(578, 330, 7, 14, 9, 110)}
+      <rect x="560" y="372" width="180" height="12" rx="6" fill="#221e1b"/>
+      <rect x="592" y="366" width="34" height="24" rx="6" fill="${EM}">
+        ${AN(`<animate attributeName="x" values="574;676;574" dur="2.4s" repeatCount="indefinite"/>`)}
+      </rect>`,
+
+    /* Reel-to-reel tape machine */
+    tape: `
+      <rect x="110" y="96" width="680" height="318" rx="20" fill="#100f0e" stroke="${P}" stroke-opacity=".2"/>
+      <path d="M300 300 C 380 372, 520 372, 600 300" fill="none" stroke="#e8e2d8" stroke-opacity=".5" stroke-width="5"/>
+      ${[[300,242,96,6],[600,242,74,4.6]].map(([cx,cy,r,dur])=>`
+        <g transform="translate(${cx},${cy})">
+          <circle r="${r}" fill="#0b0a09" stroke="${P}" stroke-opacity=".35" stroke-width="2"/>
+          <g>${spin(dur,0,0)}
+            <circle r="${r-10}" fill="none" stroke="#3a332e" stroke-width="${r*0.5}"/>
+            ${Array.from({length:6},(_,i)=>`<rect x="-3" y="-${r-6}" width="6" height="${r-24}" rx="3" fill="${i%2?S:P}" opacity=".85" transform="rotate(${i*60})"/>`).join("")}
+            <circle r="12" fill="${EM}"/>
+          </g>
+        </g>`).join("")}
+      <rect x="404" y="330" width="92" height="34" rx="7" fill="#070605" stroke="${P}" stroke-opacity=".3"/>
+      ${eqBars(414, 358, 5, 10, 7, 26)}
+      <circle cx="700" cy="360" r="9" fill="${EM}">${pulse("opacity",".35","1",1.6)}</circle>`,
+
+    /* Mixing console with live meters */
+    mixer: `
+      <rect x="96" y="86" width="708" height="338" rx="18" fill="#100e0d" stroke="${P}" stroke-opacity=".2"/>
+      ${Array.from({length:6},(_,i)=>{const x=150+i*106;const k=`<circle cx="${x}" cy="140" r="17" fill="#1b1815" stroke="${i%2?S:P}" stroke-width="2.5"/><rect x="${x-1.5}" y="126" width="3" height="12" rx="1.5" fill="#fff" opacity=".8" transform="rotate(${-40+i*22} ${x} 140)"/>`;
+        return k+`<line x1="${x}" y1="186" x2="${x}" y2="372" stroke="#2a2521" stroke-width="4" stroke-linecap="round"/>
+        <rect x="${x-17}" y="${230+((i*47)%110)}" width="34" height="17" rx="5" fill="${i%3===0?EM:"#d8d1c7"}">
+          ${AN(`<animate attributeName="y" values="${230+((i*47)%110)};${196+((i*29)%150)};${230+((i*47)%110)}" dur="${(3.4+i*0.42).toFixed(1)}s" repeatCount="indefinite"/>`)}
+        </rect>`;}).join("")}
+      <rect x="700" y="186" width="72" height="186" rx="8" fill="#0a0908" stroke="${P}" stroke-opacity=".2"/>
+      ${eqBars(712, 360, 3, 14, 10, 150)}`,
+
+    /* Synth with animated oscilloscope */
+    synth: `
+      <rect x="110" y="110" width="680" height="286" rx="18" fill="#100f0e" stroke="${P}" stroke-opacity=".2"/>
+      <rect x="140" y="140" width="380" height="122" rx="10" fill="#070c09" stroke="${S}" stroke-opacity=".35"/>
+      <path fill="none" stroke="${S}" stroke-width="3.5" stroke-linecap="round" d="M150 201 Q 190 141 230 201 T 310 201 T 390 201 T 470 201 T 510 201">
+        ${AN(`<animate attributeName="d" dur="2.6s" repeatCount="indefinite" values="
+          M150 201 Q 190 141 230 201 T 310 201 T 390 201 T 470 201 T 510 201;
+          M150 201 Q 190 246 230 201 T 310 201 T 390 201 T 470 201 T 510 201;
+          M150 201 Q 190 161 230 201 T 310 201 T 390 201 T 470 201 T 510 201;
+          M150 201 Q 190 141 230 201 T 310 201 T 390 201 T 470 201 T 510 201"/>`)}
+      </path>
+      ${Array.from({length:8},(_,i)=>`<circle cx="${566+ (i%4)*58}" cy="${164+Math.floor(i/4)*56}" r="18" fill="#1b1714" stroke="${i%3?P:EM}" stroke-width="2.5"/>
+        <rect x="${564+(i%4)*58}" y="${150+Math.floor(i/4)*56}" width="3" height="12" rx="1.5" fill="#fff" opacity=".75" transform="rotate(${(i*47)%300} ${566+(i%4)*58} ${164+Math.floor(i/4)*56})"/>`).join("")}
+      ${Array.from({length:18},(_,i)=>{const w=(i%7===2||i%7===4||i%7===6)?0:1;return w?`<rect x="${142+i*20}" y="288" width="18" height="92" rx="4" fill="#efe9df"/>`:`<rect x="${150+i*20}" y="288" width="12" height="58" rx="3" fill="#0d0b0a"/>`}).join("")}
+      <circle cx="746" cy="356" r="7" fill="${EM}">${pulse("opacity",".3","1",1.1)}</circle>`,
+
+    /* Studio condenser mic with expanding halo */
+    mic: `
+      <g transform="translate(450,236)">
+        ${AN(`<circle r="96" fill="none" stroke="${P}" stroke-width="2" opacity=".5"><animate attributeName="r" values="96;188" dur="3.4s" repeatCount="indefinite"/><animate attributeName="opacity" values=".5;0" dur="3.4s" repeatCount="indefinite"/></circle>`)}
+        ${AN(`<circle r="96" fill="none" stroke="${S}" stroke-width="2" opacity=".4"><animate attributeName="r" values="96;188" dur="3.4s" begin="1.7s" repeatCount="indefinite"/><animate attributeName="opacity" values=".4;0" dur="3.4s" begin="1.7s" repeatCount="indefinite"/></circle>`)}
+        <ellipse cx="0" cy="168" rx="86" ry="13" fill="#000" opacity=".5"/>
+        <rect x="-46" y="-116" width="92" height="176" rx="46" fill="#191614" stroke="${P}" stroke-width="3"/>
+        <rect x="-34" y="-104" width="68" height="150" rx="34" fill="none" stroke="${P2}" stroke-width="1.6" opacity=".8"/>
+        ${Array.from({length:9},(_,i)=>`<line x1="-34" y1="${-98+i*17}" x2="34" y2="${-98+i*17}" stroke="${P}" stroke-opacity=".35" stroke-width="2"/>`).join("")}
+        <rect x="-13" y="60" width="26" height="48" rx="6" fill="#2a2420"/>
+        <rect x="-40" y="108" width="80" height="14" rx="7" fill="${EM}"/>
+        <rect x="-6" y="122" width="12" height="46" rx="5" fill="#39312c"/>
+      </g>
+      ${Array.from({length:9},(_,i)=>`<circle cx="${130+i*82}" cy="${90+((i*53)%300)}" r="${1.6+(i%3)}" fill="${i%2?P:S}" opacity=".55">${AN(`<animate attributeName="cy" values="${90+((i*53)%300)};${60+((i*53)%300)};${90+((i*53)%300)}" dur="${(5+i*0.6).toFixed(1)}s" repeatCount="indefinite"/>`)}</circle>`).join("")}`,
+
+    /* Drum kit with impact rings on the beat */
+    drums: `
+      <g transform="translate(320,300)">
+        <circle r="112" fill="#141110" stroke="${P}" stroke-width="4"/>
+        <circle r="86" fill="none" stroke="${P2}" stroke-opacity=".55" stroke-width="2"/>
+        <circle r="30" fill="${EM}"/>
+        ${AN(`<circle r="112" fill="none" stroke="${EM}" stroke-width="3" opacity=".7"><animate attributeName="r" values="112;196" dur="1.5s" repeatCount="indefinite"/><animate attributeName="opacity" values=".7;0" dur="1.5s" repeatCount="indefinite"/></circle>`)}
+      </g>
+      <g transform="translate(556,214)">
+        <ellipse rx="86" ry="16" fill="#241f1b"/>
+        <ellipse rx="86" ry="16" fill="none" stroke="${S}" stroke-width="3"/>
+        ${AN(`<animateTransform attributeName="transform" attributeType="XML" type="translate" values="0 0; 0 -7; 0 0" dur="0.9s" repeatCount="indefinite" additive="sum"/>`)}
+      </g>
+      <g transform="translate(672,330)">
+        <circle r="62" fill="#141110" stroke="${P}" stroke-width="3.5"/>
+        <circle r="42" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="1.6"/>
+      </g>
+      ${eqBars(120, 452, 24, 9, 8, 80)}`,
+
+    /* Piano keys with a travelling light */
+    piano: `
+      <g transform="translate(96,168)">
+        <rect x="-6" y="-22" width="716" height="20" rx="8" fill="${EM}"/>
+        ${Array.from({length:17},(_,i)=>`<rect x="${i*42}" y="0" width="38" height="196" rx="6" fill="#f3ede3"/>`).join("")}
+        ${Array.from({length:17},(_,i)=>((i%7===2||i%7===6)?"":`<rect x="${i*42+27}" y="0" width="24" height="120" rx="4" fill="#0b0a09"/>`)).join("")}
+        <rect x="0" y="0" width="120" height="196" fill="url(#sh${u})" opacity=".85">
+          ${AN(`<animate attributeName="x" values="-120;716;-120" dur="6.5s" repeatCount="indefinite"/>`)}
+        </rect>
+      </g>
+      ${Array.from({length:7},(_,i)=>`<g opacity=".85" transform="translate(${170+i*88},${420})"><path d="M0 0 v-26 a7 7 0 1 0 5 6 v-24 l14 -5 v22 a7 7 0 1 0 5 6 v-34 z" fill="${i%3===0?EM:(i%2?P:S)}"/>
+        ${AN(`<animateTransform attributeName="transform" attributeType="XML" type="translate" values="0 0; 0 -70; 0 0" dur="${(4.2+i*0.55).toFixed(1)}s" repeatCount="indefinite" additive="sum"/>`)}
+        ${pulse("opacity",".2",".95",(4.2+i*0.55))}</g>`).join("")}`,
+
+    /* Guitar with vibrating strings */
+    guitar: `
+      <g transform="translate(70,60)">
+        <path d="M244 300 q-92 -14 -92 -92 t92 -92 q54 0 70 42 l190 -142" fill="none" stroke="${P}" stroke-width="9" stroke-linecap="round"/>
+        <circle cx="244" cy="208" r="44" fill="#0a0908" stroke="${EM}" stroke-width="6"/>
+        <circle cx="244" cy="208" r="60" fill="none" stroke="${P2}" stroke-opacity=".45" stroke-width="2"/>
+        <path d="M504 16 l72 -44" stroke="${S}" stroke-width="14" stroke-linecap="round" fill="none"/>
+        ${Array.from({length:5},(_,i)=>`<path d="M196 ${186+i*11} L 520 ${44+i*9}" stroke="#e8e2d8" stroke-opacity=".75" stroke-width="1.6">
+          ${AN(`<animate attributeName="stroke-opacity" values=".75;.25;.75" dur="${(0.5+i*0.13).toFixed(2)}s" repeatCount="indefinite"/>`)}</path>`).join("")}
+      </g>
+      ${eqBars(120, 462, 22, 9, 9, 70)}`,
+
+    /* Trumpet with radiating sound arcs */
+    horn: `
+      <g transform="translate(120,150)">
+        <path d="M60 160 q140 -156 300 -122 t150 106" fill="none" stroke="${P}" stroke-width="13" stroke-linecap="round"/>
+        <path d="M506 128 l104 -60 v138 z" fill="${EM}"/>
+        <path d="M506 128 l104 -60 v138 z" fill="url(#sh${u})" opacity=".5"/>
+        ${[0,1,2].map(i=>`<circle cx="${190+i*72}" cy="${92+i*6}" r="12" fill="#1c1815" stroke="${S}" stroke-width="3"/>`).join("")}
+      </g>
+      ${[0,1,2].map(i=>`<path d="M756 ${218} q46 ${40+i*26} 0 ${(40+i*26)*2}" fill="none" stroke="${S}" stroke-width="3" opacity=".6" transform="translate(${i*10},${-i*(20+i*10)})">
+        ${pulse("opacity",".15",".7",2.2,i*0.5)}</path>`).join("")}
+      ${eqBars(120, 468, 20, 10, 9, 60)}`,
+
+    /* Violin with a moving bow */
+    strings: `
+      <g transform="translate(300,60)">
+        <path d="M120 40 q-96 96 -62 214 t138 86 q104 -32 138 -86 t-62 -214 q-54 -34 -76 -34 t-76 34 z" fill="#1a1411" stroke="${P}" stroke-width="4"/>
+        <path d="M150 168 c-26 6 -26 46 0 52 M262 168 c26 6 26 46 0 52" fill="none" stroke="${EM}" stroke-width="4"/>
+        ${Array.from({length:4},(_,i)=>`<line x1="${186+i*13}" y1="52" x2="${186+i*13}" y2="320" stroke="#f0eae0" stroke-opacity=".8" stroke-width="1.5"/>`).join("")}
+      </g>
+      <g>${AN(`<animateTransform attributeName="transform" attributeType="XML" type="translate" values="0 0; 92 34; 0 0" dur="4.4s" repeatCount="indefinite"/>`)}
+        <rect x="330" y="150" width="330" height="7" rx="3.5" fill="#d9d2c8" transform="rotate(19 330 150)"/>
+      </g>
+      ${eqBars(120, 470, 22, 9, 9, 56)}`,
+
+    /* Sampler pads lighting in sequence */
+    sampler: `
+      <rect x="176" y="96" width="548" height="318" rx="20" fill="#100f0e" stroke="${P}" stroke-opacity=".22"/>
+      ${Array.from({length:16},(_,i)=>{const x=212+(i%4)*128,y=132+Math.floor(i/4)*68;
+        return `<rect x="${x}" y="${y}" width="112" height="54" rx="10" fill="#1b1714" stroke="${i%5===0?EM:P}" stroke-opacity=".5" stroke-width="2">
+        ${AN(`<animate attributeName="fill" values="#1b1714;${i%5===0?EM:S};#1b1714" dur="4s" begin="${(i*0.24).toFixed(2)}s" repeatCount="indefinite"/>`)}</rect>`;}).join("")}
+      ${eqBars(212, 400, 14, 12, 10, 44)}`,
+
+    /* Crowd silhouettes under sweeping stage lights */
+    crowd: `
+      ${[0,1,2].map(i=>`<path d="M${180+i*250} -20 L${60+i*250} 470 L${330+i*250} 470 Z" fill="${i===1?EM:(i?S:P)}" opacity=".13">
+        ${AN(`<animateTransform attributeName="transform" attributeType="XML" type="rotate" values="${-9+i*5} ${180+i*250} 0; ${9-i*4} ${180+i*250} 0; ${-9+i*5} ${180+i*250} 0" dur="${(6+i*1.7).toFixed(1)}s" repeatCount="indefinite"/>`)}
+      </path>`).join("")}
+      <rect y="392" width="900" height="114" fill="#050404"/>
+      ${Array.from({length:26},(_,i)=>{const x=26+i*34,hh=30+((i*43)%34);
+        return `<g><circle cx="${x}" cy="${400-hh}" r="13" fill="#0b0a09"/><path d="M${x-15} 420 q15 -${hh} 30 0 z" fill="#0b0a09"/>
+        ${(i%4===0)?`<path d="M${x-14} ${398-hh} l-16 -34 M${x+14} ${398-hh} l16 -34" stroke="#0b0a09" stroke-width="7" stroke-linecap="round" fill="none"/>`:""}
+        ${AN(`<animateTransform attributeName="transform" attributeType="XML" type="translate" values="0 0; 0 -${5+(i%4)*3}; 0 0" dur="${(1.1+(i%5)*0.21).toFixed(2)}s" repeatCount="indefinite"/>`)}</g>`;}).join("")}`,
+
+    /* Radio dial with sweeping needle and broadcast arcs */
+    radio: `
+      <rect x="120" y="120" width="660" height="286" rx="22" fill="#12100f" stroke="${P}" stroke-opacity=".22"/>
+      <rect x="152" y="158" width="392" height="118" rx="10" fill="#0a0d0b" stroke="${S}" stroke-opacity=".35"/>
+      ${Array.from({length:26},(_,i)=>`<line x1="${168+i*14}" y1="${i%5===0?186:200}" x2="${168+i*14}" y2="246" stroke="${P}" stroke-opacity="${i%5===0?".8":".35"}" stroke-width="${i%5===0?2:1.2}"/>`).join("")}
+      <rect x="300" y="170" width="4" height="92" rx="2" fill="${EM}">
+        ${AN(`<animate attributeName="x" values="172;520;172" dur="7s" repeatCount="indefinite"/>`)}
+      </rect>
+      <g transform="translate(648,236)">
+        <circle r="64" fill="#191512" stroke="${P}" stroke-width="3"/>
+        <circle r="46" fill="none" stroke="${P2}" stroke-opacity=".5" stroke-width="2"/>
+        <circle r="12" fill="${EM}"/>
+        ${[1,2,3].map(i=>`<path d="M0 -${18+i*16} a ${18+i*16} ${18+i*16} 0 0 1 ${18+i*16} ${18+i*16}" fill="none" stroke="${S}" stroke-width="3" opacity=".55">${pulse("opacity",".12",".75",2.1,i*0.45)}</path>`).join("")}
+      </g>
+      ${eqBars(152, 380, 12, 12, 10, 76)}`,
+
+    /* Boombox */
+    boombox: `
+      <rect x="120" y="150" width="660" height="240" rx="18" fill="#131110" stroke="${P}" stroke-opacity=".25"/>
+      <path d="M210 150 l70 -66 M690 150 l-70 -66" stroke="${P2}" stroke-width="7" stroke-linecap="round" fill="none"/>
+      ${[250,650].map((cx,i)=>`<g transform="translate(${cx},270)">
+        <circle r="82" fill="#0b0a09" stroke="${P}" stroke-width="3"/>
+        <circle r="58" fill="none" stroke="${S}" stroke-opacity=".45" stroke-width="2"/>
+        <circle r="26" fill="${EM}">${pulse("r","24","32",(0.85+i*0.15))}</circle>
+      </g>`).join("")}
+      <rect x="366" y="196" width="168" height="76" rx="8" fill="#070605" stroke="${P}" stroke-opacity=".3"/>
+      ${eqBars(380, 262, 8, 12, 8, 56)}
+      ${eqBars(366, 360, 14, 10, 8, 52)}`,
   };
-  const motif = P[theme] || P.vinyl;
-  const bars = Array.from({length:40},(_,i)=>`<rect x="${i*23}" y="${470-((i*61)%120)}" width="12" height="${((i*61)%120)+36}" fill="${em}" opacity=".13"/>`).join("");
+
+  const scene = SCENES[theme] || SCENES.vinyl;
   return `<svg viewBox="0 0 900 506" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${theme} illustration" preserveAspectRatio="xMidYMid slice">
-<defs><linearGradient id="g${h}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient>
-<radialGradient id="r${h}" cx="30%" cy="25%"><stop offset="0" stop-color="${c1}" stop-opacity=".30"/><stop offset="1" stop-color="${c1}" stop-opacity="0"/></radialGradient></defs>
-<rect width="900" height="506" fill="url(#g${h})"/><rect width="900" height="506" fill="url(#r${h})"/>${bars}${motif}</svg>`;
+<defs>
+  <linearGradient id="bg${u}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${D}"/><stop offset="1" stop-color="#070605"/></linearGradient>
+  <radialGradient id="ga${u}" cx="26%" cy="20%" r="58%"><stop offset="0" stop-color="${P}" stop-opacity=".50"/><stop offset="1" stop-color="${P}" stop-opacity="0"/></radialGradient>
+  <radialGradient id="gb${u}" cx="80%" cy="84%" r="54%"><stop offset="0" stop-color="${S}" stop-opacity=".34"/><stop offset="1" stop-color="${S}" stop-opacity="0"/></radialGradient>
+  <radialGradient id="vg${u}" cx="50%" cy="44%" r="74%"><stop offset="52%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#000" stop-opacity=".74"/></radialGradient>
+  <linearGradient id="sh${u}" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".26"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  <pattern id="dt${u}" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#fff" opacity=".05"/></pattern>
+  <pattern id="sc${u}" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#000" opacity=".22"/></pattern>
+</defs>
+<rect width="900" height="506" fill="url(#bg${u})"/>
+<rect width="900" height="506" fill="url(#ga${u})"><animate attributeName="opacity" values=".85;1;.85" dur="6s" repeatCount="indefinite"/></rect>
+<rect width="900" height="506" fill="url(#gb${u})"/>
+${scene}
+<rect width="900" height="506" fill="url(#dt${u})"/>
+<rect width="900" height="506" fill="url(#sc${u})" opacity=".5"/>
+<rect width="900" height="506" fill="url(#vg${u})"/>
+</svg>`;
 }
 
 /* --- Version face-off voting (stored on this device) --- */
