@@ -1,10 +1,14 @@
 import importlib.util, glob, json, datetime
 
 entries=[]
+# Only entry files define E. Skip this compiler and any helper scripts
+# (make-prompts.py etc) so they are not imported and executed as a side effect.
+SKIP={'compile','make-prompts'}
 for f in sorted(glob.glob('build/history/*.py')):
     n=f.split('/')[-1][:-3]
-    if n=='compile': continue
+    if n in SKIP: continue
     s=importlib.util.spec_from_file_location(n,f); m=importlib.util.module_from_spec(s); s.loader.exec_module(m)
+    if not hasattr(m,'E'): continue
     entries.extend(m.E)
 
 def norm(e):
