@@ -14,274 +14,274 @@ or Adobe Firefly. Full machine-readable list: `image-prompts.csv`.
 
 ## Coming up next
 
-### 10-20 — 'Billie Jean' nearly lost its famous intro
-*Pop · 1982* — Michael Jackson built the song around a bassline he refused to shorten. Quincy Jones wanted the 29-second intro cut down; Jackson insisted it stay because, in his words, it made him want to dance.
+### 07-29 — The Beastie Boys started as a Brooklyn hardcore band
+*Punk · 1981* — Before rapping, the Beastie Boys played fast hardcore punk around New York. Their pivot to hip-hop began as a joke track that got better reactions than their punk set.
 
-**Save as:** `assets/history/10-20.jpg`
-
-```
-Cinematic editorial photograph, a 1980s recording studio. A vocal booth with a large condenser microphone and pop filter, headphones hanging. large-format console, cool neon accents against warm lamps, VHS-era palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 11-03 — Prince's 'Kiss' was a giveaway he took back
-*Funk · 1985* — Prince cut a rough acoustic demo and handed it to the funk band Mazarati. Producer David Z stripped it to a dry drum machine, chopped the vocals into stabs and added the falsetto arrangement — and when Prince heard it he took the song back.
-
-**Save as:** `assets/history/11-03.jpg`
-
-```
-Cinematic editorial photograph, a 1980s recording studio. A large mixing console seen at a low angle, faders lit from above, meters glowing. large-format console, cool neon accents against warm lamps, VHS-era palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 11-06 — 'I Feel Love' was built almost entirely from a Moog
-*Disco · 1977* — Giorgio Moroder and Pete Bellotte built the backing track for Donna Summer at Munich's Musicland using a Moog modular synthesizer instead of a band. The machine drifted out of tune constantly, so the part was captured in short bursts and edited together.
-
-**Save as:** `assets/history/11-06.jpg`
-
-```
-Cinematic editorial photograph, a 1970s recording studio. A wall of modular synthesizer cabinets criss-crossed with patch cables. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 01-01 — The New Year's Day that gave U2 its first anthem
-*Rock · 1983* — Bono wrote the lyric imagining Poland's Solidarity movement, but the song started as a bassline Adam Clayton stumbled into while trying to play Visage's 'Fade to Grey'. The Edge's icy piano was a happy accident from a keyboard left in the room.
-
-**Save as:** `assets/history/01-01.jpg`
+**Save as:** `assets/history/07-29.jpg`
 
 ```
 Cinematic editorial photograph, a 1980s recording studio. A guitar leaning against a vintage amplifier, cables coiled on the floor. large-format console, cool neon accents against warm lamps, VHS-era palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
 ```
 
-### 01-02 — How a broken speaker invented the fuzz guitar
-*Rock · 1961* — On Marty Robbins' 'Don't Worry', a faulty channel in the studio's mixing console distorted Grady Martin's bass solo into a snarl nobody had heard before. Engineers tried to fix it; the producer kept it.
+### 07-30 — Handel wrote 'Messiah' in 24 days
+*Classical · 1741* — Working almost without sleep, Handel completed the 259-page score in just over three weeks. A servant reported finding him weeping at his desk.
 
-**Save as:** `assets/history/01-02.jpg`
-
-```
-Cinematic editorial photograph, a 1960s wood-panelled recording studio. A large mixing console seen at a low angle, faders lit from above, meters glowing. warm tungsten glow, tape machines, amber and walnut palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 01-03 — The drum break that built hip-hop
-*Funk · 1969* — The Winstons cut 'Amen, Brother' as a B-side throwaway. Its six-second drum break, played by Gregory Coleman in a single take, became the most sampled passage in recorded music.
-
-**Save as:** `assets/history/01-03.jpg`
+**Save as:** `assets/history/07-30.jpg`
 
 ```
-Cinematic editorial photograph, a 1960s wood-panelled recording studio. A drum room with baffles, a kit lit from one side, sticks resting on the snare. warm tungsten glow, tape machines, amber and walnut palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+Cinematic editorial photograph, a 1920s acoustic-era room. A string section mid-session, bows lifted, warm hall lighting. sepia tones, soft window light, visible dust in the air. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
 ```
 
-### 01-04 — Why Motown mixed its records on a car speaker
-*Soul · 1964* — Berry Gordy kept a cheap car-dashboard speaker wired into the Hitsville control room. If a mix didn't hit on that tinny cone, it went back, because that's where America actually heard music.
+### 07-31 — Kurt Cobain was born, and later hid melodies in noise
+*Grunge · 1967* — Cobain's writing method paired sweet pop melody with deliberately abrasive tone, a tension he credited to loving both the Beatles and Black Flag.
 
-**Save as:** `assets/history/01-04.jpg`
-
-```
-Cinematic editorial photograph, a 1960s wood-panelled recording studio. A radio broadcast booth, ON AIR lamp lit, microphone on a boom arm. warm tungsten glow, tape machines, amber and walnut palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 01-05 — The bassline Paul McCartney built from a mistake
-*Rock · 1966* — On 'Paperback Writer', McCartney wanted a bass so loud it would rattle radios. Engineer Ken Townsend rigged a loudspeaker as a microphone to capture the low end, a trick no one had tried.
-
-**Save as:** `assets/history/01-05.jpg`
+**Save as:** `assets/history/07-31.jpg`
 
 ```
 Cinematic editorial photograph, a 1960s wood-panelled recording studio. A guitar leaning against a vintage amplifier, cables coiled on the floor. warm tungsten glow, tape machines, amber and walnut palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
 ```
 
-### 01-06 — Kraftwerk built their own instruments because none existed
-*Electronic · 1974* — For 'Autobahn', the band constructed custom electronic drums and vocoders in their Kling Klang studio. They were chasing the sound of a car trip, not a band.
+### 08-01 — The Moog synthesizer needed a hit to be taken seriously
+*Electronic · 1968* — Wendy Carlos's 'Switched-On Bach' proved the Moog could make music, not just noise. It became one of the best-selling classical records ever.
 
-**Save as:** `assets/history/01-06.jpg`
+**Save as:** `assets/history/08-01.jpg`
 
 ```
-Cinematic editorial photograph, a 1970s recording studio. A wall of modular synthesizer cabinets criss-crossed with patch cables. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+Cinematic editorial photograph, a 1960s wood-panelled recording studio. A wall of modular synthesizer cabinets criss-crossed with patch cables. warm tungsten glow, tape machines, amber and walnut palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
 ```
 
-### 01-07 — The piano on 'Layla' was never meant to be there
+### 08-02 — The piano on 'Layla' was never meant to be there
 *Rock · 1970* — Drummer Jim Gordon was caught playing a private piano melody during downtime. Eric Clapton heard it through the studio glass and insisted it become the song's second half.
 
-**Save as:** `assets/history/01-07.jpg`
+**Save as:** `assets/history/08-02.jpg`
 
 ```
 Cinematic editorial photograph, a 1970s recording studio. A grand piano in a live room, lid open, sheet music scattered. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
 ```
 
-### 01-08 — Elvis recorded his first single for his mother
-*Rock · 1953* — At 18, Presley paid Sun Studio's $4 fee to cut 'My Happiness' as a gift. Receptionist Marion Keisker secretly taped a copy because she liked his voice.
-
-**Save as:** `assets/history/01-08.jpg`
-
-```
-Cinematic editorial photograph, a 1950s recording studio. A vocal booth with a large condenser microphone and pop filter, headphones hanging. tube amplifiers, muted teal and cream palette, single overhead lamp. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 01-09 — Joni Mitchell tuned her guitar wrong on purpose
-*Folk · 1971* — Polio left Mitchell's left hand weak, so she invented dozens of open tunings that let her voice chords with fewer fingers. Those tunings gave 'Blue' its floating, unplaceable harmony.
-
-**Save as:** `assets/history/01-09.jpg`
-
-```
-Cinematic editorial photograph, a 1970s recording studio. A guitar leaning against a vintage amplifier, cables coiled on the floor. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 01-10 — The studio trick that made 'Strawberry Fields' impossible
-*Rock · 1966* — Lennon liked two different takes recorded in different keys at different speeds. George Martin sped one up and slowed the other until they met in the middle.
-
-**Save as:** `assets/history/01-10.jpg`
-
-```
-Cinematic editorial photograph, a 1960s wood-panelled recording studio. A tape machine room, two reels turning, tape boxes hand-labelled in marker. warm tungsten glow, tape machines, amber and walnut palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 01-11 — Aretha rewrote 'Respect' and took it from Otis
-*Soul · 1967* — Otis Redding's original was a man asking for respect at home. Aretha Franklin flipped the perspective, added the spelled-out hook and the 'sock it to me' backing from her sisters.
-
-**Save as:** `assets/history/01-11.jpg`
-
-```
-Cinematic editorial photograph, a 1960s wood-panelled recording studio. A vocal booth with a large condenser microphone and pop filter, headphones hanging. warm tungsten glow, tape machines, amber and walnut palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 01-12 — Why disco records used real strings and a metronome
-*Disco · 1975* — Philadelphia producers paired full orchestras with a rigid four-on-the-floor kick so DJs could beat-match by hand. The click track was the secret that made mixing possible.
-
-**Save as:** `assets/history/01-12.jpg`
-
-```
-Cinematic editorial photograph, a 1970s recording studio. A string section mid-session, bows lifted, warm hall lighting. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 01-13 — Brian Eno wrote rules on cards to break writer's block
-*Art Rock · 1975* — Frustrated in the studio, Eno printed 'Oblique Strategies' — cards with instructions like 'Honour thy error as a hidden intention'. Musicians drew one when stuck.
-
-**Save as:** `assets/history/01-13.jpg`
-
-```
-Cinematic editorial photograph, a 1970s recording studio. A wall of modular synthesizer cabinets criss-crossed with patch cables. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 01-14 — The Roland TR-808 flopped before it changed everything
-*Hip-Hop · 1980* — Roland discontinued the drum machine after three years because it sounded fake next to real drums. Producers bought them cheap secondhand, and its booming kick became the spine of hip-hop.
-
-**Save as:** `assets/history/01-14.jpg`
-
-```
-Cinematic editorial photograph, a 1980s recording studio. A drum room with baffles, a kit lit from one side, sticks resting on the snare. large-format console, cool neon accents against warm lamps, VHS-era palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 01-15 — Stevie Wonder played nearly every instrument on 'Innervisions'
+### 08-03 — Stevie Wonder played nearly every instrument on 'Innervisions'
 *Soul · 1973* — Wonder recorded drums, keys, bass and harmonica himself, layering parts alone in the studio through the night. Engineers worked in shifts to keep up with him.
 
-**Save as:** `assets/history/01-15.jpg`
+**Save as:** `assets/history/08-03.jpg`
 
 ```
 Cinematic editorial photograph, a 1970s recording studio. A grand piano in a live room, lid open, sheet music scattered. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
 ```
 
-### 01-16 — Dolly Parton wrote two standards on the same day
-*Country · 1973* — Parton has said she wrote 'Jolene' and 'I Will Always Love You' in a single writing session. One was about a bank teller flirting with her husband; the other about leaving her mentor.
-
-**Save as:** `assets/history/01-16.jpg`
-
-```
-Cinematic editorial photograph, a 1970s recording studio. A guitar leaning against a vintage amplifier, cables coiled on the floor. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 01-17 — The Wall of Sound was built by crowding the room
-*Pop · 1963* — Phil Spector packed multiple pianos, guitars and percussionists into a small echo-heavy studio and recorded them as one blurred mass. The point was density, not clarity.
-
-**Save as:** `assets/history/01-17.jpg`
-
-```
-Cinematic editorial photograph, a 1960s wood-panelled recording studio. A large mixing console seen at a low angle, faders lit from above, meters glowing. warm tungsten glow, tape machines, amber and walnut palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 01-18 — Bob Marley's band recorded in a room with no separation
-*Reggae · 1973* — The Wailers cut early sides live in cramped Kingston studios where every mic bled into the others. That bleed is why the records feel like one breathing organism.
-
-**Save as:** `assets/history/01-18.jpg`
-
-```
-Cinematic editorial photograph, a 1970s recording studio. A large mixing console seen at a low angle, faders lit from above, meters glowing. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 01-19 — Miles Davis handed out no sheet music for 'Kind of Blue'
-*Jazz · 1959* — Davis gave his players only modal sketches minutes before recording. Most of the album is first takes by musicians hearing the material for the first time.
-
-**Save as:** `assets/history/01-19.jpg`
-
-```
-Cinematic editorial photograph, a 1950s recording studio. A brass section in a live room, horns raised, music stands and chairs. tube amplifiers, muted teal and cream palette, single overhead lamp. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 01-20 — Prince played 27 instruments on his debut
-*Funk · 1978* — Warner Bros. doubted a 19-year-old could produce himself, so Prince recorded a demo playing every part. He got full creative control, almost unheard of for a new artist.
-
-**Save as:** `assets/history/01-20.jpg`
-
-```
-Cinematic editorial photograph, a 1970s recording studio. A guitar leaning against a vintage amplifier, cables coiled on the floor. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 01-21 — The Fairlight sampler cost as much as a house
-*Pop · 1979* — The first commercial digital sampler sold for tens of thousands of dollars, limiting it to stars like Kate Bush and Peter Gabriel. It let musicians play any recorded sound from a keyboard.
-
-**Save as:** `assets/history/01-21.jpg`
-
-```
-Cinematic editorial photograph, a 1970s recording studio. A beat-making desk with a drum machine and sampler, pads worn from use, records stacked beside. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 01-22 — Why 'Bohemian Rhapsody' took three weeks of overdubs
-*Rock · 1975* — Queen layered their vocal harmonies up to 180 times, bouncing tape so often it wore thin. Held to the light, the master was nearly transparent.
-
-**Save as:** `assets/history/01-22.jpg`
-
-```
-Cinematic editorial photograph, a 1970s recording studio. A large mixing console seen at a low angle, faders lit from above, meters glowing. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
-```
-
-### 01-23 — Nina Simone trained as a classical pianist, not a singer
+### 08-04 — Nina Simone trained as a classical pianist, not a singer
 *Jazz · 1957* — Denied a place at the Curtis Institute, Simone took a bar job that required singing. She had only ever intended to play Bach, and that classical phrasing never left her.
 
-**Save as:** `assets/history/01-23.jpg`
+**Save as:** `assets/history/08-04.jpg`
 
 ```
 Cinematic editorial photograph, a 1950s recording studio. A grand piano in a live room, lid open, sheet music scattered. tube amplifiers, muted teal and cream palette, single overhead lamp. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
 ```
 
-### 01-24 — The Clash recorded 'London Calling' with a producer who threw chairs
-*Punk · 1979* — Guy Stevens motivated takes by swinging ladders and pouring wine on the piano. The chaos was intentional; he wanted performances, not perfection.
+### 08-05 — Why reggae's bass sits so far forward
+*Reggae · 1968* — Jamaican records were made for outdoor sound systems where bass carried across a street. Engineers cut low frequencies hot and pulled the treble back.
 
-**Save as:** `assets/history/01-24.jpg`
+**Save as:** `assets/history/08-05.jpg`
+
+```
+Cinematic editorial photograph, a 1960s wood-panelled recording studio. A radio broadcast booth, ON AIR lamp lit, microphone on a boom arm. warm tungsten glow, tape machines, amber and walnut palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-06 — Brooklyn's Kings Theatre reopening drew a Flatbush crowd
+*Brooklyn · 2015* — After decades dark, the Flatbush palace reopened with a sold-out show, restoring a major venue to the neighborhood's doorstep.
+
+**Save as:** `assets/history/08-06.jpg`
+
+```
+Cinematic editorial photograph, a modern studio. A Brooklyn neighbourhood scene — a Ditmas Park street of Victorian houses, with a packed club floor seen from the stage, hands up, haze in the spotlight beams. clean LED accents, dark room, screen glow. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-07 — Tupac studied ballet and Shakespeare
+*Hip-Hop · 1971* — Shakur trained at the Baltimore School for the Arts, performing in ballet and theatre before rapping professionally.
+
+**Save as:** `assets/history/08-07.jpg`
+
+```
+Cinematic editorial photograph, a 1970s recording studio. A vocal booth with a large condenser microphone and pop filter, headphones hanging. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-08 — The Neve console became a producer's instrument
+*Production · 1970* — Rupert Neve's circuitry added a warmth engineers still chase. Studios built entire reputations on owning one.
+
+**Save as:** `assets/history/08-08.jpg`
+
+```
+Cinematic editorial photograph, a 1970s recording studio. A large mixing console seen at a low angle, faders lit from above, meters glowing. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-09 — Lou Reed recorded an album designed to be unlistenable
+*Art Rock · 1975* — 'Metal Machine Music' was 64 minutes of guitar feedback. Reed said it was sincere; the label suspected he was escaping a contract.
+
+**Save as:** `assets/history/08-09.jpg`
 
 ```
 Cinematic editorial photograph, a 1970s recording studio. A guitar leaning against a vintage amplifier, cables coiled on the floor. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
 ```
 
-### 01-25 — Hip-hop's first hit used a disco band playing live
-*Hip-Hop · 1979* — 'Rapper's Delight' didn't sample Chic's 'Good Times' — session musicians replayed the groove because sampling technology barely existed.
+### 08-10 — The first commercial radio broadcast changed listening forever
+*Radio · 1920* — Early stations discovered that recorded music filled airtime cheaply. Within a decade, radio play, not sheet music, determined what became a hit.
 
-**Save as:** `assets/history/01-25.jpg`
+**Save as:** `assets/history/08-10.jpg`
 
 ```
-Cinematic editorial photograph, a 1970s recording studio. A DJ setup with two turntables, a battered mixer and milk crates of records. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+Cinematic editorial photograph, a 1920s acoustic-era room. A radio broadcast booth, ON AIR lamp lit, microphone on a boom arm. sepia tones, soft window light, visible dust in the air. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
 ```
 
-### 01-26 — Sly Stone recorded an album on an early drum machine
-*Funk · 1971* — For 'There's a Riot Goin' On', Stone used a primitive rhythm box instead of a drummer, then layered tape until the sound smeared. Critics called it murky; he meant it.
+### 08-11 — John Coltrane practiced until his lips bled
+*Jazz · 1960* — Bandmates described Coltrane practicing 12 hours a day, sometimes falling asleep with the horn in his mouth. 'Giant Steps' came from that obsession.
 
-**Save as:** `assets/history/01-26.jpg`
+**Save as:** `assets/history/08-11.jpg`
+
+```
+Cinematic editorial photograph, a 1960s wood-panelled recording studio. A brass section in a live room, horns raised, music stands and chairs. warm tungsten glow, tape machines, amber and walnut palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-12 — Pink Floyd recorded a heartbeat to open an album
+*Rock · 1973* — 'The Dark Side of the Moon' opens with a treated bass drum simulating a pulse, then loops of interviews with studio staff answering existential questions.
+
+**Save as:** `assets/history/08-12.jpg`
 
 ```
 Cinematic editorial photograph, a 1970s recording studio. A drum room with baffles, a kit lit from one side, sticks resting on the snare. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
 ```
 
-### 01-27 — Mozart's 'Requiem' was finished by someone else
-*Classical · 1791* — Mozart died leaving the work incomplete. His student Franz Xaver Süssmayr finished it, and his widow hid the fact to secure the commission payment.
+### 08-13 — James Jamerson never wrote his basslines down
+*Soul · 1936* — Motown's uncredited bassist improvised most parts on first take. Because nothing was notated, many lines were lost when he died.
 
-**Save as:** `assets/history/01-27.jpg`
+**Save as:** `assets/history/08-13.jpg`
 
 ```
-Cinematic editorial photograph, a 1920s acoustic-era room. A string section mid-session, bows lifted, warm hall lighting. sepia tones, soft window light, visible dust in the air. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+Cinematic editorial photograph, a 1940s broadcast-era studio. A guitar leaning against a vintage amplifier, cables coiled on the floor. warm monochrome palette, hard key light, deep shadows. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-14 — Bob Marley survived being shot and played two days later
+*Reggae · 1976* — Gunmen wounded Marley at his Kingston home before a peace concert. He performed anyway, showing the crowd his injured arm.
+
+**Save as:** `assets/history/08-14.jpg`
+
+```
+Cinematic editorial photograph, a 1970s recording studio. A vocal booth with a large condenser microphone and pop filter, headphones hanging. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-15 — 'Impeach the President' gave hip-hop its snare
+*Funk · 1973* — The Honey Drippers' record, cut by a high-school band, contains a drum intro that became a foundation of nineties New York production.
+
+**Save as:** `assets/history/08-15.jpg`
+
+```
+Cinematic editorial photograph, a 1970s recording studio. A drum room with baffles, a kit lit from one side, sticks resting on the snare. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-16 — Brooklyn's Fulton Street record shops fed the DJs
+*Brooklyn · 1985* — Independent shops along Fulton and Flatbush stocked breaks, imports and white labels that defined what Brooklyn DJs could play.
+
+**Save as:** `assets/history/08-16.jpg`
+
+```
+Cinematic editorial photograph, a 1980s recording studio. A Brooklyn neighbourhood scene — a Ditmas Park street of Victorian houses, with a DJ setup with two turntables, a battered mixer and milk crates of records. large-format console, cool neon accents against warm lamps, VHS-era palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-17 — Marvin Gaye's 'Inner City Blues' hid a second bassline
+*Soul · 1971* — Bassist Bob Babbitt and James Jamerson both appear across the album, and Gaye layered a second bass an octave apart to thicken the low end.
+
+**Save as:** `assets/history/08-17.jpg`
+
+```
+Cinematic editorial photograph, a 1970s recording studio. A guitar leaning against a vintage amplifier, cables coiled on the floor. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-18 — The 'Think' break gave hip-hop its whistle
+*Funk · 1972* — Lyn Collins' 'Think (About It)', produced by James Brown, supplied the 'woo! yeah!' stabs heard on hundreds of records.
+
+**Save as:** `assets/history/08-18.jpg`
+
+```
+Cinematic editorial photograph, a 1970s recording studio. A drum room with baffles, a kit lit from one side, sticks resting on the snare. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-19 — Luther Vandross sang jingles before he sang ballads
+*R&B · 1975* — Vandross earned a living singing commercials and backing vocals for Bowie and Chic before launching a solo career.
+
+**Save as:** `assets/history/08-19.jpg`
+
+```
+Cinematic editorial photograph, a 1970s recording studio. A vocal booth with a large condenser microphone and pop filter, headphones hanging. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-20 — Ann Peebles wrote a hit about wanting bad weather
+*Soul · 1973* — 'I Can't Stand the Rain' came from an offhand complaint about going out in a storm. Her co-writers turned the line into the hook on the spot.
+
+**Save as:** `assets/history/08-20.jpg`
+
+```
+Cinematic editorial photograph, a 1970s recording studio. A drum room with baffles, a kit lit from one side, sticks resting on the snare. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-21 — Biggie recorded his debut while still selling on the corner
+*Hip-Hop · 1994* — 'Ready to Die' was cut while Christopher Wallace was living on St. James Place in Clinton Hill. Producers have described him writing nothing down, holding entire verses in his head.
+
+**Save as:** `assets/history/08-21.jpg`
+
+```
+Cinematic editorial photograph, a 1990s production room. A vocal booth with a large condenser microphone and pop filter, headphones hanging. racks of samplers, gritty fluorescent and lamp mix, cluttered desk. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-22 — Whitney Houston's mother sang backup for Aretha
+*Soul · 1967* — Cissy Houston led the Sweet Inspirations, who sang behind Aretha Franklin and Elvis. Whitney grew up in studios watching that work.
+
+**Save as:** `assets/history/08-22.jpg`
+
+```
+Cinematic editorial photograph, a 1960s wood-panelled recording studio. A vocal booth with a large condenser microphone and pop filter, headphones hanging. warm tungsten glow, tape machines, amber and walnut palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-23 — Smokey Robinson wrote the song Motown almost rejected
+*Soul · 1965* — 'The Tracks of My Tears' came from a guitar figure Marv Tarplin played for weeks before lyrics existed. Robinson wrote to the guitar, not the other way around.
+
+**Save as:** `assets/history/08-23.jpg`
+
+```
+Cinematic editorial photograph, a 1960s wood-panelled recording studio. A guitar leaning against a vintage amplifier, cables coiled on the floor. warm tungsten glow, tape machines, amber and walnut palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-24 — Brooklyn's Prospect Park bandshell started a free summer tradition
+*Brooklyn · 1979* — Celebrate Brooklyn began as a modest neighborhood series and grew into one of America's longest-running free outdoor festivals, minutes from Ditmas Park.
+
+**Save as:** `assets/history/08-24.jpg`
+
+```
+Cinematic editorial photograph, a 1970s recording studio. A Brooklyn neighbourhood scene — a Ditmas Park street of Victorian houses, with a packed club floor seen from the stage, hands up, haze in the spotlight beams. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-25 — Kraftwerk built their own instruments because none existed
+*Electronic · 1974* — For 'Autobahn', the band constructed custom electronic drums and vocoders in their Kling Klang studio. They were chasing the sound of a car trip, not a band.
+
+**Save as:** `assets/history/08-25.jpg`
+
+```
+Cinematic editorial photograph, a 1970s recording studio. A wall of modular synthesizer cabinets criss-crossed with patch cables. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-26 — The Roland TR-808 flopped before it changed everything
+*Hip-Hop · 1980* — Roland discontinued the drum machine after three years because it sounded fake next to real drums. Producers bought them cheap secondhand, and its booming kick became the spine of hip-hop.
+
+**Save as:** `assets/history/08-26.jpg`
+
+```
+Cinematic editorial photograph, a 1980s recording studio. A drum room with baffles, a kit lit from one side, sticks resting on the snare. large-format console, cool neon accents against warm lamps, VHS-era palette. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
+```
+
+### 08-27 — Why 'Bohemian Rhapsody' took three weeks of overdubs
+*Rock · 1975* — Queen layered their vocal harmonies up to 180 times, bouncing tape so often it wore thin. Held to the light, the master was nearly transparent.
+
+**Save as:** `assets/history/08-27.jpg`
+
+```
+Cinematic editorial photograph, a 1970s recording studio. A large mixing console seen at a low angle, faders lit from above, meters glowing. shag carpet, warm orange tungsten light, wood veneer, heavy analog gear. Unnamed figures only — a singer at the microphone or a producer in headphones, faces turned away or in shadow. Documentary feel, as if shot for a magazine. 35mm film, shallow depth of field, fine grain, 16:9 landscape. No text, no logos, no watermarks, no captions.
 ```
 
 ---

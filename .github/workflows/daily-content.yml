@@ -1,17 +1,63 @@
 name: Daily content rebuild
 
-# Triggers a Netlify rebuild every morning. Netlify regenerates content.json
-# from live feeds during its own build (see netlify.toml), so this job never
-# commits to the repo — your manual pushes to main can never collide with it.
+# Every morning this job:
+#   1. generates artwork for any of the next 7 days that doesn't have an image yet
+#   2. commits only new images (nothing else)
+#   3. pings Netlify, which rebuilds and re-pulls the news feeds during its build
+#
+# Artwork uses Pollinations.ai — free, no account, no API key, no billing.
+# If a generation fails, that day simply keeps its animated illustrated scene,
+# so the site can never end up with a blank or broken image.
 
 on:
   schedule:
-    - cron: "10 9 * * *"   # ~5:10 AM ET (cron is UTC). Adjust as you like.
-  workflow_dispatch: {}    # lets you run it by hand from the Actions tab
+    - cron: "10 9 * * *"   # ~5:10 AM ET (cron is UTC)
+  workflow_dispatch:
+    inputs:
+      days_ahead:
+        description: "How many days ahead to fill in"
+        required: false
+        default: "7"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-content
+  cancel-in-progress: false
 
 jobs:
-  trigger:
+  daily:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Netlify build
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate missing music-history artwork
+        env:
+          DAYS_AHEAD: ${{ github.event.inputs.days_ahead || '7' }}
+        run: node build/generate-images.mjs
+
+      - name: Commit new artwork
+        run: |
+          if [[ -z "$(git status --porcelain assets/history)" ]]; then
+            echo "No new artwork to commit."
+            exit 0
+          fi
+          git config user.name  "crr-content-bot"
+          git config user.email "bot@cortelyouroadradio.com"
+          git add assets/history
+          git commit -m "chore: music history artwork"
+          # Never fight a manual push — rebase and retry a few times.
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            echo "push attempt $i failed, retrying…"
+            sleep 5
+          done
+          echo "Could not push artwork; it will be picked up tomorrow."
+
+      - name: Trigger Netlify rebuild
         run: curl -fsS -X POST -d '{}' "${{ secrets.NETLIFY_BUILD_HOOK }}"

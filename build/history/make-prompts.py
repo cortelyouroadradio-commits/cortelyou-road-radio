@@ -3,14 +3,8 @@ import json, csv, datetime
 d = json.load(open('music-history.json'))
 cal = d['calendar']
 
-# one entry per unique story (calendar repeats fillers)
-seen, entries = set(), []
-for k in sorted(cal):
-    e = cal[k]
-    sig = e['title']
-    if sig in seen: continue
-    seen.add(sig)
-    entries.append((k, e))
+# every calendar date gets a row, so the generator can look up any day
+entries = [(k, cal[k]) for k in sorted(cal)]
 
 def era(y):
     y = int(y) if str(y).isdigit() else 1970
