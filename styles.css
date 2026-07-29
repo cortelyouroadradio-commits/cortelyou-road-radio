@@ -70,16 +70,22 @@ header {
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
 }
-.nav { display: flex; align-items: center; gap: 26px; height: 72px; }
+.nav { display: flex; align-items: center; gap: 18px; height: 72px; }
 .brand { display: flex; align-items: center; gap: 12px; }
 .brand img { width: 64px; height: 64px; border-radius: 14px; object-fit: cover; }
 .nav { height: 84px; }
-.brand b { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 16px; letter-spacing: -0.01em; }
+.brand b { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 16px; letter-spacing: -0.01em; white-space: nowrap; }
 .brand span { display: block; font-size: 11px; color: var(--muted-2); letter-spacing: 0.04em; margin-top: 1px; }
-nav.links { display: flex; gap: 4px; margin-left: 8px; flex-wrap: wrap; }
+nav.links { display: flex; gap: 2px; margin-left: 4px; flex-wrap: nowrap; }
 nav.links a {
-  padding: 8px 13px; border-radius: 999px; font-size: 14px; color: var(--muted);
+  padding: 8px 10px; border-radius: 999px; font-size: 13.5px; color: var(--muted);
+  white-space: nowrap;
   transition: color .18s ease, background .18s ease;
+}
+@media (max-width: 1280px) {
+  .brand img { width: 52px; height: 52px; }
+  .brand span { display: none; }
+  nav.links a { padding: 7px 8px; font-size: 12.5px; }
 }
 nav.links a:hover { color: var(--text); background: rgba(255,255,255,0.04); }
 nav.links a[aria-current="page"] { color: var(--text); background: var(--ember-soft); }
@@ -411,7 +417,7 @@ footer.site { padding: 54px 0 40px; border-top: 1px solid var(--line); margin-to
 .share-btn:hover { color: var(--ember); border-color: var(--ember); }
 
 /* ---------- Schedule ---------- */
-.onair { display: grid; grid-template-columns: 1.6fr 1fr; gap: 22px; }
+.oa-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 22px; }
 .oa-now, .oa-next { background: linear-gradient(180deg, var(--surface-2), var(--surface)); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
 .oa-now { border-left: 3px solid var(--ember); }
 .oa-now h3 { font-family:"Archivo"; font-weight: 800; font-size: clamp(20px,2.6vw,28px); margin: 10px 0 8px; }
@@ -448,7 +454,7 @@ footer.site { padding: 54px 0 40px; border-top: 1px solid var(--line); margin-to
   .grid.cols-4 { grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
 @media (max-width: 900px) {
-  .hist-feature, .hist-teaser, .onair, .signup { grid-template-columns: 1fr; gap: 22px; }
+  .hist-feature, .hist-teaser, .oa-grid, .signup { grid-template-columns: 1fr; gap: 22px; }
   .hist-versus { grid-template-columns: 1fr; }
   .vs-or { justify-self: center; }
   .hero-grid, .lead-grid, .grid.cols-2, .grid.cols-3 { grid-template-columns: 1fr; }
