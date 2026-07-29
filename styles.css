@@ -364,7 +364,9 @@ footer.site { padding: 54px 0 40px; border-top: 1px solid var(--line); margin-to
 .hist-meta { display: flex; gap: 14px; flex-wrap: wrap; font-family:"Archivo"; font-weight: 700; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted-2); }
 .hist-meta .on { color: var(--ember); }
 .hist-lead h2 { font-family:"Archivo"; font-weight: 900; font-size: clamp(26px, 3.4vw, 40px); line-height: 1.04; letter-spacing: -.02em; margin: 14px 0 14px; }
-.hist-story { font-size: 17px; color: #e6e0d7; margin-bottom: 22px; }
+.hist-story { font-size: 16.5px; line-height: 1.72; color: #d9d3ca; margin-bottom: 15px; }
+.hist-story.lede { font-size: 18px; color: #f0eae1; margin-bottom: 17px; }
+.hist-story:last-of-type { margin-bottom: 22px; }
 .hist-facts { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--ember); border-radius: var(--radius-sm); padding: 18px 20px; margin-bottom: 20px; }
 .hist-facts h3 { font-family:"Archivo"; font-weight: 800; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--ember); margin-bottom: 10px; }
 .hist-facts ul { list-style: none; display: grid; gap: 9px; }

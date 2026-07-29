@@ -20,6 +20,14 @@ const OUT_DIR = join(ROOT, "assets", "history");
 const PROMPTS = join(__dirname, "history", "image-prompts.csv");
 
 const DAYS_AHEAD = Number(process.env.DAYS_AHEAD || 7);
+// FILL_ALL=1 walks the whole 366-day calendar and fills every date that has no
+// art yet, oldest gap first. Use it to backfill the archive; the daily job
+// leaves it unset and only looks at the next DAYS_AHEAD days.
+const FILL_ALL = process.env.FILL_ALL === "1";
+// Cap per run so a backfill can be done in sessions and never hammers a free
+// service for hours unattended. Set MAX_PER_RUN=0 for no cap.
+const MAX_PER_RUN = process.env.MAX_PER_RUN === undefined ? 40 : Number(process.env.MAX_PER_RUN);
+const RETRIES = Number(process.env.RETRIES || 2);
 const WIDTH = 1600, HEIGHT = 900;
 const MIN_BYTES = 20000;
 
@@ -71,36 +79,66 @@ async function generate(prompt, seed) {
   } finally { clearTimeout(timer); }
 }
 
+const hasArt = async (key) => (await Promise.all(
+  ["jpg", "jpeg", "png", "webp"].map(x => exists(join(OUT_DIR, `${key}.${x}`)))
+)).some(Boolean);
+
+/** Dates to consider, in order: the next N days, or the whole calendar. */
+function targetKeys(byDate) {
+  if (!FILL_ALL) return Array.from({ length: DAYS_AHEAD }, (_, i) => keyFor(i));
+  // Start from today so the soonest gaps are filled first, then wrap around.
+  const all = Object.keys(byDate).sort();
+  const today = keyFor(0);
+  const at = all.findIndex(k => k >= today);
+  const start = at === -1 ? 0 : at;
+  return [...all.slice(start), ...all.slice(0, start)];
+}
+
 async function main() {
   await mkdir(OUT_DIR, { recursive: true });
   const rows = parseCSV(await readFile(PROMPTS, "utf8"));
   const byDate = Object.fromEntries(rows.map(r => [r.date, r]));
 
+  const keys = targetKeys(byDate);
   let made = 0, skipped = 0, failed = 0;
-  for (let i = 0; i < DAYS_AHEAD; i++) {
-    const key = keyFor(i);
+
+  for (const key of keys) {
+    if (MAX_PER_RUN && made >= MAX_PER_RUN) {
+      console.log(`\nReached MAX_PER_RUN=${MAX_PER_RUN}; stopping. Run again to continue.`);
+      break;
+    }
     const row = byDate[key];
     if (!row) { console.log(`· ${key}  no prompt on file`); continue; }
+    if (await hasArt(key)) { skipped++; if (!FILL_ALL) console.log(`· ${key}  already has art`); continue; }
 
-    const already = (await Promise.all(
-      ["jpg", "jpeg", "png", "webp"].map(x => exists(join(OUT_DIR, `${key}.${x}`)))
-    )).some(Boolean);
-    if (already) { console.log(`· ${key}  already has art`); skipped++; continue; }
-
-    const seed = [...key].reduce((a, c) => a + c.charCodeAt(0), 0) * 7 + i;
+    const baseSeed = [...key].reduce((a, c) => a + c.charCodeAt(0), 0) * 7;
     process.stdout.write(`▸ ${key}  generating… `);
-    try {
-      const buf = await generate(row.prompt, seed);
-      await writeFile(join(OUT_DIR, `${key}.jpg`), buf);
-      console.log(`ok (${Math.round(buf.length / 1024)} KB) — ${row.title.slice(0, 52)}`);
-      made++;
-      await sleep(4000);            // be a good neighbour to a free service
-    } catch (e) {
-      console.log("failed: " + e.message + "  (scene artwork will be used)");
-      failed++;
+
+    let ok = false;
+    for (let attempt = 0; attempt <= RETRIES && !ok; attempt++) {
+      try {
+        const buf = await generate(row.prompt, baseSeed + attempt);
+        await writeFile(join(OUT_DIR, `${key}.jpg`), buf);
+        console.log(`ok (${Math.round(buf.length / 1024)} KB) — ${row.title.slice(0, 52)}`);
+        made++; ok = true;
+        await sleep(4000);          // be a good neighbour to a free service
+      } catch (e) {
+        if (attempt < RETRIES) {
+          process.stdout.write(`retry ${attempt + 1}… `);
+          await sleep(8000 * (attempt + 1));   // back off before trying again
+        } else {
+          console.log("failed: " + e.message + "  (scene artwork will be used)");
+          failed++;
+        }
+      }
     }
   }
+
+  const remaining = FILL_ALL
+    ? (await Promise.all(Object.keys(byDate).map(async k => (await hasArt(k)) ? 0 : 1))).reduce((a, b) => a + b, 0)
+    : null;
   console.log(`\nDone. created=${made} existing=${skipped} failed=${failed}`);
+  if (remaining !== null) console.log(`Calendar days still without art: ${remaining}`);
 }
 
 main().then(() => process.exit(0)).catch(e => { console.error(e); process.exit(0); });

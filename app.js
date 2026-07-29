@@ -1022,6 +1022,15 @@ function shareHTML(url, text) {
   </div>`;
 }
 
+// History stories are written as several paragraphs separated by blank lines.
+// Split them so the feature page reads properly; the teaser uses only the lede.
+function histParagraphs(story) {
+  return String(story || "")
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+}
+
 async function renderHistory() {
   const host = document.getElementById("historyMain");
   if (!host) return;
@@ -1042,7 +1051,7 @@ async function renderHistory() {
       <div class="hist-lead">
         <div class="hist-meta"><span class="on">${isToday ? "Today" : histLongDate(key)}</span><span>${entry.genre}</span><span>${entry.year}</span></div>
         <h2>${entry.title}</h2>
-        <p class="hist-story">${entry.story}</p>
+        ${histParagraphs(entry.story).map((p, i) => `<p class="hist-story${i ? "" : " lede"}">${p}</p>`).join("")}
         ${histExtraHTML(entry)}
         <div class="hist-facts"><h3>Did you know</h3><ul>${entry.facts.map((f) => `<li>${f}</li>`).join("")}</ul></div>
         ${histCreditHTML(entry)}
@@ -1079,7 +1088,7 @@ async function renderHistoryTeaser() {
       <div class="hist-teaser-body">
         <span class="kicker">Today in Music History · ${histLongDate(key)}</span>
         <h3>${entry.title}</h3>
-        <p>${entry.story}</p>
+        <p>${histParagraphs(entry.story)[0] || ""}</p>
         <span class="see">Read today's entry →</span>
       </div>
     </a>`;
