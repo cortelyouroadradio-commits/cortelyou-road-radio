@@ -7,54 +7,406 @@ const ART = (name) => `./assets/${name}.svg`;
 /* ---------- Content pools (fallback / built-in) ---------- */
 const pools = {
   music: [
-    { tag: "Cover Story", title: "Why the cleanest read on the week still comes from the songs people replay", summary: "Three artists, three temperatures, and a better sense of what listeners carry from one day into the next.", body: "The point of a daily music front page isn't just to name what's big. It's to show why certain artists hold attention and why some releases keep living past the first rush.", art: "editorial-music-pulse" },
-    { tag: "Artist Watch", title: "The records landing now feel lighter on their feet than the headlines suggest", summary: "More playable in a daily station mix than the louder release-cycle noise implies.", body: "That mix of familiarity and ease is exactly why some artists stay useful to a station page. They still create moments that sound right in sequence.", art: "editorial-artist" },
-    { tag: "On Air", title: "What a good transition sounds like when a station trusts its room", summary: "The small art of moving from groove to groove without losing the room.", body: "Transitions are where radio shows its hand — whether someone is really listening, and whether they understand the emotional shape of the next track.", art: "editorial-station" },
-    { tag: "Scene Notes", title: "The quieter songs that still carry enough shape to stop the scroll", summary: "Texture and immediacy tend to outlast a fast viral spike.", body: "Not everything on a music page needs to shout. Some things just keep sounding better on the second play.", art: "editorial-music-business" },
-    { tag: "Artist Radar", title: "The artists people want to argue about and replay at the same time", summary: "Volatility, presence, and repeat-listen curiosity — exactly what a daily desk rewards.", body: "The strongest artist coverage gives a reader a sense of momentum: not just who is visible, but who feels alive enough to pull people back in.", art: "editorial-music-pulse" },
+    {
+      tag: "Cover Story",
+      title: "Why the cleanest read on the week still comes from the songs people replay",
+      summary: "Three artists, three temperatures, and a better sense of what listeners carry from one day into the next.",
+      art: "editorial-music-pulse",
+      bodyParagraphs: [
+        "Every music week produces two different stories. The first is the launch story — the release-day numbers, the announcement posts, the chart debut. It is loud, it is easy to report, and it is almost always front-loaded. The second story takes about ten days longer to appear, and it is the one that actually decides what a station plays in three months: which of those songs people went back to on their own.",
+        "That second number has a name in the industry. Analysts watch the week-two hold — what percentage of first-week streams a song keeps once the launch push stops. A record that holds most of its opening week is behaving like a habit. A record that drops off a cliff was an event, and events do not survive a rotation. You can feel the difference on air long before it shows up in a chart: habit songs get requested, event songs get recognized.",
+        "The interesting part is that the two categories rarely look different on paper. Both can debut high. Both can trend. What separates them tends to be structural — how quickly the hook arrives, whether the arrangement leaves any air in it, whether the second verse gives you a reason to stay. Songs built for a fifteen-second clip peak fast. Songs built for a full listen peak slowly and then refuse to leave.",
+        "So when this page names three artists, it is not ranking them by volume. It is asking a narrower question: which of these will still sound right at 7pm on a Thursday, coming out of something older, in a room where nobody chose the playlist? That is the only test a radio station really has.",
+      ],
+    },
+    {
+      tag: "Artist Watch",
+      title: "The records landing now feel lighter on their feet than the headlines suggest",
+      summary: "More playable in a daily station mix than the louder release-cycle noise implies.",
+      art: "editorial-artist",
+      bodyParagraphs: [
+        "Read a week of music coverage and you would think everything arriving right now is maximal — bigger features, denser production, more of everything. Put the same records into an actual sequence and the opposite turns out to be true. A lot of what is landing well is comparatively spare: fewer layers, more space around the vocal, arrangements that resolve instead of piling up.",
+        "There is a practical reason for that. Most listening now happens on small speakers — a phone on a kitchen counter, a single Bluetooth puck, laptop speakers at work. Dense mixes collapse on those systems. Everything competes for the same narrow midrange and the result is mush. Producers have adapted by clearing room: cutting low end that nobody's speaker can reproduce anyway, pushing the vocal forward, letting one or two elements carry a section instead of six.",
+        "That restraint is exactly what makes a record useful to a station. A song with air in it can sit next to almost anything. It follows a seventies soul cut without sounding thin and it follows a modern rap record without sounding polite. Songs that are maxed out in every frequency band can only follow other songs that are maxed out, which is why they tend to cluster in playlists and disappear from mixed rotations.",
+        "None of this is a knock on ambition. It is a note about durability. The records that keep earning spins are usually the ones a programmer can move around freely, and lightness — real lightness, the kind that comes from choosing what to leave out — is what buys that freedom.",
+      ],
+    },
+    {
+      tag: "On Air",
+      title: "What a good transition sounds like when a station trusts its room",
+      summary: "The small art of moving from groove to groove without losing the room.",
+      art: "editorial-station",
+      bodyParagraphs: [
+        "A transition is the shortest piece of editorial a station ever publishes. It lasts maybe four seconds and it makes an argument: these two records belong next to each other. Get it right and the listener never consciously notices — they just stay. Get it wrong and they reach for their phone without quite knowing why.",
+        "The mechanics are less mysterious than they sound. Tempo is the coarse control: a jump of more than roughly ten percent reads as a break rather than a move, which is fine if you want a break and jarring if you do not. Key matters next — records a fourth or fifth apart tend to slide together, records a half-step apart tend to fight. And energy is the one people underrate. Two songs can match in tempo and key and still clash because one is winding up and the other is winding down.",
+        "Then there is the option most automated systems never take: leaving a gap. A half-second of near-silence between a big outro and a quiet intro does more work than any crossfade. It resets the ear. Old radio hands used to call it letting the record breathe, and it is the clearest sign that a human is making the decisions.",
+        "That is really the whole tell. Algorithmic sequencing optimizes each next song against your history. A person sequencing a room optimizes the shape of the next twenty minutes. The second one occasionally plays something you would not have picked, and that is the point — it is the only way a station stays capable of surprising you.",
+      ],
+    },
+    {
+      tag: "Scene Notes",
+      title: "The quieter songs that still carry enough shape to stop the scroll",
+      summary: "Texture and immediacy tend to outlast a fast viral spike.",
+      art: "editorial-music-business",
+      bodyParagraphs: [
+        "Quiet does not mean small. Some of the most durable records ever cut are barely above a whisper — the vocal is close, the drums are brushed or programmed low, and almost nothing happens loudly. What they have instead of volume is shape: a clear arc from first bar to last, so a listener always knows where they are inside the song.",
+        "Shape is what separates a quiet record from an ambient one. You can usually hear it in the arrangement's arithmetic. Something enters around the eight-bar mark. Something drops out before the second chorus so the return lands harder. The bridge removes an element rather than adding one. None of these moves are loud, but each one is an event, and events are what keep attention from drifting.",
+        "This is also why texture matters more in a sparse mix than a dense one. When there are only four things happening, the character of each becomes structural — the specific grain of a Rhodes, tape hiss left in on purpose, a room mic that puts you at a distance from the drums. In a maximal record those details get buried. In a quiet one they are the architecture.",
+        "For a station, these records do a job nothing else does. They are the reset button between two big moments, and they are frequently the songs listeners write in about, because a quiet record that lands feels like it was played for you specifically rather than at a crowd.",
+      ],
+    },
+    {
+      tag: "Artist Radar",
+      title: "The artists people want to argue about and replay at the same time",
+      summary: "Volatility, presence, and repeat-listen curiosity — exactly what a daily desk rewards.",
+      art: "editorial-music-pulse",
+      bodyParagraphs: [
+        "There is a specific kind of artist worth watching: the one who generates disagreement and repeat listens from the same audience. Those two things usually pull apart. Comfortable music gets replayed and not discussed. Provocative music gets discussed and rarely replayed. The artists who manage both are the ones whose catalogs age well.",
+        "The mechanism is not mystery. Records that reward argument tend to have a decision inside them that a listener can point at — an unusual structure, a vocal choice that reads as either brave or overdone, a production idea that refuses to be background. That decision is what gives people something to say. And because it is a real feature of the record rather than a marketing angle, it is still there on the tenth listen, which is what keeps the song from wearing out.",
+        "This matters for a station because those are the records that build a room's identity. Playing only consensus music produces a pleasant, forgettable station. Playing only difficult music produces a small one. The overlap — songs with a point of view that people also want to hear again — is where an audience actually forms, because listeners start associating the station with having taste rather than having a playlist.",
+        "So Artist Radar is not a popularity read. It is a search for the artists whose next record you would genuinely want to hear before you knew anything about it. That instinct is hard to fake and it is the single best predictor of a long career.",
+      ],
+    },
   ],
   chart: [
-    { tag: "Chart Pulse", title: "The record still popping up in group chats, car rides, and quick replays", summary: "A tighter read on what feels biggest right now, without losing the station's taste.", body: "The records that keep floating back into daily use usually have more staying power than the charts alone can explain.", art: "editorial-music-pulse" },
-    { tag: "Popular Now", title: "Familiar enough to hit fast, strong enough to keep the station moving", summary: "There's a difference between overexposed and genuinely replayable.", body: "This slot is for tracks people actually put back on, not just the ones everyone has heard.", art: "editorial-artist" },
-    { tag: "High Rotation", title: "The tracks holding on because they keep sounding better in context", summary: "What continues to work once the first spike of attention passes.", body: "A chart rail on a local station should still have standards. These are the songs earning their spins.", art: "editorial-music-business" },
-    { tag: "Street Temperature", title: "Where broad attention and local curiosity overlap", summary: "The records that feel both current and socially useful.", body: "Some artists become visible everywhere. The more interesting question is which ones sound right on a neighborhood station.", art: "editorial-station" },
+    {
+      tag: "Chart Pulse",
+      title: "The record still popping up in group chats, car rides, and quick replays",
+      summary: "A tighter read on what feels biggest right now, without losing the station's taste.",
+      art: "editorial-music-pulse",
+      bodyParagraphs: [
+        "It helps to remember what a chart position actually measures. The Hot 100 is a blend — streaming activity, radio airplay reaching a measured audience, and paid downloads, weighted and combined into a single number. It is a good instrument, but it is measuring three different behaviors at once and reporting them as one, which means two songs can share a rank while behaving nothing alike.",
+        "One might be enormous on streaming and invisible on radio, which usually describes a record with a young, concentrated, very online audience. Another might be modest on streaming and heavy on airplay, which usually describes a record that has crossed into general circulation — waiting rooms, supermarkets, car radios. The second kind is less exciting and considerably more durable.",
+        "Then there is the thing no chart captures at all: whether a song is being sent between people. A record that shows up in a group chat has passed a test that streaming counts cannot see, because someone put their own taste behind it. Those songs tend to convert into long tails, and they are disproportionately the ones a station gets asked about.",
+        "So this slot reads the chart as evidence rather than verdict. The number tells you something got big. The more useful question is which of the three behaviors got it there, because that is what tells you whether it will still be around next season.",
+      ],
+    },
+    {
+      tag: "Popular Now",
+      title: "Familiar enough to hit fast, strong enough to keep the station moving",
+      summary: "There's a difference between overexposed and genuinely replayable.",
+      art: "editorial-artist",
+      bodyParagraphs: [
+        "Familiarity is the most powerful and most dangerous tool in programming. Research on music preference has consistently found a mere-exposure effect: within limits, people rate a song higher simply because they have heard it before. Recognition feels like enjoyment. That is why a new record built on a familiar chord movement can land on first listen — the ear thinks it already knows it.",
+        "The limit is the important half of that sentence. The same research finds an inverted-U shape. Liking rises with exposure, plateaus, and then declines, and the decline is steeper for simple material than for complex material. A song with a lot going on can absorb many more plays before it turns; a song that is one idea repeated wears out fast and then becomes actively irritating.",
+        "This has a direct programming consequence. Overexposure is not a function of how many times a station plays a record — it is a function of how many times a record can survive being played. Two songs at the same chart position can have wildly different ceilings, and burning one out is a real cost, because listeners do not blame the song. They blame the station.",
+        "So the standard for this slot is narrow: familiar enough to hit immediately, complicated enough to still be interesting on the fortieth spin. Records that clear both bars are rarer than the chart makes them look.",
+      ],
+    },
+    {
+      tag: "High Rotation",
+      title: "The tracks holding on because they keep sounding better in context",
+      summary: "What continues to work once the first spike of attention passes.",
+      art: "editorial-music-business",
+      bodyParagraphs: [
+        "Rotation is the oldest idea in radio and still the least understood from outside. A high-rotation record is not simply the station's favorite song. It is a record that has proven it can appear several times a day, at different hours, next to different material, without ever feeling like a mistake. That is a much harder qualification than being good.",
+        "Context sensitivity is what disqualifies most candidates. Some records only work at night. Some only work as an opener. Some are so strongly associated with one mood that placing them after the wrong song makes both records worse. Those songs still get played — they just get played deliberately, in specific slots, rather than carried in the core rotation.",
+        "The records that survive heavy rotation tend to share a few traits. They start clearly, so they can follow anything. They have a stable energy level rather than a dramatic arc, so they do not fight what comes next. And they have some element — a tone, a phrase, a rhythmic quirk — that stays interesting even when the rest has become wallpaper. That last detail is what keeps a familiar record from turning into noise.",
+        "Which is why this rail is not a ranking. It is a list of records that have already been tested against the actual conditions of a broadcast day and kept working.",
+      ],
+    },
+    {
+      tag: "Street Temperature",
+      title: "Where broad attention and local curiosity overlap",
+      summary: "The records that feel both current and socially useful.",
+      art: "editorial-station",
+      bodyParagraphs: [
+        "National charts describe an average listener who does not exist anywhere in particular. That average is useful for the industry and close to useless for a neighborhood. What a station on one Brooklyn avenue needs to know is narrower: of everything that is currently big, which part of it is big here?",
+        "The gap between those two is often large. Regional taste has always been real — genres break in specific cities before they travel, and long after national exposure, certain records keep a hold in some places and vanish in others. Streaming was supposed to flatten that and mostly did not. City-level charts still look meaningfully different from the national picture, especially in neighborhoods with strong immigrant communities and deep local scenes.",
+        "Flatbush and Ditmas Park are exactly that kind of place. Caribbean music is not a niche here, it is ambient — it comes out of car windows, storefronts, and open apartment windows in summer. A record's national rank tells you almost nothing about whether it will register on this stretch of Cortelyou Road, and a record that never charts nationally can be inescapable within ten blocks.",
+        "So this slot looks for overlap rather than authority: songs with real national momentum that also have a reason to exist locally. That intersection is small, and it is the most honest description of what a neighborhood station is actually for.",
+      ],
+    },
   ],
   newReleases: [
-    { tag: "Fresh Drop", title: "New releases built for repeat listens, not just reaction", summary: "Not every release deserves a slot; these feel like they could live on the station.", body: "The best new-release coverage is selective — playable, memorable, and image-led enough to anchor the day.", art: "editorial-music-business" },
-    { tag: "Release Radar", title: "The songs worth leaving on long enough to understand", summary: "New music should feel like discovery rather than inventory.", body: "This module is meant to slow you down a little and reward a full listen instead of a quick skip.", art: "editorial-music-pulse" },
-    { tag: "Album Cut", title: "The cuts that sound better once the release-cycle noise dies down", summary: "Fresh songs that hold up away from launch-day hype.", body: "A useful local station can filter the release rush and point listeners toward songs that keep growing.", art: "editorial-artist" },
-    { tag: "First Listen", title: "Immediate, cleaner than expected, and easy to put back on", summary: "A more human version of new-music discovery.", body: "It's not about completeness. It's about curation, context, and what actually deserves a repeat spin.", art: "editorial-rewind" },
+    {
+      tag: "Fresh Drop",
+      title: "New releases built for repeat listens, not just reaction",
+      summary: "Not every release deserves a slot; these feel like they could live on the station.",
+      art: "editorial-music-business",
+      bodyParagraphs: [
+        "Almost everything new arrives on a Friday, and that is not a coincidence. Since 2015 the industry has used a coordinated global release day, moving most of the world onto Friday at midnight local time. The stated reasons were piracy and chart alignment. The practical effect is a weekly flood: a huge share of the year's music enters the world in the same few hours, competes for the same weekend attention, and is largely gone by Tuesday.",
+        "That structure rewards noise and punishes patience. A record with a marketing budget can dominate Friday. A record without one can be objectively better and simply never surface, because the window in which anyone is looking is about seventy-two hours wide. Whole scenes have adapted by releasing off-cycle just to be visible.",
+        "A station's job in that environment is not to keep up. Keeping up is impossible and, more to the point, it is not useful — nobody needs another list of everything that came out. The job is to be a filter with a memory: to pull the handful of records that seem likely to matter in a month and to be willing to go back for the ones that were buried on arrival.",
+        "So this rail is deliberately short. Fewer picks, held longer, chosen because they sound like they could live in a rotation rather than because they landed this week. A release deserves a slot here when it has already survived the second listen.",
+      ],
+    },
+    {
+      tag: "Release Radar",
+      title: "The songs worth leaving on long enough to understand",
+      summary: "New music should feel like discovery rather than inventory.",
+      art: "editorial-music-pulse",
+      bodyParagraphs: [
+        "Skip behavior is one of the more unsettling things streaming revealed about listening. A large share of plays end within the first thirty seconds, and a meaningful chunk end within five. Whatever else that measures, it means most songs are being judged on their intro alone, before a single structural idea has had time to arrive.",
+        "Artists responded rationally. Intros got shorter or disappeared. Hooks moved earlier, sometimes to the very first bar. Average song length has been drifting down for years. None of this is decadence — it is a sensible adaptation to an environment where the first five seconds are the entire audition.",
+        "The cost is that a specific kind of record has gotten harder to make: the one that needs ninety seconds to explain itself. Songs that establish a mood before revealing their idea, songs whose second half reframes the first, songs where the payoff is structural rather than immediate. Those records still exist and they are still frequently the best thing on an album, but they lose the audition every time.",
+        "This rail exists to hold those in place a little longer. The instruction is simple and slightly countercultural: leave it on. Give a record the two minutes it was built for and a surprising number of them turn out to have been doing something the intro never advertised.",
+      ],
+    },
+    {
+      tag: "Album Cut",
+      title: "The cuts that sound better once the release-cycle noise dies down",
+      summary: "Fresh songs that hold up away from launch-day hype.",
+      art: "editorial-artist",
+      bodyParagraphs: [
+        "The album is a stranger format than it looks. Its length was set by physical constraints — roughly twenty minutes a side on a twelve-inch LP, then about seventy-four minutes on a CD — and every generation of artists has written into whatever container they were handed. The result is that album sequencing became a real craft: openers, side-two starts, the deliberate dip before a closer.",
+        "Streaming dissolved the container without replacing the craft. Records now arrive as playlists of themselves, sorted by play count within days, and the tracks that get front-loaded attention are the ones the label pushed. The rest are structurally invisible even to people who liked the album.",
+        "That is where the interesting material tends to be. Singles are optimized for immediate legibility, so they are usually the most conventional thing an artist made that year. Deep cuts are where the odd instrumentation, the long form, the risky vocal, and the actual point of view survive — because nobody was watching that closely when they were approved.",
+        "A station has an advantage here that a chart does not: it can just play track seven. This rail is for the cuts that only make sense after the launch week has gone quiet, when a record stops being a news event and goes back to being an album.",
+      ],
+    },
+    {
+      tag: "First Listen",
+      title: "Immediate, cleaner than expected, and easy to put back on",
+      summary: "A more human version of new-music discovery.",
+      art: "editorial-rewind",
+      bodyParagraphs: [
+        "There is a real difference between recommendation and discovery, and most of what gets called discovery is the first one. An algorithm recommending music is running a similarity search on your history — it is very good at finding the adjacent thing and structurally incapable of finding the thing you had no reason to look for. Over time that produces a listening life with a narrowing radius.",
+        "Human curation fails differently. A person picking records is biased, inconsistent, and occasionally wrong in ways no system would be. But their misses are interesting, because they come from a point of view rather than a probability. That is the whole trade: you accept a worse hit rate in exchange for the possibility of a genuine surprise.",
+        "First Listen is built around that trade. The bar is not whether a record resembles what you already play. It is whether it does something on first contact — a texture that stops you, a vocal that sounds like a person rather than a format, an arrangement that goes somewhere you did not predict in bar nine.",
+        "Not every pick will land, and that is the honest deal. But the ones that do tend to stay, because a record you found for yourself gets attached to a moment, and records attached to moments are the ones people still play a decade later.",
+      ],
+    },
   ],
   artist: [
-    { tag: "Brooklyn Artist Watch", title: "The most visually alive artist in the room right now", summary: "Work rooted enough to feel nearby, polished enough to travel.", body: "Artist Watch works best when the energy is legible. The artist has to look like someone worth opening.", art: "editorial-artist" },
-    { tag: "Brooklyn Artist Watch", title: "An artist with room to travel block to block", summary: "A local radar rail with actual editorial intent.", body: "This section supports the station's role as a cultural filter — artists whose records still sound human in sequence.", art: "editorial-music-pulse" },
-    { tag: "Brooklyn Artist Watch", title: "Knows how to make a polished image feel useful", summary: "Artists who still sound like they know where they're from.", body: "The point is to make the site feel like a place where music culture is watched, not simply mentioned.", art: "editorial-station" },
+    {
+      tag: "Brooklyn Artist Watch",
+      title: "The most visually alive artist in the room right now",
+      summary: "Work rooted enough to feel nearby, polished enough to travel.",
+      art: "editorial-artist",
+      bodyParagraphs: [
+        "Brooklyn has produced more distinct musical eras than most countries, and they rarely resemble each other. Bed-Stuy and Brownsville shaped a decade of rap. Williamsburg's loft scene rewrote indie rock in the early 2000s. Flatbush and East Flatbush carry one of the largest Caribbean communities outside the islands, and the soca, dancehall, and reggae that circulate here are not revival music — they are current, local, and continuous.",
+        "What links those scenes is not a sound. It is a working condition: cheap-enough space, dense enough population to build an audience on foot, and proximity to an industry that will eventually come looking. When the first of those disappears, the scene relocates. That has already happened several times, which is why the borough's musical center of gravity keeps moving south and east.",
+        "Artist Watch tries to catch people at the point where that geography is still audible in the work. Not artists who mention Brooklyn, but artists whose records could only have been assembled here — the specific collision of church, sound system, jazz training, and rap that a kid growing up between Church Avenue and Prospect Park absorbs without deciding to.",
+        "The polish matters too, honestly. An artist has to look like someone worth opening. But the reason to watch is what happens after you press play: whether there is a place inside the record, and whether that place is one you can walk to.",
+      ],
+    },
+    {
+      tag: "Brooklyn Artist Watch",
+      title: "An artist with room to travel block to block",
+      summary: "A local radar rail with actual editorial intent.",
+      art: "editorial-music-pulse",
+      bodyParagraphs: [
+        "The old path from local to national ran through a small number of gates: a college radio add, a regional retail buyer, a supportive club promoter, eventually a label. It was slow and unfair, but it had a useful property — an artist had to convince their own neighborhood first, and that early audience shaped the work.",
+        "The gates are gone and the sequence inverted. It is now entirely possible to have a hundred thousand monthly listeners spread thinly across the world and no room anywhere that would sell out. Those artists exist in large numbers and their careers are precarious, because there is no local base to fall back on when the algorithm's attention moves.",
+        "The artists who last still tend to build the old way, just with new tools. They play repeatedly in a few rooms until those rooms are theirs. They collaborate locally, which compounds — every feature is a small merger of two audiences within walking distance of each other. And they treat the neighborhood as a constituency rather than a backdrop.",
+        "That is what this rail is scanning for: not reach, but density. An artist who can fill a room in Flatbush has something an artist with scattered streams does not, and it is usually the thing that survives the next platform shift.",
+      ],
+    },
+    {
+      tag: "Brooklyn Artist Watch",
+      title: "Knows how to make a polished image feel useful",
+      summary: "Artists who still sound like they know where they're from.",
+      art: "editorial-station",
+      bodyParagraphs: [
+        "Every artist now runs a small media operation whether they want to or not — the photos, the short video, the release-day rollout, the visual identity that has to survive being cropped to a square. It is a genuine skill and it consumes time that used to go into records. Pretending otherwise is nostalgia.",
+        "The useful distinction is not polished versus raw. It is whether the image is doing the same work as the music or a different job entirely. When an artist's visual language comes out of the same place the songs do — the same palette, the same references, the same specific streets — the presentation deepens the record. When it is borrowed from whatever is currently performing well, it flattens it, and listeners register the mismatch even if they cannot name it.",
+        "Local artists have an advantage here that they frequently waste. Specificity is legible. A video shot on an actual block, in actual light, with people who actually live there, reads as true in a way that a rented aesthetic does not, and it costs less. The instinct to make it look like everything else is the expensive mistake.",
+        "So the criterion for this slot is simple. The image should make you more curious about the record, not substitute for it, and after listening you should feel like the two came from the same person.",
+      ],
+    },
   ],
   ditmas: [
-    { tag: "Neighborhood", title: "Avenue coffee lines, stoop chatter, and the early pulse on Cortelyou", summary: "The neighborhood is at its best when small routines become shared atmosphere.", body: "A useful local station pays attention to this layer of life: the coffee line, the corner hello, the store window people keep glancing at.", art: "editorial-ditmas-neighborhood" },
-    { tag: "Community Board", title: "The week ahead in Ditmas Park feels especially full of local energy", summary: "School events, live sets, and sidewalk conversations that spill into the evening.", body: "The value here is relevance, not volume — enough signal to know what matters without drowning the reader in clutter.", art: "editorial-public-space" },
-    { tag: "Street Rhythm", title: "What people are talking about between Stratford and Marlborough", summary: "Transit timing, store windows, and neighborhood plans shape the mood before breakfast ends.", body: "When local media works, it captures the emotional weather of a place as much as the facts.", art: "editorial-ditmas-neighborhood" },
-    { tag: "Local Voices", title: "Neighbors keep asking for more shared cultural space", summary: "Playlist calls, events, and shout-outs are becoming part of the local rhythm.", body: "That's the loop a hometown platform should create: the station reflects the neighborhood, and the neighborhood hears itself reflected back.", art: "editorial-station" },
+    {
+      tag: "Neighborhood",
+      title: "Avenue coffee lines, stoop chatter, and the early pulse on Cortelyou",
+      summary: "The neighborhood is at its best when small routines become shared atmosphere.",
+      art: "editorial-ditmas-neighborhood",
+      bodyParagraphs: [
+        "Cortelyou Road runs east-west through the middle of a neighborhood that was designed, unusually for New York, as a suburb. In the years around 1900 developers laid out Prospect Park South and the blocks near it as a planned community of freestanding wood-frame houses with lawns and porches — Dean Alvord's Prospect Park South is the best known — marketed to Manhattan professionals who could reach the city by train.",
+        "That original plan is why the streets still feel the way they do. Detached houses on generous lots, mature trees meeting overhead, and porches set close enough to the sidewalk that a conversation can happen without anyone getting up. Much of it is protected — the Ditmas Park and Prospect Park South historic districts were designated in the early 1980s, which is a large part of why the housing stock survived a century of pressure to replace it.",
+        "The commercial strip is the counterweight. Cortelyou near the Q station is dense, Caribbean- and immigrant-owned in large part, and busiest in the two windows that bracket the workday. Morning is a line of people who see each other every day without necessarily knowing each other's names. Evening is slower and louder, with the sidewalk doing the work a plaza would do somewhere else.",
+        "That combination — porch-scale residential blocks feeding one busy avenue — produces a specific kind of daily texture. It is not events. It is recognition, repeated, which is the raw material a neighborhood station is actually made of.",
+      ],
+    },
+    {
+      tag: "Community Board",
+      title: "The week ahead in Ditmas Park feels especially full of local energy",
+      summary: "School events, live sets, and sidewalk conversations that spill into the evening.",
+      art: "editorial-public-space",
+      bodyParagraphs: [
+        "Ditmas Park sits in Brooklyn Community District 14, served by Community Board 14, which covers Flatbush, Midwood, and the surrounding blocks. Community boards are advisory rather than binding, but they are where land use, liquor licenses, street changes, and budget priorities get argued in public first, and their meetings are open to anyone who shows up.",
+        "That is a genuinely underused piece of local infrastructure. Most decisions that visibly change a neighborhood — a curb cut, a rezoning, whether a stretch of street gets closed to cars on Sundays — pass through a room that is rarely full. The people who do attend end up with disproportionate influence, not through any conspiracy but through attendance.",
+        "The rest of the week's calendar comes from a small number of reliable institutions: the public schools and their fundraisers, the libraries, a handful of churches with active programs, the greenmarket, and whichever bars and restaurants on Cortelyou are booking live music that month. It is not a large list, and that is exactly what makes it followable.",
+        "So the aim of this rail is relevance rather than volume. Five things worth knowing beats forty things scraped from a listings feed, because a neighborhood calendar is only useful if a person can actually hold it in their head.",
+      ],
+    },
+    {
+      tag: "Street Rhythm",
+      title: "What people are talking about between Stratford and Marlborough",
+      summary: "Transit timing, store windows, and neighborhood plans shape the mood before breakfast ends.",
+      art: "editorial-ditmas-neighborhood",
+      bodyParagraphs: [
+        "The named streets that cross Cortelyou — Stratford, Westminster, Argyle, Rugby, Marlborough — are a leftover of the original marketing. Developers gave the blocks English place names to signal a certain kind of respectability to buyers arriving from Manhattan. The names stuck long after the pitch stopped mattering, and they are now one of the clearest ways to tell where you are without looking at a sign.",
+        "The daily rhythm here is organized around the Q. The Cortelyou Road station sits on the old Brighton Line, which has been carrying people between this area and downtown Brooklyn since the nineteenth century, first as a steam railroad to Coney Island. Almost everything about the avenue's timing — when the coffee line forms, when the sidewalk fills again, which stores stay open late — is downstream of that train's schedule.",
+        "What people actually talk about tends to be the friction points: service changes, a storefront that has been papered over for months, whether a new place is going to be good, and rent. Those conversations are the neighborhood's real information network, and they move faster and more accurately than any official channel.",
+        "Local media works best when it takes that seriously — treating the emotional weather of a place as reportable, not just the facts that happen to have a press release attached.",
+      ],
+    },
+    {
+      tag: "Local Voices",
+      title: "Neighbors keep asking for more shared cultural space",
+      summary: "Playlist calls, events, and shout-outs are becoming part of the local rhythm.",
+      art: "editorial-station",
+      bodyParagraphs: [
+        "The request that comes up most often is not for another venue. It is for somewhere to be that does not require spending money. Brooklyn has a lot of commercial third places and comparatively few free ones, and the difference matters most for teenagers, older residents, and anyone whose apartment is too small to host in.",
+        "The existing free infrastructure is better than people assume and thinner than it should be. Branch libraries do enormous work as de facto community centers — programming, meeting rooms, air conditioning, wifi, and a staff that knows the neighborhood. Parks and schoolyards carry the rest. When any one of those loses hours or funding, the gap shows up immediately in who is on the street and where.",
+        "Radio occupies an odd position in that ecology. It is not a room, but it functions like one: something shared, free at the point of use, that different people encounter at the same time. That is most of what a public space actually does, minus the walls, which is why community stations have historically clustered in neighborhoods with strong local identity and limited institutional coverage.",
+        "So the loop this station is trying to build is straightforward. Neighbors send playlists, requests, and shout-outs; those go out over the air; and the neighborhood hears its own taste played back to it. That exchange is small, but it is the difference between broadcasting at a place and broadcasting from one.",
+      ],
+    },
   ],
   brooklyn: [
-    { tag: "Featured Event", title: "Tonight's borough calendar leans intimate, local, and low-friction", summary: "Small rooms and neighborhood stages are carrying the city's best energy right now.", body: "The strongest borough-wide picks aren't always the loudest — they're the ones that still feel human in scale and close to the station's taste.", art: "editorial-brooklyn-culture" },
-    { tag: "Brooklyn Notes", title: "What feels worth crossing the parkway for this week", summary: "A short list of happenings aligned with the station's taste and pace.", body: "The idea isn't to become a giant events calendar. It's to give listeners a few well-chosen reasons to go out.", art: "editorial-public-space" },
-    { tag: "Community Culture", title: "Brooklyn's best public moments still happen at human scale", summary: "Often it's not the biggest event that sticks — it's the one closest to home.", body: "That instinct keeps the site from feeling generic and supports a more shareable kind of local recommendation.", art: "editorial-brooklyn-culture" },
-    { tag: "Weekend Ahead", title: "The event mix is strongest when music and neighborhood life overlap", summary: "Markets, park gatherings, and sets with personality are what people remember.", body: "The best local planning advice suggests where atmosphere, convenience, and personality intersect.", art: "editorial-public-space" },
+    {
+      tag: "Featured Event",
+      title: "Tonight's borough calendar leans intimate, local, and low-friction",
+      summary: "Small rooms and neighborhood stages are carrying the city's best energy right now.",
+      art: "editorial-brooklyn-culture",
+      bodyParagraphs: [
+        "Brooklyn's live music economy is unusually bottom-heavy. There are a few large rooms — Barclays Center, Kings Theatre in Flatbush, the amphitheater at Coney Island — and then a long tail of spaces holding somewhere between fifty and six hundred people. Almost all of the borough's actual musical life happens in that tail, and almost none of it gets covered.",
+        "Small rooms are also where the economics are hardest. A venue that size runs on thin margins, depends on bar sales rather than tickets, and is acutely vulnerable to rent increases and residential development next door. The list of Brooklyn venues that have closed in the last fifteen years is long enough that scene histories now get organized around which room you came up in.",
+        "What those spaces offer in exchange is the thing large venues structurally cannot: proximity. You can hear an unamplified voice. You can talk to the person who booked the night. An artist can try something that has not worked yet, in front of two hundred people, and adjust. Every performer who eventually fills a big room learned how in a small one.",
+        "So a featured pick here is not chosen by size. It is chosen by whether showing up would actually be worth the trip — a real room, a real bill, and a night you could not have had at home.",
+      ],
+    },
+    {
+      tag: "Brooklyn Notes",
+      title: "What feels worth crossing the parkway for this week",
+      summary: "A short list of happenings aligned with the station's taste and pace.",
+      art: "editorial-public-space",
+      bodyParagraphs: [
+        "Brooklyn is roughly seventy square miles and about two and a half million people — larger than most American cities on its own, and organized as a set of neighborhoods that do not always feel connected. Getting from Ditmas Park to Greenpoint can take longer than getting to Manhattan, which is why borough-wide recommendation lists tend to be less useful than they look.",
+        "The subway map explains most of it. The lines run overwhelmingly north-south, funneling toward Manhattan, because that is the geometry they were built for a century ago. Crosstown travel within Brooklyn is the weak link, historically handled by buses. That is exactly the gap newer crosstown service has been aimed at, and it is why a show three miles east can feel further away than one across the river.",
+        "So distance is a real editorial factor, not a footnote. A recommendation that ignores travel time is an aspirational list rather than a usable one, and most people quietly stop reading those.",
+        "The filter for this rail is therefore practical: is it good, and is it reachable on a weeknight without the trip becoming the main event? A short list that passes both tests is worth more than a comprehensive calendar nobody acts on.",
+      ],
+    },
+    {
+      tag: "Community Culture",
+      title: "Brooklyn's best public moments still happen at human scale",
+      summary: "Often it's not the biggest event that sticks — it's the one closest to home.",
+      art: "editorial-brooklyn-culture",
+      bodyParagraphs: [
+        "The borough's most durable cultural traditions were mostly not planned by institutions. The West Indian American Day Carnival on Eastern Parkway grew out of Harlem gatherings before moving to Brooklyn in the 1960s, and it now draws crowds on a scale few official events reach. It runs on mas camps, sound systems, and a year of volunteer labor spread across Flatbush, Crown Heights, and East Flatbush.",
+        "The same pattern repeats at smaller scale all over the borough — block parties, church concerts, park drum circles, sound systems set up on a sidewalk in August. These are self-organized, locally funded, and largely invisible to anyone looking at an official calendar, which is precisely why they carry more weight with the people who attend them.",
+        "Institutions matter too, and Brooklyn has serious ones. But the relationship works best when the institution is porous — when the museum's late nights or the library's programming pull in the same people who would be on the block anyway, rather than importing a separate audience for the evening.",
+        "That is the instinct behind this rail. The measure of a public moment is not attendance. It is whether the people there would describe it as theirs.",
+      ],
+    },
+    {
+      tag: "Weekend Ahead",
+      title: "The event mix is strongest when music and neighborhood life overlap",
+      summary: "Markets, park gatherings, and sets with personality are what people remember.",
+      art: "editorial-public-space",
+      bodyParagraphs: [
+        "Prospect Park is the organizing fact of a Brooklyn weekend for a large part of the borough. Olmsted and Vaux designed it after Central Park and generally considered it the better of the two — they had more room to work and fewer compromises forced on the plan. Its five hundred-odd acres sit within walking distance of Ditmas Park, Flatbush, Park Slope, Windsor Terrace, and Crown Heights, which is why it functions as the borough's shared backyard rather than any one neighborhood's.",
+        "That geography produces a specific weekend shape. The park absorbs the daytime — drum circles near the Nethermead, barbecues on the east side, the greenmarket at Grand Army Plaza on Saturdays, joggers and cyclists on the loop from early morning. Then it empties into the surrounding avenues in the evening, and the bars and small rooms pick up the same crowd a few hours later.",
+        "The best weekend planning follows that flow instead of fighting it. Something outdoors and free in the daylight, something with a roof and a soundtrack after dark, ideally within a mile of each other. That sequence is why an afternoon in the park followed by a set on Cortelyou feels like one day rather than two errands.",
+        "Which is the real criterion for this rail: not the biggest thing happening, but the combination that would make a Saturday feel like it belonged to the neighborhood.",
+      ],
+    },
   ],
   weekend: [
-    { tag: "Weekend Pick", title: "A low-friction night out that still feels worth leaving home for", summary: "A small room, a good crowd, and enough atmosphere to make the trip count.", body: "Weekend coverage works best when it's selective and emotionally legible — help listeners make one or two good decisions quickly.", art: "editorial-brooklyn-culture" },
-    { tag: "Weekend Pick", title: "One borough plan that feels social without feeling overpacked", summary: "A cultural pick with the station's pacing and mood in mind.", body: "Some of the most effective picks are simply the ones that feel easy to join and easy to remember.", art: "editorial-public-space" },
-    { tag: "Weekend Pick", title: "A music-first pick that still leaves room for the rest of the day", summary: "A recommendation designed around real life, not a full-day commitment.", body: "The lower the friction and the stronger the fit, the more the audience trusts the next recommendation.", art: "editorial-music-pulse" },
+    {
+      tag: "Weekend Pick",
+      title: "A low-friction night out that still feels worth leaving home for",
+      summary: "A small room, a good crowd, and enough atmosphere to make the trip count.",
+      art: "editorial-brooklyn-culture",
+      bodyParagraphs: [
+        "The hardest part of a night out is not the night. It is the decision. Anyone who has spent forty minutes scrolling listings and then stayed in knows the failure mode: too many options, none of them clearly better, and the cost of choosing wrong feels higher than the cost of not going. Psychologists have a tidy name for it — more choice reliably produces more deliberation and, past a point, less satisfaction with whatever gets picked.",
+        "Recommendation is mostly a defense against that. A good pick is not necessarily the best available event; it is the one specific enough to act on. One room, one time, one reason, no comparison shopping required. That is why a short list from someone whose taste you have calibrated beats a comprehensive calendar every time.",
+        "Friction is the other half. Every additional step between the couch and the door — a transfer, an advance ticket, a dress code, an unclear start time — measurably reduces the odds anyone goes. The picks that succeed are usually the ones where the answer to how do I get there is one sentence long.",
+        "So the standard here is narrow on purpose: close enough to reach without planning, good enough that the trip pays for itself, and described clearly enough that you can decide in about ten seconds.",
+      ],
+    },
+    {
+      tag: "Weekend Pick",
+      title: "One borough plan that feels social without feeling overpacked",
+      summary: "A cultural pick with the station's pacing and mood in mind.",
+      art: "editorial-public-space",
+      bodyParagraphs: [
+        "There is a difference between an event you attend and an event you can arrive at. The first has a start time, an implied commitment, and a social cost if you leave early. The second is ongoing — a market, an outdoor set, a long afternoon in a park — and you can join it for twenty minutes or four hours without anyone tracking which.",
+        "Open-ended gatherings do something structured ones cannot: they let unplanned conversation happen. That is most of what people are actually looking for when they go out. The reason the greenmarket, the park, and the block party keep outperforming ticketed programming as social experiences is that none of them require you to sit facing forward in silence.",
+        "This also makes them easier to say yes to. An event with no fixed end has almost no downside — if it is not working you leave, and nobody registers it. The perceived risk of committing an evening is what kills most plans before they start.",
+        "So this pick leans toward the joinable: something with a wide window, a low floor, and enough happening that showing up alone is comfortable. Those are the plans people remember, mostly because they are the ones people actually keep.",
+      ],
+    },
+    {
+      tag: "Weekend Pick",
+      title: "A music-first pick that still leaves room for the rest of the day",
+      summary: "A recommendation designed around real life, not a full-day commitment.",
+      art: "editorial-music-pulse",
+      bodyParagraphs: [
+        "Most people's weekends are not empty. There is laundry, someone's kid, a shift, a family obligation, and a genuine need to do nothing for a couple of hours. Recommendations written as though the reader has an unclaimed twelve-hour block are the main reason event coverage gets ignored — the advice is fine and the premise is wrong.",
+        "Music has an advantage here because it scales down cleanly. A set is ninety minutes. An outdoor performance can be caught in the middle. A record store listening session takes as long as you give it. Almost nothing about live music requires the whole day unless the format insists on it, which is largely a festival problem rather than a music problem.",
+        "The picks that work, then, are the ones with a clear shape and a defined end. Doors at eight, done by eleven. Two sets in a park between three and five. Something you could put after an ordinary afternoon without rearranging anything, which means it competes with staying home instead of competing with your entire schedule.",
+        "That is the design constraint for this slot: music first, but sized for a real weekend. The recommendation you can actually take is worth more than the one you would have loved in a different life.",
+      ],
+    },
   ],
   nowSpinning: [
-    { tag: "Fresh Drop", title: "New releases built for repeat listens, not reaction", summary: "Selective by design — playable and memorable.", body: "The rail foregrounds tracks that feel like they could actually live on the station.", art: "editorial-music-pulse" },
-    { tag: "Throwback", title: "Vote: which rewind should hit the station harder today?", summary: "A little memory, a little participation.", body: "Throwbacks are one of the easiest ways to make a station feel social — recognition, shared taste, a reason to tap back in tomorrow.", art: "editorial-rewind" },
-    { tag: "Decade Favorite", title: "90s favorites that still carry a whole room", summary: "The records that remain instantly communal.", body: "Decade rails let the station organize memory without flattening it — songs that still feel lived-in and generous.", art: "editorial-rewind" },
+    {
+      tag: "Fresh Drop",
+      title: "New releases built for repeat listens, not reaction",
+      summary: "Selective by design — playable and memorable.",
+      art: "editorial-music-pulse",
+      bodyParagraphs: [
+        "Something on the order of a hundred thousand tracks are now uploaded to streaming services every day. Whatever the exact figure this quarter, the shape of it is not in dispute: no human being, no editorial team, and no station can hear even a rounding error of what gets released. Comprehensiveness stopped being an option some time ago.",
+        "That changes what a music page is for. When supply was limited, the value was access — telling you a record existed. When supply is effectively infinite, the value is refusal. The useful service is not the list of everything; it is a small number of picks from someone willing to leave things out and be accountable for the choice.",
+        "The criterion this rail uses is playability rather than novelty. Could this record actually live in a rotation? Does it survive being followed by something twenty years older? Is there a second listen in it, or was the whole idea audible the first time? Those questions eliminate most of a given week, which is the point.",
+        "What is left is short, and short is the feature. A handful of new records chosen because they earned it beats a scroll of everything that happened to come out, and it is the only version of new-music coverage that respects a listener's time.",
+      ],
+    },
+    {
+      tag: "Throwback",
+      title: "Vote: which rewind should hit the station harder today?",
+      summary: "A little memory, a little participation.",
+      art: "editorial-rewind",
+      bodyParagraphs: [
+        "Musical memory is not evenly distributed across a life. The songs people bond most strongly to cluster around adolescence and early adulthood — researchers call the effect the reminiscence bump, and it shows up consistently: the music you heard between roughly twelve and twenty-two stays more vivid, and more emotionally charged, than anything you encounter later.",
+        "The reasons are partly neurological and partly social. Those years involve a dense run of first experiences, and memory encodes novelty strongly. They are also the period when taste becomes identity — what you listen to is how you signal who you are and who you are with. A song absorbed under those conditions gets filed with the people and places attached to it, which is why hearing it again returns more than the melody.",
+        "Radio has always used this deliberately, and it can be used cynically. Nostalgia programming that treats the past as a comfort product flattens everything into the same warm blur. The alternative is to treat old records as records — played because they are good, in sequence with new music, without the audio equivalent of a sepia filter.",
+        "A vote is the honest version of that. It puts the choice with the people who carry the memory, and it turns a rewind into something the room decided rather than something the station imposed.",
+      ],
+    },
+    {
+      tag: "Decade Favorite",
+      title: "90s favorites that still carry a whole room",
+      summary: "The records that remain instantly communal.",
+      art: "editorial-rewind",
+      bodyParagraphs: [
+        "Decades are a convenient lie and a useful one. Nothing changed on January 1, 1990, and the music people file under the nineties actually spans several distinct movements that had little to do with each other — the sampling era in hip-hop, a golden run in R&B, house and jungle developing on separate tracks, and guitar music going briefly mainstream and then not.",
+        "What those scenes did share was a technological moment. Samplers had become affordable but storage was still expensive, which forced short loops and hard choices. Recording was mostly still analog or hybrid. And crucially, sample clearance law had just tightened after the early-nineties court decisions, so the free-for-all collage of the late eighties gave way to fewer, more deliberate, more cleared sources. You can hear that constraint in the records.",
+        "Constraint is a decent explanation for why so much of it still works in a room. Limited tracks meant arrangements had to be decisive. Expensive studio time meant songs got finished. And the dominance of the dancefloor and the radio single meant records were tested in public before they were released, rather than optimized in private against a chart model.",
+        "So a decade rail is not a nostalgia bin. It is a way of organizing memory without flattening it — playing records that were built under different rules, and noticing which of those rules produced something we lost.",
+      ],
+    },
   ],
   history: [
-    { tag: "Daily Fact", title: "Radio DJs once broke records block by block before charts caught up", summary: "Local stations moved songs through neighborhoods long before national momentum formed.", body: "It's a reminder that local taste has always shaped larger music culture, and that geography is part of what makes community radio memorable.", art: "editorial-station" },
-    { tag: "Daily Fact", title: "Neighborhood record stores used to work like live editorial feeds", summary: "New arrivals, staff picks, and requests created a real-time cultural signal.", body: "Cortelyou Road Radio borrows that idea: selection with a point of view. Good local music media helps listeners make sense of a place through sound.", art: "editorial-rewind" },
+    {
+      tag: "Daily Fact",
+      title: "Radio DJs once broke records block by block before charts caught up",
+      summary: "Local stations moved songs through neighborhoods long before national momentum formed.",
+      art: "editorial-station",
+      bodyParagraphs: [
+        "For most of the twentieth century a hit was assembled city by city. A record would be worked in one market, then another, and national success meant a long sequence of local decisions made by individual disc jockeys who could simply choose to play something. That power was real enough that the industry built an entire shadow economy around influencing it.",
+        "Which is what the payola hearings were about. In 1959 and 1960 Congress investigated undisclosed payments to DJs for airplay, and the fallout ended Alan Freed's career while leaving the broader practice intact in modified form. The lasting consequence was structural: programming authority moved away from individual DJs and toward program directors and, eventually, consultants and centralized playlists.",
+        "The trade was consistency for surprise. Tight formats made stations more predictable and more sellable, and they made it dramatically harder for a single person's enthusiasm to move a record. By the time consolidation accelerated in the late nineties, a large share of American commercial radio was running playlists set well above the level of the local station.",
+        "Which is why the older model is worth remembering rather than romanticizing. It was corruptible and it was arbitrary. It was also the last arrangement in which a neighborhood's taste could travel outward on its own strength, and that is the part community radio is still trying to hold onto.",
+      ],
+    },
+    {
+      tag: "Daily Fact",
+      title: "Neighborhood record stores used to work like live editorial feeds",
+      summary: "New arrivals, staff picks, and requests created a real-time cultural signal.",
+      art: "editorial-rewind",
+      bodyParagraphs: [
+        "Before there was any way to measure listening, the record store counter was the measurement. Shop staff knew what had come in, what was moving, what people were asking for by humming it, and what had been returned. Labels sent promo copies to specific stores precisely because those staff were the fastest available signal about whether something was working.",
+        "That signal was local by construction. A store in Flatbush and a store in Bay Ridge would report different weeks, and both were correct. The information was also two-way: a customer walked in with a question and walked out with a recommendation, which meant taste was transmitted in conversation rather than inferred from behavior.",
+        "The infrastructure that formalized this was retail reporting — a network of stores whose sales were used to build charts, which was accurate in principle and gameable in practice until barcode scanning replaced it in the early nineties. That shift made the numbers honest and quietly deleted the human layer that had been generating the context around them.",
+        "Cortelyou Road Radio borrows the older idea rather than the older technology. Selection with a point of view, made by people who are actually in the neighborhood, offered as a recommendation rather than a ranking. It is a smaller signal than a chart and a considerably more specific one.",
+      ],
+    },
   ],
 };
 
@@ -211,6 +563,21 @@ function setText(id, txt) { const el = document.getElementById(id); if (el && tx
 function setHTML(id, html) { const el = document.getElementById(id); if (el) el.innerHTML = html; }
 
 /* ---------- Story page ---------- */
+// A story's text can arrive three ways:
+//   1. bodyParagraphs: []   - preferred; written or assembled as real paragraphs
+//   2. body with blank-line breaks - hand-written multi-paragraph string
+//   3. body as one blob     - legacy / thin RSS snippet
+// This normalizes all three into an array of paragraphs.
+function storyParagraphs(item) {
+  if (Array.isArray(item.bodyParagraphs) && item.bodyParagraphs.length) {
+    return item.bodyParagraphs.map((p) => String(p).trim()).filter(Boolean);
+  }
+  const raw = String(item.body || item.summary || "").trim();
+  if (!raw) return [];
+  const split = raw.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+  return split.length ? split : [raw];
+}
+
 function renderStory() {
   const p = new URLSearchParams(location.search);
   const name = p.get("section") || "music";
@@ -229,13 +596,18 @@ function renderStory() {
     : "";
   const photoCredit = item.image?.credit ? `<p class="a-credit">Photo: ${item.image.credit}.</p>` : "";
 
+  // Body: stories are written (or assembled) as multiple paragraphs so a page
+  // is a real 30-60 second read instead of a single orphan sentence.
+  const paras = storyParagraphs(item);
+  const bodyHTML = paras.map((p) => `<p>${p}</p>`).join("");
+
   // Reading time + share row + related stories keep readers on the page.
-  const words = String(item.body || item.summary || "").split(/\s+/).filter(Boolean).length;
-  const mins = Math.max(1, Math.round(words / 200));
-  setText("storyRead", `${mins} min read`);
+  const words = paras.join(" ").split(/\s+/).filter(Boolean).length;
+  const secs = Math.max(15, Math.round((words / 230) * 60));
+  setText("storyRead", secs < 60 ? `${secs} sec read` : `${Math.round(secs / 60)} min read`);
 
   const share = shareHTML(location.href, `${item.title} — Cortelyou Road Radio`);
-  setHTML("storyBody", `<p>${item.body || item.summary}</p>${credit}${photoCredit}${share}`);
+  setHTML("storyBody", `${bodyHTML}${credit}${photoCredit}${share}`);
 
   // Related: other items from the same pool.
   const rel = document.getElementById("storyRelated");
