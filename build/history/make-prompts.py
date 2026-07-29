@@ -83,7 +83,9 @@ with open('build/history/IMAGE-PROMPTS.md','w',encoding='utf-8') as f:
     f.write("## Coming up next\n\n")
     for r in order[:30]:
         f.write(f"### {r['date']} — {r['title']}\n")
-        f.write(f"*{r['genre']} · {r['year']}* — {r['story']}\n\n")
+        # Stories are now several paragraphs; the prompt pack only needs the lede.
+        lede = r['story'].split("\n\n")[0]
+        f.write(f"*{r['genre']} · {r['year']}* — {lede}\n\n")
         f.write(f"**Save as:** `{r['save_as']}`\n\n```\n{r['prompt']}\n```\n\n")
     f.write("---\n\n## Full archive\n\n")
     for r in rest:
