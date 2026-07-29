@@ -562,6 +562,32 @@ ${scene}
 </svg>`;
 }
 
+/* --- Real imagery: drop a file in assets/history/ and it replaces the scene ---
+   Naming convention: assets/history/MM-DD.jpg  (also .jpeg .png .webp)
+   Or set "image": {"src": "...", "alt": "...", "credit": "..."} on the entry.
+   If no file is found, the animated scene below stays visible. ------------- */
+function histPhotoCandidates(key, entry) {
+  if (entry && entry.image && entry.image.src) return [entry.image.src];
+  return ["jpg", "jpeg", "png", "webp"].map((x) => `./assets/history/${key}.${x}`);
+}
+function histImgFallback(img) {
+  let list = [];
+  try { list = JSON.parse(img.dataset.rest || "[]"); } catch (e) {}
+  if (list.length) { img.dataset.rest = JSON.stringify(list.slice(1)); img.src = list[0]; }
+  else { img.remove(); }
+}
+function histPhotoHTML(key, entry) {
+  const c = histPhotoCandidates(key, entry);
+  const alt = (entry && entry.image && entry.image.alt) || (entry ? entry.title : "");
+  return `<img class="hist-photo" src="${c[0]}" alt="${String(alt).replace(/"/g, "&quot;")}" loading="lazy"
+    data-rest='${JSON.stringify(c.slice(1))}'
+    onload="this.classList.add('in')" onerror="histImgFallback(this)" />`;
+}
+function histCreditHTML(entry) {
+  const cr = entry && entry.image && entry.image.credit;
+  return cr ? `<p class="hist-credit">Image: ${cr}</p>` : "";
+}
+
 /* --- Version face-off voting (stored on this device) --- */
 function histVoteKey(date) { return "crr-vote-" + date; }
 function histVote(date, side) {
@@ -587,7 +613,7 @@ function histCardHTML(key, entry, opts) {
   const o = opts || {};
   const art = histArt(entry.art, entry.date + entry.title);
   return `<a class="hist-card" href="./music-history.html?d=${key}">
-    <div class="hist-art">${art}<span class="hist-kind">${histKindLabel(entry.kind)}</span></div>
+    <div class="hist-art">${art}${histPhotoHTML(key, entry)}<span class="hist-kind">${histKindLabel(entry.kind)}</span></div>
     <div class="hist-card-body">
       <div class="hist-meta"><span>${histLongDate(key)}</span><span>${entry.genre}</span><span>${entry.year}</span></div>
       <h4>${entry.title}</h4>
@@ -638,7 +664,7 @@ async function renderHistory() {
   const url = location.origin + "/music-history?d=" + key;
   host.innerHTML = `
     <article class="hist-feature">
-      <div class="hist-hero">${histArt(entry.art, entry.date + entry.title)}
+      <div class="hist-hero">${histArt(entry.art, entry.date + entry.title)}${histPhotoHTML(key, entry)}
         <span class="hist-kind big">${histKindLabel(entry.kind)}</span>
       </div>
       <div class="hist-lead">
@@ -647,6 +673,7 @@ async function renderHistory() {
         <p class="hist-story">${entry.story}</p>
         ${histExtraHTML(entry)}
         <div class="hist-facts"><h3>Did you know</h3><ul>${entry.facts.map((f) => `<li>${f}</li>`).join("")}</ul></div>
+        ${histCreditHTML(entry)}
         ${shareHTML(url, entry.title + " — Today in Music History on Cortelyou Road Radio")}
       </div>
     </article>`;
@@ -676,7 +703,7 @@ async function renderHistoryTeaser() {
   if (!entry) return;
   el.innerHTML = `
     <a class="hist-teaser" href="./music-history.html">
-      <div class="hist-art">${histArt(entry.art, entry.date + entry.title)}<span class="hist-kind">${histKindLabel(entry.kind)}</span></div>
+      <div class="hist-art">${histArt(entry.art, entry.date + entry.title)}${histPhotoHTML(key, entry)}<span class="hist-kind">${histKindLabel(entry.kind)}</span></div>
       <div class="hist-teaser-body">
         <span class="kicker">Today in Music History · ${histLongDate(key)}</span>
         <h3>${entry.title}</h3>
