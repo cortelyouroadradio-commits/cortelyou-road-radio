@@ -15,9 +15,13 @@ on:
   workflow_dispatch:
     inputs:
       days_ahead:
-        description: "How many days ahead to fill in"
+        description: "How many days ahead to fill in (ignored while FILL_ALL is on)"
         required: false
         default: "7"
+      max_per_run:
+        description: "How many images to generate this run"
+        required: false
+        default: "40"
 
 permissions:
   contents: write
@@ -38,6 +42,11 @@ jobs:
 
       - name: Generate missing music-history artwork
         env:
+          # FILL_ALL walks the whole 366-day calendar, nearest gaps first, and
+          # fills up to MAX_PER_RUN a day. The archive backfills itself in about
+          # nine days and then this settles into topping up new dates only.
+          FILL_ALL: "1"
+          MAX_PER_RUN: ${{ github.event.inputs.max_per_run || '40' }}
           DAYS_AHEAD: ${{ github.event.inputs.days_ahead || '7' }}
         run: node build/generate-images.mjs
 
