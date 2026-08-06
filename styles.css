@@ -157,6 +157,7 @@ nav.links a[aria-current="page"] { color: var(--text); background: var(--ember-s
 .page-hero > .wrap { position: relative; z-index: 1; }
 .page-hero h1 { font-family:"Archivo"; font-weight: 900; font-size: clamp(38px, 5vw, 62px); line-height: 0.96; margin: 14px 0 14px; letter-spacing: -0.02em; }
 .page-hero p { color: var(--muted); font-size: 17px; max-width: 42rem; }
+.page-hero .c-updated { margin-top: 18px; }
 
 /* ---------- Section blocks ---------- */
 section.block { padding: 54px 0; }
@@ -179,9 +180,54 @@ section.block { padding: 54px 0; }
 .c-card .c-thumb { aspect-ratio: 16/9; background: var(--surface-2); overflow: hidden; }
 .c-card .c-thumb img { width: 100%; height: 100%; object-fit: cover; }
 .c-card .c-body { padding: 20px; }
-.c-tag { color: var(--ember); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 9px; }
+.c-tag {
+  color: var(--ember); font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase; margin-bottom: 9px;
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px;
+}
 .c-via { color: var(--muted-2); text-transform: none; letter-spacing: 0; font-weight: 500; }
-.c-thumb { position: relative; }
+
+/* Dateline. Sits after the outlet credit, separated by a hairline dot so the
+   row reads "CHARTS · via Billboard · 3h ago" without extra markup. */
+.c-date {
+  color: var(--muted-2); text-transform: none; letter-spacing: 0; font-weight: 500;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 8px; margin-left: auto;
+}
+.c-date::before {
+  content: ""; width: 3px; height: 3px; border-radius: 50%;
+  background: currentColor; opacity: 0.5;
+}
+.c-date.is-fresh { color: var(--ember-2); font-weight: 600; }
+
+/* Section freshness stamp, sits in the .head-row next to the "See all" link. */
+.c-updated {
+  display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
+  font-size: 12px; font-weight: 500; color: var(--muted-2);
+  padding: 5px 11px; border-radius: 999px;
+  border: 1px solid var(--line); background: rgba(255,255,255,0.02);
+}
+.c-updated .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--muted-2); }
+.c-updated.is-today { color: var(--text); border-color: var(--line-strong); }
+.c-updated.is-today .dot { background: var(--ember); box-shadow: 0 0 0 0 rgba(255,77,43,0.55); animation: updatedPulse 2.4s ease-out infinite; }
+@keyframes updatedPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255,77,43,0.55); }
+  70%  { box-shadow: 0 0 0 7px rgba(255,77,43,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,77,43,0); }
+}
+.head-row .head-meta { display: inline-flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+
+.c-thumb {
+  position: relative;
+  /* Warm placeholder behind every image: a slow-loading or missing photo reads
+     as part of the design instead of a hole in the grid. */
+  background:
+    radial-gradient(120% 120% at 15% 0%, rgba(255,106,61,0.16), transparent 58%),
+    linear-gradient(150deg, var(--surface-2), var(--bg-soft));
+}
+/* Station artwork stood in for a dead outlet thumbnail — inset it so a logo
+   mark never gets cropped like a photograph. */
+.c-thumb.is-fallback img { object-fit: contain; padding: 14%; opacity: 0.9; }
 .c-credit { position: absolute; bottom: 6px; right: 6px; font-size: 10px; color: #fff; background: rgba(0,0,0,0.55); padding: 2px 6px; border-radius: 6px; letter-spacing: 0; text-transform: none; font-weight: 500; }
 .a-credit { color: var(--muted-2); font-size: 13.5px; margin-top: 18px; }
 .a-credit a { color: var(--ember); }

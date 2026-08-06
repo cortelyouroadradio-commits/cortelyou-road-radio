@@ -426,7 +426,7 @@ const fallbackRecent = [
 ];
 
 /* ---------- Daily rotation + live override ---------- */
-const liveMeta = { generatedAt: null };
+const liveMeta = { generatedAt: null, livePools: new Set() };
 
 async function loadLiveContent() {
   try {
@@ -434,7 +434,10 @@ async function loadLiveContent() {
     if (!res.ok) return;
     const live = await res.json();
     Object.keys(live).forEach((k) => {
-      if (Array.isArray(live[k]) && live[k].length) pools[k] = live[k];
+      if (Array.isArray(live[k]) && live[k].length) {
+        pools[k] = live[k];
+        liveMeta.livePools.add(k);
+      }
     });
     liveMeta.generatedAt = live.generatedAt || null;
   } catch (e) { /* keep built-in pools */ }
@@ -448,10 +451,30 @@ function dayOffset() {
   return todayKey().split("-").reduce((s, n) => s + Number(n), 0);
 }
 
-function itemAt(poolName, index) {
+/**
+ * The pool a section actually renders from.
+ *
+ * Live pools (rebuilt from the feeds every morning) are shown newest-first and
+ * as-is — they already turn over daily, so rotating them would only bury the
+ * freshest story. The built-in editorial pools are evergreen and never change
+ * on their own, so those still rotate by date to keep the page from looking
+ * identical two days running.
+ */
+function poolFor(poolName) {
   const pool = pools[poolName] || [];
-  if (!pool.length) return null;
-  const it = pool[(((dayOffset() + index) % pool.length) + pool.length) % pool.length];
+  if (!liveMeta.livePools.has(poolName)) return { list: pool, rotate: true };
+  const fresh = pool.filter((it) => !isStale(it));
+  // Only drop stale items when enough fresh ones remain to fill the rail.
+  return { list: fresh.length >= Math.min(3, pool.length) ? fresh : pool, rotate: false };
+}
+
+function itemAt(poolName, index) {
+  const { list, rotate } = poolFor(poolName);
+  if (!list.length) return null;
+  const i = rotate
+    ? (((dayOffset() + index) % list.length) + list.length) % list.length
+    : index % list.length;
+  const it = list[i];
   return { ...it, poolName, index, artSrc: it.image?.src || ART(it.art || "editorial-station"), artAlt: it.image?.alt || it.title, artCredit: it.image?.credit || null };
 }
 
@@ -459,14 +482,69 @@ function storyHref(poolName, index) {
   return `./story.html?section=${encodeURIComponent(poolName)}&index=${index}`;
 }
 
+/* ---------- Dates ----------
+   Every card carries a dateline. It is the cheapest possible signal that the
+   page is alive, and without it a reader has no way to tell today's rail from
+   one that quietly stopped updating three weeks ago. Recent items read as
+   "2h ago" so the freshness is unmissable; older ones get a real date. */
+const MINUTE = 60000, HOUR = 3600000, DAY = 86400000;
+
+function parseWhen(value) {
+  if (!value) return null;
+  const d = new Date(value);
+  return Number.isNaN(d.getTime()) ? null : d;
+}
+
+function relativeDate(value) {
+  const d = parseWhen(value);
+  if (!d) return "";
+  const diff = Date.now() - d.getTime();
+  if (diff < 0) return absoluteDate(value);
+  if (diff < 45 * MINUTE) {
+    const m = Math.max(1, Math.round(diff / MINUTE));
+    return `${m}m ago`;
+  }
+  if (diff < 22 * HOUR) return `${Math.round(diff / HOUR)}h ago`;
+  if (diff < 2 * DAY) return "Yesterday";
+  if (diff < 7 * DAY) return `${Math.round(diff / DAY)} days ago`;
+  return absoluteDate(value);
+}
+
+function absoluteDate(value) {
+  const d = parseWhen(value);
+  if (!d) return "";
+  const sameYear = d.getFullYear() === new Date().getFullYear();
+  return d.toLocaleDateString("en-US", sameYear
+    ? { month: "short", day: "numeric" }
+    : { month: "short", day: "numeric", year: "numeric" });
+}
+
+/** True when an item is old enough that showing it undated would mislead. */
+function isStale(item, maxDays = 30) {
+  const d = parseWhen(item && item.publishedAt);
+  return d ? Date.now() - d.getTime() > maxDays * DAY : false;
+}
+
 /* ---------- Card rendering ---------- */
+function dateHTML(item) {
+  const when = item.publishedAt;
+  if (!when) return "";
+  const d = parseWhen(when);
+  if (!d) return "";
+  const fresh = Date.now() - d.getTime() < 2 * DAY ? " is-fresh" : "";
+  return `<time class="c-date${fresh}" datetime="${d.toISOString()}" title="${d.toLocaleString("en-US")}">${relativeDate(when)}</time>`;
+}
 function metaLine(item) {
   const via = item.source ? ` <span class="c-via">via ${item.source}</span>` : "";
-  return `<div class="c-tag">${item.tag}${via}</div>`;
+  return `<div class="c-tag">${item.tag}${via}${dateHTML(item)}</div>`;
 }
 function thumbHTML(item) {
   const cred = item.artCredit ? `<span class="c-credit">${item.artCredit}</span>` : "";
-  return `<div class="c-thumb"><img src="${item.artSrc}" alt="${item.artAlt}" loading="lazy" />${cred}</div>`;
+  // Outlet CDNs occasionally 404 an old thumbnail. Swap in station artwork
+  // rather than leaving a broken frame in the middle of the grid.
+  const fallback = ART("editorial-station");
+  const onerr = `this.onerror=null;this.src='${fallback}';this.closest('.c-thumb').classList.add('is-fallback')`;
+  return `<div class="c-thumb"><img src="${item.artSrc}" alt="${item.artAlt}" loading="lazy" decoding="async" onerror="${onerr}" />${cred}</div>`;
 }
 function cardHTML(item, variant) {
   const href = item.externalUrl || storyHref(item.poolName, item.index);
@@ -588,6 +666,13 @@ function renderStory() {
   const src = item.image?.src || ART(item.art || "editorial-station");
   setHTML("storyHero", `<img src="${src}" alt="${item.image?.alt || item.title}" />`);
   setText("storyTag", item.tag);
+  // Datestamp the story itself, so a shared link is never undated.
+  const tagEl = document.getElementById("storyTag");
+  if (tagEl) {
+    const old = tagEl.parentElement && tagEl.parentElement.querySelector(".c-date");
+    if (old) old.remove();
+    if (item.publishedAt) tagEl.insertAdjacentHTML("afterend", dateHTML(item));
+  }
   setText("storyTitle", item.title);
   document.title = `${item.title} | Cortelyou Road Radio`;
   setText("storyDeck", item.summary);
@@ -1184,11 +1269,38 @@ function setupReveal() {
   setTimeout(() => els.forEach((el) => el.classList.add("in")), 1600);
 }
 
+/* ---------- "Updated" stamps ----------
+   Any element marked [data-updated] gets the build time of content.json, and
+   any [data-updated="<pool>"] gets the newest item in that pool. The point is
+   that a reader can see at a glance that the page was refreshed today rather
+   than having to trust that it was. */
+function renderUpdatedStamps() {
+  document.querySelectorAll("[data-updated]").forEach((el) => {
+    const pool = el.dataset.updated;
+    let when = liveMeta.generatedAt;
+    if (pool) {
+      const list = (pools[pool] || [])
+        .map((it) => parseWhen(it.publishedAt))
+        .filter(Boolean)
+        .sort((a, b) => b - a);
+      if (list.length) when = list[0].toISOString();
+    }
+    const d = parseWhen(when);
+    if (!d) { el.hidden = true; return; }
+    el.hidden = false;
+    const today = d.toDateString() === new Date().toDateString();
+    el.innerHTML = `<span class="dot"></span>Updated ${today ? "today" : absoluteDate(when)}`;
+    el.title = `Last refreshed ${d.toLocaleString("en-US")}`;
+    el.classList.toggle("is-today", today);
+  });
+}
+
 function renderAll() {
   const page = document.body.dataset.page;
   if (page === "story") renderStory();
   else if (page === "history") { renderHistory(); }
   else { renderPools(); renderBriefing(); renderHistoryTeaser(); renderSchedule(); setupReveal(); }
+  renderUpdatedStamps();
 }
 
 /* ---------- In-place navigation (keeps the stream alive) ---------- */

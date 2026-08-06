@@ -11,10 +11,19 @@
  * followed by an original Cortelyou Road Radio context paragraph, so a story
  * is a real 30-60 second read rather than a one-line snippet.
  *
- * The script MERGES: it refreshes the feed-driven pools (music, ditmas,
- * brooklyn) and preserves any hand-curated pools already in content.json
- * (e.g. chart, which has no reliable free feed). If a feed group returns
- * nothing, that pool is left untouched so the site never goes blank.
+ * The script MERGES: it refreshes every feed-driven pool (music, chart,
+ * ditmas, brooklyn) and preserves any hand-curated pool already in
+ * content.json. If a feed group returns nothing, that pool is left untouched
+ * so the site never goes blank.
+ *
+ * FRESHNESS: every pool is age-capped (`maxAgeDays`). Anything older than its
+ * cap is dropped before selection, so a card on the homepage is never quietly
+ * weeks old. The cap relaxes automatically if it would empty a pool.
+ *
+ * CHARTS: the chart pool used to be hand-curated, which meant its cards and
+ * artwork froze in place between manual edits. It is now feed-driven like the
+ * rest — Billboard plus chart-flavoured items filtered out of the music
+ * outlets — so it refreshes daily with the outlet's own current photography.
  *
  * Run:  npm install && npm run build   (writes ../content.json)
  */
@@ -32,7 +41,16 @@ const parser = new Parser({
   customFields: { item: [["media:content", "mediaContent", { keepArray: true }], ["media:thumbnail", "mediaThumbnail", { keepArray: true }], ["content:encoded", "contentEncoded"]] },
 });
 
-/* Feed groups -> site pools. Edit freely. */
+/* Which stories count as "On the charts". Kept deliberately broad so the rail
+   still fills on a slow chart day, and ordered newest-first afterwards. */
+const CHART_MATCH =
+  /\b(hot 100|billboard 200|billboard|chart(s|ed|ing)?|no\.?\s?1\b|number one|debuts? at|tops? the|top (10|ten|40|forty)|first[- ]week|equivalent album units|streaming numbers|sales week|riaa|platinum|gold certification)\b/i;
+
+/* Feed groups -> site pools. Edit freely.
+   - count       : how many items the pool should hold
+   - maxAgeDays  : drop anything older than this before selecting
+   - match       : optional regex an item must hit to qualify
+   - topUpFrom   : if `match` starves the pool, backfill from this pool's items */
 const GROUPS = {
   music: {
     tag: "Music News",
@@ -42,6 +60,23 @@ const GROUPS = {
       { url: "https://pitchfork.com/rss/news/", source: "Pitchfork" },
     ],
     count: 5,
+    maxAgeDays: 10,
+  },
+  chart: {
+    // Deliberately "Charts" rather than "Hot 100": the rail can borrow a
+    // non-Billboard story on a slow day, and a wrong label is worse than a
+    // general one.
+    tag: "Charts",
+    feeds: [
+      { url: "https://www.billboard.com/feed/", source: "Billboard" },
+      { url: "https://consequence.net/feed/", source: "Consequence" },
+      { url: "https://www.stereogum.com/feed/", source: "Stereogum" },
+      { url: "https://pitchfork.com/rss/news/", source: "Pitchfork" },
+    ],
+    count: 3,
+    maxAgeDays: 10,
+    match: CHART_MATCH,
+    topUpFrom: "music",
   },
   ditmas: {
     tag: "Neighborhood",
@@ -51,6 +86,7 @@ const GROUPS = {
       { url: "https://bklyner.com/feed/", source: "Bklyner" },
     ],
     count: 3,
+    maxAgeDays: 30,
   },
   brooklyn: {
     tag: "Brooklyn",
@@ -59,8 +95,13 @@ const GROUPS = {
       { url: "https://www.amny.com/feed/", source: "amNewYork" },
     ],
     count: 4,
+    maxAgeDays: 21,
   },
 };
+
+/* Pools are built in this order so `topUpFrom` can borrow from an
+   already-built pool. */
+const POOL_ORDER = ["music", "chart", "ditmas", "brooklyn"];
 
 function clean(text = "", max = 220) {
   const s = String(text).replace(/<[^>]*>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").replace(/\s+/g, " ").trim();
@@ -230,6 +271,11 @@ function withTimeout(promise, ms) {
   ]);
 }
 
+const DAY_MS = 86400000;
+const ageInDays = (it) =>
+  it.publishedAt ? (Date.now() - new Date(it.publishedAt).getTime()) / DAY_MS : Infinity;
+
+/** Newest-first, de-duplicated, image-bearing items from a group's feeds. */
 async function pull(group, pool) {
   const results = await Promise.allSettled(group.feeds.map((f) => withTimeout(parser.parseURL(f.url), 12000).then((feed) => ({ feed, source: f.source }))));
   let items = [];
@@ -241,27 +287,66 @@ async function pull(group, pool) {
     }
   }
   const seen = new Set();
-  items = items
+  return items
+    // A card without a picture looks broken next to three that have one.
     .filter((it) => it.image && !seen.has(it.title.toLowerCase()) && seen.add(it.title.toLowerCase()))
-    .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
-    .slice(0, group.count);
-  return items;
+    .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
+}
+
+/**
+ * Apply the group's topic filter and age cap, then fill to `count`.
+ *
+ * Both constraints relax rather than starve: if the strict pass cannot fill
+ * the rail we widen the age window, then borrow from `topUpFrom`, then fall
+ * back to the unfiltered feed items. The pool always turns over daily —
+ * that is the whole point — but it never ships short or empty.
+ */
+function select(group, items, borrowed = []) {
+  const cap = group.maxAgeDays || Infinity;
+  const wanted = group.count;
+  const picked = [];
+  const push = (list) => {
+    for (const it of list) {
+      if (picked.length >= wanted) return;
+      if (!picked.some((p) => p.title.toLowerCase() === it.title.toLowerCase())) picked.push(it);
+    }
+  };
+
+  const onTopic = group.match ? items.filter((it) => group.match.test(`${it.title} ${it.summary}`)) : items;
+
+  push(onTopic.filter((it) => ageInDays(it) <= cap));                    // 1. on topic + fresh
+  push(onTopic.filter((it) => ageInDays(it) <= cap * 3));                // 2. on topic, older
+  push(borrowed.filter((it) => ageInDays(it) <= cap));                   // 3. borrowed + fresh
+  push(items.filter((it) => ageInDays(it) <= cap));                      // 4. any + fresh
+  push(items);                                                           // 5. anything we have
+
+  return picked.map((it) => ({ ...it, tag: group.tag }))
+    .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
 }
 
 async function main() {
   let content = {};
   try { content = JSON.parse(await readFile(OUTPUT, "utf8")); } catch { content = {}; }
 
-  for (const [pool, group] of Object.entries(GROUPS)) {
+  const rawByPool = {};
+
+  for (const pool of POOL_ORDER) {
+    const group = GROUPS[pool];
+    if (!group) continue;
     console.log(`Pulling ${pool}...`);
     try {
-      const items = await pull(group, pool);
+      const raw = await pull(group, pool);
+      rawByPool[pool] = raw;
+      const borrowed = group.topUpFrom ? rawByPool[group.topUpFrom] || [] : [];
+      const items = select(group, raw, borrowed);
       if (items.length) {
         content[pool] = items;
         const avg = Math.round(
           items.reduce((n, it) => n + it.bodyParagraphs.join(" ").split(/\s+/).length, 0) / items.length,
         );
-        console.log(`  ${items.length} fresh items (avg ${avg} words / ~${Math.round((avg / 230) * 60)}s read)`);
+        const newest = items[0].publishedAt ? new Date(items[0].publishedAt).toISOString().slice(0, 10) : "undated";
+        const oldest = Math.round(Math.max(...items.map(ageInDays).filter(Number.isFinite)) || 0);
+        console.log(`  ${items.length} items · newest ${newest} · oldest ${oldest}d · avg ${avg} words (~${Math.round((avg / 230) * 60)}s read)`);
       } else {
         console.warn(`  (no items; keeping existing ${pool})`);
       }
