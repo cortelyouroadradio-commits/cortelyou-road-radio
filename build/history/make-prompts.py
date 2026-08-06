@@ -1,3 +1,15 @@
+# Regenerates image-prompts.csv and the human-readable IMAGE-PROMPTS.md pack
+# from music-history.json.
+#
+# NOTE ON THE `prompt` COLUMN — it is LEGACY and no longer used to generate
+# artwork. prompt_for() below builds a prompt from only two fields, `year` and
+# `art`, and never reads the entry's title or story. That is why the Kings
+# Theatre reopening rendered as a generic club floor and every Brooklyn entry
+# drew the identical Victorian street (see the hardcoded [0] in prompt_for).
+#
+# build/generate-images.mjs now derives prompts at generation time from each
+# entry's own subject via build/history/prompt-builder.mjs. This column is kept
+# only so the CSV shape stays stable; edit the .mjs builder instead.
 import json, csv, datetime
 
 d = json.load(open('music-history.json'))

@@ -2,7 +2,13 @@
  * Cortelyou Road Radio — automatic artwork for Today in Music History
  * ------------------------------------------------------------------
  * Looks at the next N days. For any day that has no image yet, it generates
- * one from that entry's prompt and saves it as assets/history/MM-DD.jpg.
+ * one for that entry and saves it as assets/history/MM-DD.jpg.
+ *
+ * The prompt is built at generation time by history/prompt-builder.mjs from the
+ * entry's own title and story, so the artwork depicts that day's actual moment.
+ * The `prompt` column in image-prompts.csv is legacy: it was derived from only
+ * the year and a stock scene keyword, which is why the art used to be generic.
+ * It is ignored unless PROMPT_SOURCE=csv is set.
  *
  * Uses Pollinations.ai: free, no account, no API key, no billing.
  * If a generation fails the day is simply skipped — the site falls back to its
@@ -13,6 +19,7 @@
 import { readFile, writeFile, mkdir, access } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { buildPrompt } from "./history/prompt-builder.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -28,6 +35,9 @@ const FILL_ALL = process.env.FILL_ALL === "1";
 // service for hours unattended. Set MAX_PER_RUN=0 for no cap.
 const MAX_PER_RUN = process.env.MAX_PER_RUN === undefined ? 40 : Number(process.env.MAX_PER_RUN);
 const RETRIES = Number(process.env.RETRIES || 2);
+// "builder" (default) derives the prompt from the entry's title and story.
+// "csv" restores the old year+keyword prompts, kept only as an escape hatch.
+const PROMPT_SOURCE = process.env.PROMPT_SOURCE || "builder";
 const WIDTH = 1600, HEIGHT = 900;
 const MIN_BYTES = 20000;
 
@@ -112,12 +122,14 @@ async function main() {
     if (await hasArt(key)) { skipped++; if (!FILL_ALL) console.log(`· ${key}  already has art`); continue; }
 
     const baseSeed = [...key].reduce((a, c) => a + c.charCodeAt(0), 0) * 7;
+    // Derived from the entry's own subject; see history/prompt-builder.mjs.
+    const prompt = PROMPT_SOURCE === "csv" ? row.prompt : buildPrompt(row);
     process.stdout.write(`▸ ${key}  generating… `);
 
     let ok = false;
     for (let attempt = 0; attempt <= RETRIES && !ok; attempt++) {
       try {
-        const buf = await generate(row.prompt, baseSeed + attempt);
+        const buf = await generate(prompt, baseSeed + attempt);
         await writeFile(join(OUT_DIR, `${key}.jpg`), buf);
         console.log(`ok (${Math.round(buf.length / 1024)} KB) — ${row.title.slice(0, 52)}`);
         made++; ok = true;
