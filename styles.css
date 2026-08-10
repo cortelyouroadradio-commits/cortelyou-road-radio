@@ -544,3 +544,9 @@ footer.site { padding: 54px 0 40px; border-top: 1px solid var(--line); margin-to
      than redefined, so the centring transform can't fight the keyframes. */
   .resume-prompt { left: 16px; right: 16px; transform: none; max-width: none; justify-content: space-between; animation: none; }
 }
+
+/* Songs box: the main input of the playlist form, so give it more room than a
+   standard textarea and a monospace-ish rhythm that suits one-song-per-line. */
+.form-row textarea.songs-field { min-height: 190px; line-height: 1.65; }
+.form-row textarea.songs-field::placeholder { color: var(--muted-2); }
+.field-optional { color: var(--muted-2); font-weight: 400; }
