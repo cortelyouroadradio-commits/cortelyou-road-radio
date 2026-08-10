@@ -517,3 +517,30 @@ footer.site { padding: 54px 0 40px; border-top: 1px solid var(--line); margin-to
   nav.links { display: none; }
   .brand span { display: none; }
 }
+
+/* --- "Resume the live stream?" prompt shown when a mix finishes ----------- */
+.resume-prompt {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: 86px; /* clears the sticky player */
+  z-index: 70;
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  max-width: calc(100vw - 32px);
+  padding: 12px 14px 12px 18px;
+  border: 1px solid var(--line-strong); border-radius: 14px;
+  background: var(--bg-soft);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .55);
+  animation: resume-prompt-in .28s cubic-bezier(.2, .6, .2, 1) both;
+}
+@keyframes resume-prompt-in { from { opacity: 0; transform: translate(-50%, 14px); } to { opacity: 1; transform: translate(-50%, 0); } }
+@media (prefers-reduced-motion: reduce) { .resume-prompt { animation: none; } }
+.resume-prompt-text { font-size: 14px; color: var(--text); }
+.resume-prompt-no {
+  background: none; border: 0; cursor: pointer;
+  color: var(--muted); font-size: 13.5px; padding: 8px 4px;
+}
+.resume-prompt-no:hover { color: var(--text); }
+@media (max-width: 560px) {
+  /* Full-width bar on phones. The entrance animation is dropped here rather
+     than redefined, so the centring transform can't fight the keyframes. */
+  .resume-prompt { left: 16px; right: 16px; transform: none; max-width: none; justify-content: space-between; animation: none; }
+}

@@ -74,9 +74,24 @@
         <a href="https://www.facebook.com/cortelyouroadradio" style="color:var(--ember)">Facebook</a> ·
         <a href="https://www.instagram.com/cortelyouroadradio/" style="color:var(--ember)">Instagram</a>
       </p>
-      <a class="btn-live" href="./ditmas-park.html#playlist-call" style="margin-top:8px;">Submit a playlist</a>
+      <a class="btn-live" href="#playlist-call" style="margin-top:8px;">Submit a playlist</a>
     </div>
   </div>
+</section>
+
+<section class="block wrap" style="padding-top:0;" id="playlist-call">
+  <div class="head-row"><div><span class="kicker">Playlist submissions</span><h2 class="display">Submit your playlist</h2></div></div>
+  <p style="color:var(--muted);max-width:40rem;margin-bottom:22px;">Send one playlist and we may put it on air. Neighbors, local shops, institutions and DJs all welcome — tell us what your block sounds like.</p>
+  <form name="playlist-submissions" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks" class="form-card">
+    <input type="hidden" name="form-name" value="playlist-submissions" />
+    <p hidden aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+    <div class="form-row"><label for="an">Your name</label><input id="an" name="name" required /></div>
+    <div class="form-row"><label for="ae">Your email</label><input id="ae" name="email" type="email" required /></div>
+    <div class="form-row"><label for="ab">Your block or area</label><input id="ab" name="block" placeholder="Stratford &amp; Cortelyou" /></div>
+    <div class="form-row"><label for="al">Playlist link</label><input id="al" name="playlist" type="url" placeholder="https://" required /></div>
+    <div class="form-row"><label for="anote">What does your block sound like?</label><textarea id="anote" name="note"></textarea></div>
+    <button class="btn-live" type="submit">Submit your playlist</button>
+  </form>
 </section>
 
 <footer class="site">

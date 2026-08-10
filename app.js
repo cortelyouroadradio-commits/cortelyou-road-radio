@@ -593,20 +593,342 @@ function splitTrack(raw) {
 const audio = document.getElementById("radioStream");
 let playing = false;
 
-function setPlaying(on) {
+/* ---------------------------------------------------------------------------
+   Resilient live-stream player.
+
+   A bare <audio src="…/listen"> holds one long-lived HTTP connection to the
+   Icecast endpoint. When that connection dies — carrier handoff, wifi blip,
+   phone screen lock, laptop sleep, CDN edge recycling the socket — the element
+   fires "error"/"stalled"/"ended" and simply stops. Nothing reconnects it, and
+   because "pause" never fires the UI keeps claiming it is playing while the
+   listener hears silence. That is the drop-out listeners are reporting.
+
+   The logic below tracks the *intended* state, watches for every way the
+   stream can die (including silent stalls that emit no event at all), and
+   reconnects with backoff. Reconnects must use a fresh URL — browsers will
+   otherwise happily re-serve the dead buffered response — so a cache-busting
+   parameter is appended each time.
+--------------------------------------------------------------------------- */
+
+const STREAM_PRIMARY = "https://streamer.radio.co/s82969a5e0/listen"; // MP3 192k
+const STREAM_FALLBACK = "https://streamer.radio.co/s82969a5e0/low";   // AAC 64k
+const RECONNECT_BASE_MS = 1000;
+const RECONNECT_MAX_MS = 15000;
+const FALLBACK_AFTER_ATTEMPTS = 3; // drop to the low-bitrate output after this many failures
+const WATCHDOG_INTERVAL_MS = 5000;
+const STALL_TOLERANCE_MS = 12000;  // no audible progress for this long => treat as dead
+
+let wantPlaying = false;      // what the listener asked for
+let reconnectAttempts = 0;
+let reconnectTimer = null;
+let watchdogTimer = null;
+let lastProgressAt = 0;
+let lastCurrentTime = 0;
+let useFallbackStream = false;
+let rebuilding = false;       // true while we are deliberately tearing the stream down
+
+function streamUrl() {
+  const base = useFallbackStream ? STREAM_FALLBACK : STREAM_PRIMARY;
+  return base + "?_=" + Date.now();
+}
+
+function setPlaying(on, statusOverride) {
   playing = on;
   document.querySelectorAll(".js-listen-label").forEach((s) => { s.textContent = on ? "Pause" : "Listen Live"; });
   document.querySelectorAll(".eq").forEach((e) => e.classList.toggle("paused", !on));
   const st = document.getElementById("stickyStatus");
-  if (st) st.textContent = on ? "Playing" : "Paused";
+  if (st) st.textContent = statusOverride || (on ? "Playing" : "Paused");
   const sp = document.getElementById("stickyPlayer");
   if (sp) sp.hidden = false;
 }
 
+function markProgress() {
+  lastProgressAt = Date.now();
+  reconnectAttempts = 0;
+}
+
+function clearReconnect() {
+  if (reconnectTimer) { clearTimeout(reconnectTimer); reconnectTimer = null; }
+}
+
+/* Tear the connection down and open a brand new one. */
+async function reconnectStream(immediate) {
+  if (!audio || !wantPlaying) return;
+  if (reconnectTimer && !immediate) return; // one attempt in flight is enough
+  clearReconnect();
+
+  const delay = immediate
+    ? 0
+    : Math.min(RECONNECT_BASE_MS * Math.pow(2, reconnectAttempts), RECONNECT_MAX_MS);
+  reconnectAttempts += 1;
+
+  // A sustained failure on the 192k MP3 usually means the listener's
+  // connection cannot hold it. Step down to the 64k AAC output.
+  if (reconnectAttempts > FALLBACK_AFTER_ATTEMPTS && !useFallbackStream) {
+    useFallbackStream = true;
+  }
+
+  setPlaying(true, "Reconnecting…");
+
+  reconnectTimer = setTimeout(async () => {
+    reconnectTimer = null;
+    if (!wantPlaying) return;
+    try {
+      // Our own teardown raises "pause"/"emptied"; suppress the handlers so
+      // they don't read it as another failure and pile up attempts.
+      rebuilding = true;
+      audio.pause();
+      audio.src = streamUrl();
+      audio.load();
+      const p = audio.play();
+      rebuilding = false;
+      await p;
+      lastProgressAt = Date.now();
+      lastCurrentTime = 0;
+    } catch (e) {
+      rebuilding = false;
+      // Autoplay policy or still offline — queue another attempt.
+      reconnectStream(false);
+    }
+  }, delay);
+}
+
+/* Catches silent stalls: the element reports no error, but currentTime
+   stops advancing because the socket is dead. */
+function startWatchdog() {
+  if (watchdogTimer) return;
+  watchdogTimer = setInterval(() => {
+    if (!audio || !wantPlaying || reconnectTimer) return;
+    if (audio.paused) return;
+    if (audio.currentTime > lastCurrentTime + 0.05) {
+      lastCurrentTime = audio.currentTime;
+      markProgress();
+      if (playing) setPlaying(true);
+      return;
+    }
+    if (Date.now() - lastProgressAt > STALL_TOLERANCE_MS) reconnectStream(true);
+  }, WATCHDOG_INTERVAL_MS);
+}
+
+function stopWatchdog() {
+  if (watchdogTimer) { clearInterval(watchdogTimer); watchdogTimer = null; }
+}
+
+function attachStreamRecovery() {
+  if (!audio) return;
+
+  audio.addEventListener("play", () => { wantPlaying = true; markProgress(); startWatchdog(); setPlaying(true); });
+  audio.addEventListener("playing", () => { markProgress(); setPlaying(true); });
+  audio.addEventListener("timeupdate", markProgress);
+  audio.addEventListener("progress", markProgress);
+
+  audio.addEventListener("pause", () => {
+    if (rebuilding) return; // our own teardown, not a failure
+    // Only a real listener-initiated pause should stop things. A pause raised
+    // while we still intend to play means the stream fell over.
+    if (wantPlaying) { reconnectStream(false); return; }
+    stopWatchdog();
+    setPlaying(false);
+  });
+
+  // Unambiguous deaths — reconnect straight away. Deliberately NOT listening to
+  // "suspend", "emptied" or "abort": those fire during healthy playback and are
+  // also raised by our own reconnect, which would send it into a loop.
+  ["error", "ended"].forEach((evt) => {
+    audio.addEventListener(evt, () => { if (wantPlaying && !rebuilding) reconnectStream(false); });
+  });
+
+  // "stalled" and "waiting" are ambiguous — the browser may still have buffer
+  // to play through, and reconnecting would cut off audible audio for nothing.
+  // Show the state, then let the watchdog reconnect only if nothing recovers.
+  ["stalled", "waiting"].forEach((evt) => {
+    audio.addEventListener(evt, () => { if (wantPlaying) setPlaying(true, "Buffering…"); });
+  });
+
+  // Returning from a locked screen or a backgrounded tab is the single most
+  // common drop-out on mobile: verify the stream actually survived.
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState !== "visible" || !wantPlaying) return;
+    if (audio.paused || Date.now() - lastProgressAt > STALL_TOLERANCE_MS) reconnectStream(true);
+  });
+
+  window.addEventListener("online", () => { if (wantPlaying) reconnectStream(true); });
+  window.addEventListener("offline", () => { if (wantPlaying) setPlaying(true, "Reconnecting…"); });
+}
+
 async function togglePlay() {
   if (!audio) return;
-  if (playing) { audio.pause(); return; }
-  try { await audio.play(); } catch (e) { setPlaying(false); }
+
+  if (wantPlaying) {
+    wantPlaying = false;
+    clearReconnect();
+    stopWatchdog();
+    audio.pause();
+    setPlaying(false);
+    return;
+  }
+
+  // One sound source at a time: starting the stream stops any playing mix.
+  stopActiveMix(false);
+  dismissResumePrompt();
+
+  wantPlaying = true;
+  reconnectAttempts = 0;
+  useFallbackStream = false;
+  audio.src = streamUrl(); // always open a fresh connection, never a stale one
+  try {
+    await audio.play();
+    markProgress();
+    startWatchdog();
+  } catch (e) {
+    wantPlaying = false;
+    setPlaying(false);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Single-source audio bus.
+
+   The live stream and the mixes are two independent players, so without a
+   referee they happily talk over each other: starting a mix used to pause the
+   stream only on the card's very first click, and hitting "Listen Live" while
+   a mix was running did nothing to the mix at all. Everything audible now goes
+   through here, and only one source is ever allowed to hold the floor.
+
+   Mixes run through the YouTube IFrame API rather than a bare autoplay iframe
+   so we can actually observe when one starts, stops or ends.
+--------------------------------------------------------------------------- */
+
+const YT_IFRAME_API = "https://www.youtube.com/iframe_api";
+let ytApiPromise = null;
+let activeMix = null;                  // { host, player, title }
+let streamHeldForMix = false;          // stream was playing when a mix took over
+
+function loadYouTubeApi() {
+  if (window.YT && window.YT.Player) return Promise.resolve();
+  if (ytApiPromise) return ytApiPromise;
+  ytApiPromise = new Promise((resolve, reject) => {
+    const prev = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => { if (typeof prev === "function") prev(); resolve(); };
+    const s = document.createElement("script");
+    s.src = YT_IFRAME_API;
+    s.async = true;
+    s.onerror = () => { ytApiPromise = null; reject(new Error("yt api")); };
+    document.head.appendChild(s);
+  });
+  return ytApiPromise;
+}
+
+/* Hand the floor to a mix: park the live stream and remember whether it was on. */
+function yieldStreamToMix() {
+  if (!audio) return;
+  if (wantPlaying) streamHeldForMix = true;
+  wantPlaying = false;   // stops the reconnect logic from dragging the stream back
+  clearReconnect();
+  stopWatchdog();
+  try { audio.pause(); } catch (e) { /* nothing playing */ }
+  setPlaying(false);
+}
+
+/* Stop whatever mix is running. `offerResume` controls whether the listener is
+   asked about the live stream afterwards. */
+function stopActiveMix(offerResume) {
+  if (!activeMix) return;
+  const held = streamHeldForMix;
+  try { activeMix.player && activeMix.player.stopVideo && activeMix.player.stopVideo(); } catch (e) { /* already gone */ }
+  try { activeMix.player && activeMix.player.destroy && activeMix.player.destroy(); } catch (e) { /* already gone */ }
+  if (activeMix.host) delete activeMix.host.dataset.on;
+  activeMix = null;
+  streamHeldForMix = false;
+  if (offerResume && held) showResumePrompt();
+}
+
+async function openMix(host) {
+  const videoId = host.dataset.yt;
+  if (!videoId) return;
+
+  // Only one mix at a time, and never alongside the stream.
+  if (activeMix && activeMix.host !== host) stopActiveMix(false);
+  dismissResumePrompt();
+  yieldStreamToMix();
+
+  host.dataset.on = "1";
+  const mount = document.createElement("div");
+  host.textContent = "";
+  host.appendChild(mount);
+
+  try {
+    await loadYouTubeApi();
+  } catch (e) {
+    // API blocked (extension, network). Fall back to a plain autoplay iframe —
+    // the stream is already parked, we just can't detect the mix ending.
+    const f = document.createElement("iframe");
+    f.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0&playsinline=1";
+    f.title = host.dataset.mixTitle || "Cortelyou Road Radio mix";
+    f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    f.allowFullscreen = true;
+    mount.replaceWith(f);
+    activeMix = { host, player: null, title: f.title };
+    return;
+  }
+
+  const player = new window.YT.Player(mount, {
+    videoId,
+    playerVars: { autoplay: 1, rel: 0, playsinline: 1 },
+    events: {
+      onReady: (e) => { try { e.target.playVideo(); } catch (err) { /* user will press play */ } },
+      onStateChange: (e) => {
+        const S = window.YT.PlayerState;
+        // A mix starting (including a manual replay) always parks the stream.
+        if (e.data === S.PLAYING) { dismissResumePrompt(); yieldStreamToMix(); }
+        if (e.data === S.ENDED) {
+          const held = streamHeldForMix;
+          if (activeMix && activeMix.host) delete activeMix.host.dataset.on;
+          activeMix = null;
+          streamHeldForMix = false;
+          if (held) showResumePrompt();
+        }
+      },
+    },
+  });
+
+  activeMix = { host, player, title: host.dataset.mixTitle || "" };
+}
+
+/* --- "Mix finished — resume the live stream?" prompt --------------------- */
+
+function dismissResumePrompt() {
+  const el = document.getElementById("resumeStreamPrompt");
+  if (el) el.remove();
+}
+
+function showResumePrompt() {
+  dismissResumePrompt();
+  const bar = document.createElement("div");
+  bar.id = "resumeStreamPrompt";
+  bar.className = "resume-prompt";
+  bar.setAttribute("role", "status");
+  bar.innerHTML =
+    '<span class="resume-prompt-text">Mix finished — resume the live stream?</span>' +
+    '<button type="button" class="btn-live resume-prompt-yes">Resume</button>' +
+    '<button type="button" class="resume-prompt-no" aria-label="Dismiss">Not now</button>';
+  bar.querySelector(".resume-prompt-yes").addEventListener("click", () => {
+    dismissResumePrompt();
+    if (!wantPlaying) togglePlay();
+  });
+  bar.querySelector(".resume-prompt-no").addEventListener("click", dismissResumePrompt);
+  document.body.appendChild(bar);
+  setTimeout(() => { if (document.getElementById("resumeStreamPrompt") === bar) bar.remove(); }, 30000);
+}
+
+/* Mix cards are re-inserted on every SPA navigation, so bind once by delegation. */
+function setupMixPlayers() {
+  document.addEventListener("click", (e) => {
+    const host = e.target.closest ? e.target.closest(".mix-player[data-yt]") : null;
+    if (!host || host.dataset.on) return;
+    e.preventDefault();
+    openMix(host);
+  });
 }
 
 async function fetchMeta() {
@@ -1339,7 +1661,16 @@ async function spaNavigate(url, push) {
   if (push) history.pushState({}, "", url);
   updateNavActive();
   renderAll();
-  setPlaying(playing);
+
+  // Navigating away tears the mix iframe out of the DOM, which silently kills
+  // playback. Treat that the same as the mix ending so the listener still gets
+  // offered the live stream back.
+  if (activeMix && activeMix.host && !document.contains(activeMix.host)) {
+    stopActiveMix(true);
+  }
+
+  // Don't let a page swap relabel a stream that is mid-reconnect as "Playing".
+  setPlaying(playing, wantPlaying && audio && audio.paused ? "Reconnecting…" : undefined);
   fetchMeta();
 
   const hash = new URL(url, location.href).hash;
@@ -1390,9 +1721,9 @@ function setupNavigation() {
 
 async function init() {
   if (audio) {
-    audio.addEventListener("play", () => setPlaying(true));
-    audio.addEventListener("pause", () => setPlaying(false));
+    attachStreamRecovery();
   }
+  setupMixPlayers();
   setupNavigation();
   setPlaying(false);
 

@@ -69,9 +69,11 @@
 <section class="block wrap" style="padding-top:0;" id="playlist-call">
   <div class="head-row"><div><span class="kicker">Neighborhood playlist call</span><h2 class="display">What does your block sound like?</h2></div></div>
   <p style="color:var(--muted);max-width:40rem;margin-bottom:22px;">Send one neighborhood playlist and we may put it on air. Local shops and institutions welcome.</p>
-  <form name="ditmas-playlist-call" method="POST" data-netlify="true" action="/thanks" class="form-card">
-    <input type="hidden" name="form-name" value="ditmas-playlist-call" />
+  <form name="playlist-submissions" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks" class="form-card">
+    <input type="hidden" name="form-name" value="playlist-submissions" />
+    <p hidden aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
     <div class="form-row"><label for="pn">Your name</label><input id="pn" name="name" required /></div>
+    <div class="form-row"><label for="pe">Your email</label><input id="pe" name="email" type="email" required /></div>
     <div class="form-row"><label for="pb">Your block or area</label><input id="pb" name="block" placeholder="Stratford &amp; Cortelyou" /></div>
     <div class="form-row"><label for="pl">Playlist link</label><input id="pl" name="playlist" type="url" placeholder="https://" required /></div>
     <div class="form-row"><label for="pnote">What does your block sound like?</label><textarea id="pnote" name="note"></textarea></div>
