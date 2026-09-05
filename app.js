@@ -613,19 +613,25 @@ let playing = false;
 const STREAM_PRIMARY = "https://streamer.radio.co/s82969a5e0/listen"; // MP3 192k
 const STREAM_FALLBACK = "https://streamer.radio.co/s82969a5e0/low";   // AAC 64k
 const RECONNECT_BASE_MS = 1000;
-const RECONNECT_MAX_MS = 15000;
+const RECONNECT_MAX_MS = 30000;
+const MAX_RECONNECT_ATTEMPTS = 8;  // then stop hammering and ask the listener
 const FALLBACK_AFTER_ATTEMPTS = 3; // drop to the low-bitrate output after this many failures
 const WATCHDOG_INTERVAL_MS = 5000;
 const STALL_TOLERANCE_MS = 12000;  // no audible progress for this long => treat as dead
+const STABLE_PLAYBACK_MS = 10000;  // uninterrupted audio for this long => a healthy connection
+const MAX_RESUME_ATTEMPTS = 3;     // gentle resumes before rebuilding the connection
 
 let wantPlaying = false;      // what the listener asked for
 let reconnectAttempts = 0;
+let resumeAttempts = 0;
 let reconnectTimer = null;
+let reconnecting = false;     // an attempt is in flight, timer already cleared or not
 let watchdogTimer = null;
 let lastProgressAt = 0;
 let lastCurrentTime = 0;
+let playingSince = 0;         // start of the current uninterrupted run of audio
 let useFallbackStream = false;
-let rebuilding = false;       // true while we are deliberately tearing the stream down
+let teardownGuard = 0;        // > 0 while our own teardown events are still draining
 
 function streamUrl() {
   const base = useFallbackStream ? STREAM_FALLBACK : STREAM_PRIMARY;
@@ -642,20 +648,45 @@ function setPlaying(on, statusOverride) {
   if (sp) sp.hidden = false;
 }
 
+/* Progress means audio is actually reaching the listener. Only a *sustained*
+   run of it clears the failure counters. Clearing them on the first "playing"
+   event was the bug behind the endless retry: an attempt that produced one
+   event before dying again reset the backoff, so a stream that could not play
+   retried roughly once a second, forever, with the UI stuck on "Reconnecting". */
 function markProgress() {
-  lastProgressAt = Date.now();
-  reconnectAttempts = 0;
+  const now = Date.now();
+  lastProgressAt = now;
+  if (!playingSince) playingSince = now;
+  if (now - playingSince > STABLE_PLAYBACK_MS) {
+    reconnectAttempts = 0;
+    resumeAttempts = 0;
+  }
 }
+
+function markUnstable() { playingSince = 0; }
 
 function clearReconnect() {
   if (reconnectTimer) { clearTimeout(reconnectTimer); reconnectTimer = null; }
+  reconnecting = false;
 }
+
+/* Media events are queued as tasks: pause/emptied/abort raised by our own
+   teardown are dispatched *after* the function that caused them has returned.
+   A flag set and cleared synchronously around the teardown is therefore always
+   back to false by the time they land, which is why the old guard suppressed
+   nothing and every reconnect stacked a phantom second one on top of itself.
+   Hold the guard open across a few task turns instead. */
+function beginTeardown() { teardownGuard += 1; }
+function endTeardown() { setTimeout(() => { teardownGuard = Math.max(0, teardownGuard - 1); }, 400); }
 
 /* Tear the connection down and open a brand new one. */
 async function reconnectStream(immediate) {
   if (!audio || !wantPlaying) return;
-  if (reconnectTimer && !immediate) return; // one attempt in flight is enough
+  if (reconnecting && !immediate) return; // one attempt in flight is enough
+  if (reconnectAttempts >= MAX_RECONNECT_ATTEMPTS) { giveUp(); return; }
   clearReconnect();
+  reconnecting = true;
+  markUnstable();
 
   const delay = immediate
     ? 0
@@ -672,25 +703,59 @@ async function reconnectStream(immediate) {
 
   reconnectTimer = setTimeout(async () => {
     reconnectTimer = null;
-    if (!wantPlaying) return;
+    if (!wantPlaying) { reconnecting = false; return; }
+    beginTeardown();
     try {
-      // Our own teardown raises "pause"/"emptied"; suppress the handlers so
-      // they don't read it as another failure and pile up attempts.
-      rebuilding = true;
       audio.pause();
       audio.src = streamUrl();
       audio.load();
-      const p = audio.play();
-      rebuilding = false;
-      await p;
+      await audio.play();
       lastProgressAt = Date.now();
       lastCurrentTime = 0;
+      playingSince = 0;
+      reconnecting = false;
     } catch (e) {
-      rebuilding = false;
-      // Autoplay policy or still offline — queue another attempt.
-      reconnectStream(false);
+      reconnecting = false;
+      // NotAllowedError means the browser wants a fresh user gesture. Retrying
+      // on our own can never satisfy that, so ask rather than loop.
+      if (e && e.name === "NotAllowedError") giveUp();
+      else reconnectStream(false);
+    } finally {
+      endTeardown();
     }
   }, delay);
+}
+
+/* Out of attempts: stop retrying, say so plainly, and give the listener one tap
+   back. Silence with a spinner is worse than silence with a button. */
+function giveUp() {
+  clearReconnect();
+  stopWatchdog();
+  wantPlaying = false;
+  try { audio.pause(); } catch (e) { /* nothing playing */ }
+  setPlaying(false, "Stream interrupted");
+  showStreamRetryPrompt();
+}
+
+function showStreamRetryPrompt() {
+  dismissResumePrompt();
+  const bar = document.createElement("div");
+  bar.id = "resumeStreamPrompt";
+  bar.className = "resume-prompt";
+  bar.setAttribute("role", "status");
+  bar.innerHTML =
+    '<span class="resume-prompt-text">The live stream was interrupted.</span>' +
+    '<button type="button" class="btn-live resume-prompt-yes">Reconnect</button>' +
+    '<button type="button" class="resume-prompt-no" aria-label="Dismiss">Not now</button>';
+  bar.querySelector(".resume-prompt-yes").addEventListener("click", () => {
+    dismissResumePrompt();
+    reconnectAttempts = 0;
+    resumeAttempts = 0;
+    useFallbackStream = false;
+    if (!wantPlaying) togglePlay();
+  });
+  bar.querySelector(".resume-prompt-no").addEventListener("click", dismissResumePrompt);
+  document.body.appendChild(bar);
 }
 
 /* Catches silent stalls: the element reports no error, but currentTime
@@ -698,7 +763,7 @@ async function reconnectStream(immediate) {
 function startWatchdog() {
   if (watchdogTimer) return;
   watchdogTimer = setInterval(() => {
-    if (!audio || !wantPlaying || reconnectTimer) return;
+    if (!audio || !wantPlaying || reconnecting) return;
     if (audio.paused) return;
     if (audio.currentTime > lastCurrentTime + 0.05) {
       lastCurrentTime = audio.currentTime;
@@ -706,7 +771,7 @@ function startWatchdog() {
       if (playing) setPlaying(true);
       return;
     }
-    if (Date.now() - lastProgressAt > STALL_TOLERANCE_MS) reconnectStream(true);
+    if (Date.now() - lastProgressAt > STALL_TOLERANCE_MS) { markUnstable(); reconnectStream(true); }
   }, WATCHDOG_INTERVAL_MS);
 }
 
@@ -714,31 +779,63 @@ function stopWatchdog() {
   if (watchdogTimer) { clearInterval(watchdogTimer); watchdogTimer = null; }
 }
 
+function setupMediaSession() {
+  if (!("mediaSession" in navigator)) return;
+  try {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: "Cortelyou Road Radio — Live",
+      artist: "Brooklyn",
+      album: "Cortelyou Road Radio",
+      artwork: [{ src: location.origin + "/assets/logo.png", sizes: "512x512", type: "image/png" }]
+    });
+    navigator.mediaSession.setActionHandler("play", () => { if (!wantPlaying) togglePlay(); });
+    navigator.mediaSession.setActionHandler("pause", () => { if (wantPlaying) togglePlay(); });
+    navigator.mediaSession.setActionHandler("stop", () => { if (wantPlaying) togglePlay(); });
+  } catch (e) { /* not supported here */ }
+}
+
 function attachStreamRecovery() {
   if (!audio) return;
 
-  audio.addEventListener("play", () => { wantPlaying = true; markProgress(); startWatchdog(); setPlaying(true); });
+  audio.addEventListener("play", () => { wantPlaying = true; lastProgressAt = Date.now(); startWatchdog(); setPlaying(true); });
   audio.addEventListener("playing", () => { markProgress(); setPlaying(true); });
   audio.addEventListener("timeupdate", markProgress);
   audio.addEventListener("progress", markProgress);
 
+  /* A pause we did not ask for is NOT automatically a dead connection. The OS
+     parks media for an incoming call, another app taking audio focus, a
+     Bluetooth handoff, screen lock, or a browser's background power saving.
+     Rebuilding the stream is the wrong answer to every one of those, and on
+     mobile the rebuilt play() has no user gesture behind it, so it is rejected
+     and the old code looped on that rejection indefinitely.
+
+     So: while the page is hidden, do not fight the device at all. While it is
+     visible, try the cheap thing first - resume the connection we already have
+     - and only rebuild if that fails. */
   audio.addEventListener("pause", () => {
-    if (rebuilding) return; // our own teardown, not a failure
-    // Only a real listener-initiated pause should stop things. A pause raised
-    // while we still intend to play means the stream fell over.
-    if (wantPlaying) { reconnectStream(false); return; }
-    stopWatchdog();
-    setPlaying(false);
+    if (teardownGuard > 0) return;           // our own teardown, not a failure
+    if (!wantPlaying) { stopWatchdog(); setPlaying(false); return; }
+    markUnstable();
+    if (document.visibilityState !== "visible") {
+      setPlaying(true, "Paused by your device");
+      return;
+    }
+    resumeAttempts += 1;
+    if (resumeAttempts > MAX_RESUME_ATTEMPTS) { reconnectStream(false); return; }
+    setPlaying(true, "Reconnecting…");
+    audio.play().catch(() => reconnectStream(false));
   });
 
-  // Unambiguous deaths — reconnect straight away. Deliberately NOT listening to
+  // Unambiguous deaths - reconnect straight away. Deliberately NOT listening to
   // "suspend", "emptied" or "abort": those fire during healthy playback and are
   // also raised by our own reconnect, which would send it into a loop.
   ["error", "ended"].forEach((evt) => {
-    audio.addEventListener(evt, () => { if (wantPlaying && !rebuilding) reconnectStream(false); });
+    audio.addEventListener(evt, () => {
+      if (wantPlaying && teardownGuard === 0) { markUnstable(); reconnectStream(false); }
+    });
   });
 
-  // "stalled" and "waiting" are ambiguous — the browser may still have buffer
+  // "stalled" and "waiting" are ambiguous - the browser may still have buffer
   // to play through, and reconnecting would cut off audible audio for nothing.
   // Show the state, then let the watchdog reconnect only if nothing recovers.
   ["stalled", "waiting"].forEach((evt) => {
@@ -746,14 +843,20 @@ function attachStreamRecovery() {
   });
 
   // Returning from a locked screen or a backgrounded tab is the single most
-  // common drop-out on mobile: verify the stream actually survived.
+  // common drop-out on mobile: verify the stream actually survived, and prefer
+  // resuming the existing connection over rebuilding one that may be healthy.
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState !== "visible" || !wantPlaying) return;
-    if (audio.paused || Date.now() - lastProgressAt > STALL_TOLERANCE_MS) reconnectStream(true);
+    if (audio.paused) { resumeAttempts = 0; audio.play().catch(() => reconnectStream(true)); return; }
+    if (Date.now() - lastProgressAt > STALL_TOLERANCE_MS) reconnectStream(true);
   });
 
-  window.addEventListener("online", () => { if (wantPlaying) reconnectStream(true); });
+  window.addEventListener("online", () => {
+    if (wantPlaying) { reconnectAttempts = 0; resumeAttempts = 0; reconnectStream(true); }
+  });
   window.addEventListener("offline", () => { if (wantPlaying) setPlaying(true, "Reconnecting…"); });
+
+  setupMediaSession();
 }
 
 async function togglePlay() {
@@ -774,7 +877,11 @@ async function togglePlay() {
 
   wantPlaying = true;
   reconnectAttempts = 0;
+  resumeAttempts = 0;
   useFallbackStream = false;
+  lastCurrentTime = 0;
+  playingSince = 0;
+  lastProgressAt = Date.now();
   audio.src = streamUrl(); // always open a fresh connection, never a stale one
   try {
     await audio.play();
