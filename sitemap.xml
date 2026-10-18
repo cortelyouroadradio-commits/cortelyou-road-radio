@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://cortelyouroadradio.com/</loc>
     <lastmod>2026-07-29</lastmod>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://cortelyouroadradio.com/mixes</loc>
-    <lastmod>2026-07-29</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -59,5 +59,117 @@
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cortelyouroadradio.com/mix/old-school-reggae-mix</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/r9jey6x2fgk/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Old School Reggae Mix</video:title>
+      <video:description>Old school reggae DJ mix: roots, lovers rock and 90s dancehall from Bob Marley, Shaggy, Gregory Isaacs, Sister Nancy, Shabba Ranks and more. Full tracklist.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/r9jey6x2fgk</video:player_loc>
+      <video:duration>1584</video:duration>
+      <video:publication_date>2026-09-27T13:55:56-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://cortelyouroadradio.com/mix/soft-rock-mix</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/axX6APJI2h8/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>The Best Soft Rock Mix Ever</video:title>
+      <video:description>58-minute soft rock DJ mix of 70s, 80s, 90s and 2000s hits from Eagles, Elton John, Heart, Styx, The Cranberries and Maroon 5. Full tracklist inside.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/axX6APJI2h8</video:player_loc>
+      <video:duration>3506</video:duration>
+      <video:publication_date>2026-08-21T19:42:03-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://cortelyouroadradio.com/mix/70s-disco-funk-mix</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/2jP-jh3hBio/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>70s Disco Funk</video:title>
+      <video:description>52-minute 70s disco funk DJ mix with Bee Gees, Chic, Chaka Khan, Kool &amp; The Gang, ABBA and KC &amp; The Sunshine Band. Nonstop, no dead air.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/2jP-jh3hBio</video:player_loc>
+      <video:duration>3121</video:duration>
+      <video:publication_date>2026-08-13T09:57:09-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://cortelyouroadradio.com/mix/hip-hop-through-the-years-part-2</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/i-q_t6aChe8/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Hip Hop Through the Years Part 2</video:title>
+      <video:description>Part 2 of Hip Hop Through the Years: 55 minutes from Eric B. &amp; Rakim and Big Daddy Kane to Missy Elliott, Kanye West and Cardi B. Full tracklist.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/i-q_t6aChe8</video:player_loc>
+      <video:duration>3310</video:duration>
+      <video:publication_date>2026-08-08T10:46:16-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://cortelyouroadradio.com/mix/hip-hop-through-the-years-part-1</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/k-bObrQMU4U/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Hip Hop Through the Years Part 1</video:title>
+      <video:description>A full hour of hip-hop history: Biggie, 2Pac, Snoop Dogg, JAY-Z, Eminem, Warren G and more, East Coast to West Coast. Full tracklist.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/k-bObrQMU4U</video:player_loc>
+      <video:duration>3823</video:duration>
+      <video:publication_date>2026-08-03T13:00:01-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://cortelyouroadradio.com/mix/throwback-club-remixes</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/YyFNWbbnEPQ/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Ultimate Throwback Club Remixes</video:title>
+      <video:description>57 minutes of throwback party remixes: Nina Simone, Bell Biv DeVoe, Deee-Lite, Rihanna, Cher and LMFAO rebuilt for the club. Full tracklist.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/YyFNWbbnEPQ</video:player_loc>
+      <video:duration>3424</video:duration>
+      <video:publication_date>2026-07-30T06:20:34-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://cortelyouroadradio.com/mix/classic-funk-mix</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/-u1qtykMkvM/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>An Hour of Funk</video:title>
+      <video:description>46-minute classic funk DJ mix: Zapp, Ohio Players, Commodores, George Clinton, Cameo, Kool &amp; The Gang and more. Our most-played mix. Full tracklist.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/-u1qtykMkvM</video:player_loc>
+      <video:duration>2770</video:duration>
+      <video:publication_date>2026-07-27T13:36:56-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://cortelyouroadradio.com/mix/2000s-rnb-mix</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/tRokNMoVCak/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>The Best 2000s R&amp;B Mix</video:title>
+      <video:description>57-minute 2000s R&amp;B and hip-hop throwback mix: Rihanna, Drake, Fabolous, Mary J. Blige, Fugees and more. Slow jams to club records. Full tracklist.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/tRokNMoVCak</video:player_loc>
+      <video:duration>3439</video:duration>
+      <video:publication_date>2026-07-24T16:57:16-07:00</video:publication_date>
+    </video:video>
   </url>
 </urlset>

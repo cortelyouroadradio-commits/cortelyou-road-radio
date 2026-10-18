@@ -1,0 +1,1137 @@
+{
+  "_readme": "Single source of truth for every DJ mix on the site. Add a new mix at the TOP of `mixes`, then run `node build/build-mixes.mjs` (it also runs on every Netlify deploy). It regenerates the /mixes cards + JSON-LD, every /mix/<slug> page, the homepage Latest Mixes strip, the ticker and sitemap.xml.",
+  "channel": "https://www.youtube.com/@CortelyouRoadRadio",
+  "mixes": [
+    {
+      "id": "r9jey6x2fgk",
+      "title": "Old School Reggae Mix",
+      "genre": "Reggae / Dancehall",
+      "blurb": "Twenty-six minutes of yard classics. Barrington Levy and Gregory Isaacs open the gate, Bob Marley and Sister Nancy hold the middle, then Shaggy, Shabba Ranks, Super Cat and Mr. Vegas take it into the dancehall. Roots, lovers rock and 90s bashment, blended end to end, no dead air.",
+      "chips": [
+        "Bob Marley",
+        "Shaggy",
+        "Gregory Isaacs",
+        "Sister Nancy"
+      ],
+      "alt": "Old School Reggae Mix — roots reggae, lovers rock and 90s dancehall DJ mix from Cortelyou Road Radio",
+      "dur": "26:24",
+      "slug": "old-school-reggae-mix",
+      "seoTitle": "Old School Reggae Mix: Bob Marley, Shaggy & Gregory Isaacs",
+      "seoDescription": "Old school reggae DJ mix: roots, lovers rock and 90s dancehall from Bob Marley, Shaggy, Gregory Isaacs, Sister Nancy, Shabba Ranks and more. Full tracklist.",
+      "keywords": [
+        "old school reggae mix",
+        "reggae mix",
+        "dancehall mix",
+        "lovers rock",
+        "roots reggae",
+        "90s dancehall"
+      ],
+      "lengthSeconds": 1584,
+      "uploadDate": "2026-09-27T13:55:56-07:00",
+      "tracklist": [
+        {
+          "t": "00:00",
+          "artist": "Barrington Levy",
+          "title": "Murderer"
+        },
+        {
+          "t": "00:55",
+          "artist": "Gregory Isaacs",
+          "title": "Night Nurse"
+        },
+        {
+          "t": "01:58",
+          "artist": "Eek-A-Mouse",
+          "title": "Wa-Do-Dem"
+        },
+        {
+          "t": "03:08",
+          "artist": "Bob Marley & The Wailers",
+          "title": "One Love / People Get Ready"
+        },
+        {
+          "t": "04:00",
+          "artist": "Damian \"Jr. Gong\" Marley",
+          "title": "Welcome to Jamrock"
+        },
+        {
+          "t": "04:56",
+          "artist": "Shaggy",
+          "title": "Boombastic"
+        },
+        {
+          "t": "06:33",
+          "artist": "Shaggy & Sting",
+          "title": "Til A Mawnin"
+        },
+        {
+          "t": "07:31",
+          "artist": "Dawn Penn",
+          "title": "You Don't Love Me (No No No)"
+        },
+        {
+          "t": "08:33",
+          "artist": "Johnny Osbourne",
+          "title": "Buddy Bye"
+        },
+        {
+          "t": "09:38",
+          "artist": "Michael Palmer",
+          "title": "Lick Shot"
+        },
+        {
+          "t": "09:50",
+          "artist": "Barrington Levy",
+          "title": "Black Roses"
+        },
+        {
+          "t": "11:30",
+          "artist": "Foxy Brown",
+          "title": "Baby Can I Hold You Tonight"
+        },
+        {
+          "t": "12:30",
+          "artist": "Sister Nancy",
+          "title": "Bam Bam"
+        },
+        {
+          "t": "13:13",
+          "artist": "Bob Marley feat. Lauryn Hill",
+          "title": "Turn Your Lights Down Low"
+        },
+        {
+          "t": "14:55",
+          "artist": "Junior Reid",
+          "title": "One Blood"
+        },
+        {
+          "t": "15:55",
+          "artist": "Sanchez",
+          "title": "Brown Eye Girl"
+        },
+        {
+          "t": "17:10",
+          "artist": "Inner Circle",
+          "title": "Bad Boys (Theme from Cops)"
+        },
+        {
+          "t": "18:10",
+          "artist": "UB40",
+          "title": "Red Red Wine"
+        },
+        {
+          "t": "19:08",
+          "artist": "Cutty Ranks",
+          "title": "The Stopper"
+        },
+        {
+          "t": "19:49",
+          "artist": "Shabba Ranks feat. Krystal",
+          "title": "Twice My Age"
+        },
+        {
+          "t": "20:51",
+          "artist": "Mr. Vegas",
+          "title": "Heads High"
+        },
+        {
+          "t": "22:00",
+          "artist": "Chaka Demus & Pliers",
+          "title": "Bam Bam"
+        },
+        {
+          "t": "23:08",
+          "artist": "Capleton",
+          "title": "Tour"
+        },
+        {
+          "t": "23:55",
+          "artist": "Super Cat",
+          "title": "Ghetto Red Hot"
+        },
+        {
+          "t": "24:55",
+          "artist": "10cc",
+          "title": "Dreadlock Holiday"
+        }
+      ],
+      "related": [
+        "classic-funk-mix",
+        "throwback-club-remixes",
+        "2000s-rnb-mix"
+      ]
+    },
+    {
+      "id": "axX6APJI2h8",
+      "title": "The Best Soft Rock Mix Ever",
+      "genre": "Soft Rock",
+      "blurb": "Fifty-eight minutes of the songs that never left the radio. Eagles, Elton John, Heart, Styx and REO Speedwagon set the 70s and 80s glow, then The Cranberries, Green Day, Red Hot Chili Peppers and Maroon 5 carry it through the 90s and 2000s. Four decades of soft rock hits, blended end to end, no dead air.",
+      "chips": [
+        "Eagles",
+        "Elton John",
+        "Heart",
+        "Maroon 5"
+      ],
+      "alt": "The Best Soft Rock Mix Ever — 70s 80s 90s 2000s soft rock hits DJ mix from Cortelyou Road Radio",
+      "dur": "58:26",
+      "slug": "soft-rock-mix",
+      "seoTitle": "Best Soft Rock Mix: Eagles, Elton John, Heart & Maroon 5",
+      "seoDescription": "58-minute soft rock DJ mix of 70s, 80s, 90s and 2000s hits from Eagles, Elton John, Heart, Styx, The Cranberries and Maroon 5. Full tracklist inside.",
+      "keywords": [
+        "soft rock mix",
+        "soft rock hits",
+        "70s soft rock",
+        "80s soft rock",
+        "easy listening",
+        "road trip music"
+      ],
+      "lengthSeconds": 3506,
+      "uploadDate": "2026-08-21T19:42:03-07:00",
+      "tracklist": [
+        {
+          "t": "0:00",
+          "artist": "Eagles",
+          "title": "Hotel California (Live at the Millennium Concert)"
+        },
+        {
+          "t": "3:09",
+          "artist": "Elton John",
+          "title": "Tiny Dancer"
+        },
+        {
+          "t": "5:53",
+          "artist": "Heart",
+          "title": "These Dreams"
+        },
+        {
+          "t": "8:22",
+          "artist": "Lenny Kravitz",
+          "title": "Fly Away"
+        },
+        {
+          "t": "10:36",
+          "artist": "Roxette",
+          "title": "It Must Have Been Love"
+        },
+        {
+          "t": "13:08",
+          "artist": "Rascal Flatts",
+          "title": "You Make My Dreams"
+        },
+        {
+          "t": "15:43",
+          "artist": "Steve Miller Band",
+          "title": "The Joker"
+        },
+        {
+          "t": "17:36",
+          "artist": "Hoobastank",
+          "title": "The Reason"
+        },
+        {
+          "t": "19:58",
+          "artist": "Green Day",
+          "title": "Boulevard of Broken Dreams"
+        },
+        {
+          "t": "22:14",
+          "artist": "Eagles",
+          "title": "I Can't Tell You Why"
+        },
+        {
+          "t": "25:07",
+          "artist": "Styx",
+          "title": "Babe"
+        },
+        {
+          "t": "27:08",
+          "artist": "REO Speedwagon",
+          "title": "Keep on Loving You"
+        },
+        {
+          "t": "29:35",
+          "artist": "Lenny Kravitz",
+          "title": "I Belong to You"
+        },
+        {
+          "t": "31:48",
+          "artist": "Sublime",
+          "title": "Santeria"
+        },
+        {
+          "t": "34:20",
+          "artist": "Third Eye Blind",
+          "title": "Jumper"
+        },
+        {
+          "t": "36:46",
+          "artist": "Extreme",
+          "title": "More Than Words"
+        },
+        {
+          "t": "39:15",
+          "artist": "The Cranberries",
+          "title": "Linger"
+        },
+        {
+          "t": "41:40",
+          "artist": "Vanessa Carlton",
+          "title": "A Thousand Miles"
+        },
+        {
+          "t": "44:13",
+          "artist": "Red Hot Chili Peppers",
+          "title": "Californication"
+        },
+        {
+          "t": "45:54",
+          "artist": "Maroon 5",
+          "title": "This Love"
+        },
+        {
+          "t": "48:24",
+          "artist": "Eric Clapton",
+          "title": "Wonderful Tonight"
+        },
+        {
+          "t": "50:37",
+          "artist": "Filter",
+          "title": "Take a Picture"
+        },
+        {
+          "t": "52:34",
+          "artist": "Sixpence None the Richer",
+          "title": "Kiss Me"
+        },
+        {
+          "t": "54:25",
+          "artist": "Maroon 5",
+          "title": "She Will Be Loved"
+        }
+      ],
+      "related": [
+        "throwback-club-remixes",
+        "70s-disco-funk-mix",
+        "old-school-reggae-mix"
+      ]
+    },
+    {
+      "id": "2jP-jh3hBio",
+      "title": "70s Disco Funk",
+      "genre": "Disco / Funk",
+      "blurb": "Fifty-two minutes of the era that built the dance floor. Bee Gees, Chic, Chaka Khan and Kool & The Gang lock the groove, then ABBA, Jackson 5 and KC & The Sunshine Band keep the lights spinning. Funk-first transitions into full disco release, blended live, no dead air.",
+      "chips": [
+        "Bee Gees",
+        "Chic",
+        "Chaka Khan",
+        "Kool & The Gang"
+      ],
+      "alt": "70s Disco Funk — Bee Gees, Chic, Chaka Khan and Kool & The Gang disco funk DJ mix from Cortelyou Road Radio",
+      "dur": "52:01",
+      "slug": "70s-disco-funk-mix",
+      "seoTitle": "70s Disco Funk Mix: Bee Gees, Chic, Chaka Khan & More",
+      "seoDescription": "52-minute 70s disco funk DJ mix with Bee Gees, Chic, Chaka Khan, Kool & The Gang, ABBA and KC & The Sunshine Band. Nonstop, no dead air.",
+      "keywords": [
+        "70s disco mix",
+        "disco funk mix",
+        "70s funk",
+        "disco classics",
+        "old school party mix"
+      ],
+      "lengthSeconds": 3121,
+      "uploadDate": "2026-08-13T09:57:09-07:00",
+      "tracklist": [],
+      "related": [
+        "classic-funk-mix",
+        "throwback-club-remixes",
+        "2000s-rnb-mix"
+      ]
+    },
+    {
+      "id": "i-q_t6aChe8",
+      "title": "Hip Hop Through the Years Part 2",
+      "genre": "Hip-Hop",
+      "blurb": "The story picks up where Part 1 left off. Fifty-five minutes running golden-era boom bap into the modern era — Big Daddy Kane, Slick Rick, De La Soul and House of Pain handing the baton to The Game, Kanye West and Wiz Khalifa. East Coast to West Coast, blended clean, no dead air.",
+      "chips": [
+        "Big Daddy Kane",
+        "De La Soul",
+        "Slick Rick",
+        "Kanye West"
+      ],
+      "alt": "Hip Hop Through the Years Part 2 — golden era to now DJ mix from Cortelyou Road Radio",
+      "dur": "55:11",
+      "slug": "hip-hop-through-the-years-part-2",
+      "seoTitle": "Hip Hop Through the Years Pt. 2: Golden Era to Now DJ Mix",
+      "seoDescription": "Part 2 of Hip Hop Through the Years: 55 minutes from Eric B. & Rakim and Big Daddy Kane to Missy Elliott, Kanye West and Cardi B. Full tracklist.",
+      "keywords": [
+        "hip hop mix",
+        "90s hip hop mix",
+        "golden era hip hop",
+        "2000s hip hop mix",
+        "old school rap mix"
+      ],
+      "lengthSeconds": 3310,
+      "uploadDate": "2026-08-08T10:46:16-07:00",
+      "tracklist": [
+        {
+          "t": "0:02",
+          "artist": "Eric B. & Rakim",
+          "title": "Paid In Full"
+        },
+        {
+          "t": "1:29",
+          "artist": "Naughty By Nature",
+          "title": "Hip Hop Hooray"
+        },
+        {
+          "t": "2:38",
+          "artist": "Arrested Development",
+          "title": "Tennessee"
+        },
+        {
+          "t": "4:26",
+          "artist": "The Game",
+          "title": "Hate It Or Love It"
+        },
+        {
+          "t": "6:19",
+          "artist": "Big Daddy Kane",
+          "title": "Ain't No Half-Steppin'"
+        },
+        {
+          "t": "8:03",
+          "artist": "Black Sheep",
+          "title": "The Choice Is Yours"
+        },
+        {
+          "t": "10:35",
+          "artist": "Doug E. Fresh",
+          "title": "The Show"
+        },
+        {
+          "t": "15:11",
+          "artist": "Grandmaster Flash & The Furious Five",
+          "title": "The Message"
+        },
+        {
+          "t": "15:58",
+          "artist": "Ice Cube",
+          "title": "Check Yo Self"
+        },
+        {
+          "t": "17:11",
+          "artist": "Pete Rock & CL Smooth",
+          "title": "They Reminisce Over You (T.R.O.Y.)"
+        },
+        {
+          "t": "18:25",
+          "artist": "Missy Elliott",
+          "title": "Work It"
+        },
+        {
+          "t": "19:40",
+          "artist": "Slick Rick",
+          "title": "Children's Story"
+        },
+        {
+          "t": "22:36",
+          "artist": "House Of Pain",
+          "title": "Jump Around"
+        },
+        {
+          "t": "24:21",
+          "artist": "Rob Base & DJ EZ Rock",
+          "title": "It Takes Two"
+        },
+        {
+          "t": "26:23",
+          "artist": "De La Soul",
+          "title": "Me Myself and I"
+        },
+        {
+          "t": "29:10",
+          "artist": "Eminem",
+          "title": "Without Me"
+        },
+        {
+          "t": "30:40",
+          "artist": "Akon",
+          "title": "Smack That"
+        },
+        {
+          "t": "32:06",
+          "artist": "Missy Elliott",
+          "title": "Lose Control"
+        },
+        {
+          "t": "34:02",
+          "artist": "Flo Rida",
+          "title": "Low"
+        },
+        {
+          "t": "35:23",
+          "artist": "Wiz Khalifa",
+          "title": "We Dem Boyz"
+        },
+        {
+          "t": "37:18",
+          "artist": "2 Chainz",
+          "title": "No Lie"
+        },
+        {
+          "t": "38:32",
+          "artist": "Rihanna",
+          "title": "Pour It Up"
+        },
+        {
+          "t": "40:06",
+          "artist": "Chance the Rapper",
+          "title": "No Problem"
+        },
+        {
+          "t": "41:59",
+          "artist": "Cardi B",
+          "title": "I Like It"
+        },
+        {
+          "t": "44:07",
+          "artist": "French Montana",
+          "title": "Pop That"
+        },
+        {
+          "t": "48:19",
+          "artist": "JAY-Z & Kanye West",
+          "title": "Ni**as In Paris"
+        },
+        {
+          "t": "49:33",
+          "artist": "Kanye West",
+          "title": "All Of The Lights"
+        },
+        {
+          "t": "51:45",
+          "artist": "DJ Khaled",
+          "title": "All I Do Is Win"
+        }
+      ],
+      "related": [
+        "hip-hop-through-the-years-part-1",
+        "2000s-rnb-mix",
+        "classic-funk-mix"
+      ]
+    },
+    {
+      "id": "k-bObrQMU4U",
+      "title": "Hip Hop Through the Years Part 1",
+      "genre": "Hip-Hop",
+      "blurb": "A full hour of rap history, mixed in order of how it hit. Old school foundations roll forward into golden-era classics and the newer anthems that still move a room — East Coast and West Coast trading turns, big hooks, no dead air between them. Built for the drive, the workout, the party and the long night after.",
+      "chips": [
+        "Old School",
+        "Golden Era",
+        "East Coast",
+        "West Coast"
+      ],
+      "alt": "Hip Hop Through the Years Part 1 — old school to new school DJ mix from Cortelyou Road Radio",
+      "dur": "1:03:44",
+      "slug": "hip-hop-through-the-years-part-1",
+      "seoTitle": "Hip Hop Through the Years Pt. 1: Biggie, 2Pac & Snoop Mix",
+      "seoDescription": "A full hour of hip-hop history: Biggie, 2Pac, Snoop Dogg, JAY-Z, Eminem, Warren G and more, East Coast to West Coast. Full tracklist.",
+      "keywords": [
+        "old school hip hop mix",
+        "90s rap mix",
+        "east coast west coast",
+        "biggie 2pac mix",
+        "hip hop dj mix"
+      ],
+      "lengthSeconds": 3823,
+      "uploadDate": "2026-08-03T13:00:01-07:00",
+      "tracklist": [
+        {
+          "t": "0:26",
+          "artist": "Desiigner",
+          "title": "Panda"
+        },
+        {
+          "t": "2:41",
+          "artist": "Drake",
+          "title": "God's Plan"
+        },
+        {
+          "t": "4:57",
+          "artist": "Ahmad",
+          "title": "Back in the Day"
+        },
+        {
+          "t": "7:19",
+          "artist": "Coolio",
+          "title": "Gangsta's Paradise"
+        },
+        {
+          "t": "9:27",
+          "artist": "Post Malone",
+          "title": "rockstar"
+        },
+        {
+          "t": "11:51",
+          "artist": "Cali Swag District",
+          "title": "Teach Me How to Dougie"
+        },
+        {
+          "t": "14:11",
+          "artist": "Biz Markie",
+          "title": "Just A Friend"
+        },
+        {
+          "t": "16:11",
+          "artist": "Eminem",
+          "title": "Lose Yourself"
+        },
+        {
+          "t": "18:32",
+          "artist": "JAY-Z",
+          "title": "Empire State Of Mind"
+        },
+        {
+          "t": "20:52",
+          "artist": "50 Cent",
+          "title": "In Da Club"
+        },
+        {
+          "t": "22:47",
+          "artist": "Mos Def",
+          "title": "Ms. Fat Booty"
+        },
+        {
+          "t": "25:25",
+          "artist": "Nipsey Hussle",
+          "title": "Grinding All My Life"
+        },
+        {
+          "t": "27:51",
+          "artist": "2Pac",
+          "title": "California Love"
+        },
+        {
+          "t": "30:26",
+          "artist": "Kanye West",
+          "title": "Gold Digger"
+        },
+        {
+          "t": "32:38",
+          "artist": "Snoop Dogg",
+          "title": "Drop It Like It's Hot"
+        },
+        {
+          "t": "35:17",
+          "artist": "MC Lyte",
+          "title": "Cold Rock a Party"
+        },
+        {
+          "t": "37:50",
+          "artist": "The Notorious B.I.G.",
+          "title": "Hypnotize"
+        },
+        {
+          "t": "40:21",
+          "artist": "Queen Latifah",
+          "title": "U.N.I.T.Y."
+        },
+        {
+          "t": "42:38",
+          "artist": "KRS-One",
+          "title": "Step into a World"
+        },
+        {
+          "t": "44:48",
+          "artist": "DJ Jazzy Jeff & The Fresh Prince",
+          "title": "Summertime"
+        },
+        {
+          "t": "47:15",
+          "artist": "Macklemore & Ryan Lewis",
+          "title": "Thrift Shop"
+        },
+        {
+          "t": "49:39",
+          "artist": "The World's Famous Supreme Team",
+          "title": "Hey DJ"
+        },
+        {
+          "t": "52:08",
+          "artist": "Warren G",
+          "title": "Regulate"
+        },
+        {
+          "t": "54:30",
+          "artist": "Method Man",
+          "title": "I'll Be There For You"
+        },
+        {
+          "t": "55:47",
+          "artist": "RUN DMC",
+          "title": "Down With the King"
+        },
+        {
+          "t": "57:59",
+          "artist": "Gang Starr",
+          "title": "Mass Appeal"
+        },
+        {
+          "t": "59:57",
+          "artist": "Naughty By Nature",
+          "title": "O.P.P."
+        },
+        {
+          "t": "1:01:05",
+          "artist": "Busta Rhymes",
+          "title": "Put Your Hands Where My Eyes Could See"
+        }
+      ],
+      "related": [
+        "hip-hop-through-the-years-part-2",
+        "2000s-rnb-mix",
+        "classic-funk-mix"
+      ]
+    },
+    {
+      "id": "YyFNWbbnEPQ",
+      "title": "Ultimate Throwback Club Remixes",
+      "genre": "Club Remixes",
+      "blurb": "Songs you already know, rebuilt for the floor. Nina Simone, Bell Biv DeVoe, Rihanna and Cher run through modern club production with the original vocals left intact — familiar the second it hits, and nothing like the version in your head. Fifty-seven minutes, no breaks.",
+      "chips": [
+        "Nina Simone",
+        "Bell Biv DeVoe",
+        "Rihanna",
+        "Cher"
+      ],
+      "alt": "Ultimate Throwback Club Remixes — Cortelyou Road Radio",
+      "dur": "57:04",
+      "slug": "throwback-club-remixes",
+      "seoTitle": "Throwback Club Remixes Mix: Rihanna, Cher, LMFAO & More",
+      "seoDescription": "57 minutes of throwback party remixes: Nina Simone, Bell Biv DeVoe, Deee-Lite, Rihanna, Cher and LMFAO rebuilt for the club. Full tracklist.",
+      "keywords": [
+        "throwback party mix",
+        "club remixes",
+        "house remixes",
+        "party mix",
+        "dance remixes"
+      ],
+      "lengthSeconds": 3424,
+      "uploadDate": "2026-07-30T06:20:34-07:00",
+      "tracklist": [
+        {
+          "t": "0:00",
+          "artist": "Nina Simone",
+          "title": "Feeling Good (Simon Field Remix)"
+        },
+        {
+          "t": "3:01",
+          "artist": "Ghostbusterz",
+          "title": "Get Down on It"
+        },
+        {
+          "t": "5:38",
+          "artist": "Bell Biv DeVoe",
+          "title": "Poison"
+        },
+        {
+          "t": "7:54",
+          "artist": "Allegra",
+          "title": "Used To Miss You (R3HAB Extended Remix)"
+        },
+        {
+          "t": "8:18",
+          "artist": "Disclosure ft. Sam Smith",
+          "title": "Latch (House Remix)"
+        },
+        {
+          "t": "11:56",
+          "artist": "Deee-Lite",
+          "title": "Groove Is in the Heart (Meeting the Minds Mix)"
+        },
+        {
+          "t": "14:33",
+          "artist": "Silentó",
+          "title": "Watch Me (Whip / Nae Nae) (Richard Vission Remix)"
+        },
+        {
+          "t": "16:54",
+          "artist": "Dastic & KDH",
+          "title": "I Like Your Body (Extended Mix)"
+        },
+        {
+          "t": "18:57",
+          "artist": "Imagine Dragons",
+          "title": "Demons (Politik Remix)"
+        },
+        {
+          "t": "21:44",
+          "artist": "Martin Fritzon",
+          "title": "We Together"
+        },
+        {
+          "t": "23:59",
+          "artist": "Bob Marley & The Wailers",
+          "title": "Jamming (FISHER Rework)"
+        },
+        {
+          "t": "26:05",
+          "artist": "Nari",
+          "title": "Diamond"
+        },
+        {
+          "t": "28:38",
+          "artist": "Rihanna",
+          "title": "Only Girl (In The World) (Bimbo Jones Club Mix)"
+        },
+        {
+          "t": "30:47",
+          "artist": "Rockwell ft. Michael Jackson",
+          "title": "Somebody's Watching Me (House Remix)"
+        },
+        {
+          "t": "33:40",
+          "artist": "Guns N' Roses",
+          "title": "Sweet Child O' Mine (Alternate Mix)"
+        },
+        {
+          "t": "36:27",
+          "artist": "David Guetta & Cedric Gervais",
+          "title": "Switch (Extended Mix)"
+        },
+        {
+          "t": "40:08",
+          "artist": "Baggi Begovic",
+          "title": "If a Lie Was Love (feat. Josie Cotton)"
+        },
+        {
+          "t": "42:11",
+          "artist": "Cedric Gervais & Nile Rodgers",
+          "title": "We Are Family (Extended Mix)"
+        },
+        {
+          "t": "44:46",
+          "artist": "",
+          "title": "Move Ya Body"
+        },
+        {
+          "t": "48:36",
+          "artist": "Cher",
+          "title": "Believe (Xenomania Club Mix)"
+        },
+        {
+          "t": "50:39",
+          "artist": "LMFAO",
+          "title": "Party Rock Anthem"
+        },
+        {
+          "t": "54:21",
+          "artist": "James Hype",
+          "title": "Don't Wake Me Up (Extended Mix)"
+        }
+      ],
+      "related": [
+        "70s-disco-funk-mix",
+        "2000s-rnb-mix",
+        "soft-rock-mix"
+      ]
+    },
+    {
+      "id": "-u1qtykMkvM",
+      "title": "An Hour of Funk",
+      "genre": "Funk",
+      "blurb": "Forty-six minutes of pure pocket. Zapp & Roger's talk-box swagger, George Clinton's cosmic slop, Cameo's snap-tight grooves and more — chained together for the block party that never ends. Bass up.",
+      "chips": [
+        "Zapp & Roger",
+        "George Clinton",
+        "Cameo",
+        "P-Funk"
+      ],
+      "alt": "An Hour of Funk brought to you by Cortelyou Road Radio",
+      "dur": "46:10",
+      "slug": "classic-funk-mix",
+      "seoTitle": "Classic Funk Mix: Zapp & Roger, George Clinton & Cameo",
+      "seoDescription": "46-minute classic funk DJ mix: Zapp, Ohio Players, Commodores, George Clinton, Cameo, Kool & The Gang and more. Our most-played mix. Full tracklist.",
+      "keywords": [
+        "classic funk mix",
+        "old school funk",
+        "funk dj mix",
+        "boogie funk",
+        "70s 80s funk"
+      ],
+      "lengthSeconds": 2770,
+      "uploadDate": "2026-07-27T13:36:56-07:00",
+      "tracklist": [
+        {
+          "t": "0:18",
+          "artist": "Zapp",
+          "title": "More Bounce to the Ounce"
+        },
+        {
+          "t": "2:45",
+          "artist": "Ohio Players",
+          "title": "Fire"
+        },
+        {
+          "t": "5:11",
+          "artist": "Commodores",
+          "title": "Brick House"
+        },
+        {
+          "t": "7:49",
+          "artist": "George Clinton",
+          "title": "Atomic Dog"
+        },
+        {
+          "t": "10:13",
+          "artist": "Cameo",
+          "title": "Candy"
+        },
+        {
+          "t": "12:43",
+          "artist": "Tom Browne",
+          "title": "Funkin' for Jamaica"
+        },
+        {
+          "t": "15:13",
+          "artist": "The Sugarhill Gang",
+          "title": "Rapper's Delight"
+        },
+        {
+          "t": "17:42",
+          "artist": "Prince & The Revolution",
+          "title": "Kiss"
+        },
+        {
+          "t": "20:10",
+          "artist": "Kool & The Gang",
+          "title": "Get Down On It"
+        },
+        {
+          "t": "22:52",
+          "artist": "Kurtis Blow",
+          "title": "The Breaks"
+        },
+        {
+          "t": "25:17",
+          "artist": "Carl Carlton",
+          "title": "She's A Bad Mama Jama"
+        },
+        {
+          "t": "27:54",
+          "artist": "Lakeside",
+          "title": "Fantastic Voyage"
+        },
+        {
+          "t": "30:19",
+          "artist": "The Whispers",
+          "title": "And the Beat Goes On"
+        },
+        {
+          "t": "32:42",
+          "artist": "Patrice Rushen",
+          "title": "Forget Me Nots"
+        },
+        {
+          "t": "35:17",
+          "artist": "Evelyn \"Champagne\" King",
+          "title": "Love Come Down"
+        },
+        {
+          "t": "37:52",
+          "artist": "Cameo",
+          "title": "Word Up!"
+        },
+        {
+          "t": "40:23",
+          "artist": "Al Hudson & The Partners",
+          "title": "You Can Do It"
+        },
+        {
+          "t": "42:44",
+          "artist": "Kool & The Gang",
+          "title": "Hits Medley"
+        }
+      ],
+      "related": [
+        "70s-disco-funk-mix",
+        "hip-hop-through-the-years-part-1",
+        "old-school-reggae-mix"
+      ],
+      "featured": "Most played"
+    },
+    {
+      "id": "tRokNMoVCak",
+      "title": "The Best 2000s R&B Mix",
+      "genre": "2000s R&B / Hip-Hop",
+      "blurb": "The golden era of smooth. Drake, Wale, Ella Mai, Mary J. Blige, Rihanna and more — slow jams and late-night hip-hop soul stitched into one long after-hours ride. Dim the lights.",
+      "chips": [
+        "Drake",
+        "Ella Mai",
+        "Mary J. Blige",
+        "Rihanna"
+      ],
+      "alt": "The Best 2000s R&B Mix — Cortelyou Road Radio",
+      "dur": "57:19",
+      "slug": "2000s-rnb-mix",
+      "seoTitle": "2000s R&B & Hip-Hop Mix: Rihanna, Drake & Fabolous",
+      "seoDescription": "57-minute 2000s R&B and hip-hop throwback mix: Rihanna, Drake, Fabolous, Mary J. Blige, Fugees and more. Slow jams to club records. Full tracklist.",
+      "keywords": [
+        "2000s r&b mix",
+        "r&b hip hop mix",
+        "throwback r&b",
+        "slow jams",
+        "2000s throwback mix"
+      ],
+      "lengthSeconds": 3439,
+      "uploadDate": "2026-07-24T16:57:16-07:00",
+      "tracklist": [
+        {
+          "t": "0:17",
+          "artist": "Wale",
+          "title": "Lotus Flower Bomb (feat. Miguel)"
+        },
+        {
+          "t": "2:01",
+          "artist": "Jeremih",
+          "title": "Down On Me"
+        },
+        {
+          "t": "4:22",
+          "artist": "Lloyd Banks",
+          "title": "Start It Up"
+        },
+        {
+          "t": "6:08",
+          "artist": "Ella Mai",
+          "title": "Trip"
+        },
+        {
+          "t": "8:17",
+          "artist": "Drake",
+          "title": "Best I Ever Had"
+        },
+        {
+          "t": "10:24",
+          "artist": "Fabolous",
+          "title": "Breathe"
+        },
+        {
+          "t": "12:10",
+          "artist": "",
+          "title": "I'm Real"
+        },
+        {
+          "t": "14:13",
+          "artist": "DeJ Loaf",
+          "title": "Try Me"
+        },
+        {
+          "t": "16:18",
+          "artist": "Fabolous",
+          "title": "Throw It In The Bag"
+        },
+        {
+          "t": "18:19",
+          "artist": "Fabolous",
+          "title": "Throw It In The Bag (Remix)"
+        },
+        {
+          "t": "20:15",
+          "artist": "Rihanna",
+          "title": "Rude Boy"
+        },
+        {
+          "t": "22:13",
+          "artist": "Fabolous",
+          "title": "Make Me Better"
+        },
+        {
+          "t": "26:14",
+          "artist": "Rihanna",
+          "title": "Umbrella"
+        },
+        {
+          "t": "28:21",
+          "artist": "Miguel",
+          "title": "Come Through and Chill"
+        },
+        {
+          "t": "30:30",
+          "artist": "De La Soul",
+          "title": "Memory of..."
+        },
+        {
+          "t": "32:31",
+          "artist": "Method Man & Redman",
+          "title": "A-YO"
+        },
+        {
+          "t": "34:20",
+          "artist": "Cru",
+          "title": "Pronto"
+        },
+        {
+          "t": "36:31",
+          "artist": "50 Cent",
+          "title": "In Da Club"
+        },
+        {
+          "t": "38:16",
+          "artist": "Eve",
+          "title": "Let Me Blow Ya Mind"
+        },
+        {
+          "t": "40:21",
+          "artist": "Mary J. Blige",
+          "title": "Love No Limit (Puff Daddy Mix)"
+        },
+        {
+          "t": "42:29",
+          "artist": "Fabolous",
+          "title": "Can't Deny It (feat. Nate Dogg)"
+        },
+        {
+          "t": "44:23",
+          "artist": "Rihanna",
+          "title": "Work"
+        },
+        {
+          "t": "46:15",
+          "artist": "Redman",
+          "title": "It's Like That (My Big Brother)"
+        },
+        {
+          "t": "48:16",
+          "artist": "De La Soul",
+          "title": "Oooh"
+        },
+        {
+          "t": "50:15",
+          "artist": "Heltah Skeltah",
+          "title": "Leflaur Leflah Eshkoshka"
+        },
+        {
+          "t": "51:57",
+          "artist": "Fugees",
+          "title": "Killing Me Softly With His Song"
+        },
+        {
+          "t": "53:52",
+          "artist": "Gina Thompson",
+          "title": "The Things That You Do (Bad Boy Remix)"
+        },
+        {
+          "t": "56:06",
+          "artist": "Snoop Dogg",
+          "title": "Drop It Like It's Hot"
+        }
+      ],
+      "related": [
+        "hip-hop-through-the-years-part-1",
+        "hip-hop-through-the-years-part-2",
+        "classic-funk-mix"
+      ]
+    }
+  ]
+}

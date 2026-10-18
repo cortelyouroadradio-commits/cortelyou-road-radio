@@ -44,7 +44,26 @@ const parser = new Parser({
 /* Which stories count as "On the charts". Kept deliberately broad so the rail
    still fills on a slow chart day, and ordered newest-first afterwards. */
 const CHART_MATCH =
-  /\b(hot 100|billboard 200|billboard|chart(s|ed|ing)?|no\.?\s?1\b|number one|debuts? at|tops? the|top (10|ten|40|forty)|first[- ]week|equivalent album units|streaming numbers|sales week|riaa|platinum|gold certification)\b/i;
+  /\b(hot 100|billboard 200|global 200|chart(s|ed|ing)?|no\.?\s?1\b|number one|debuts? at|tops? the|top (10|ten|40|forty)|first[- ]week|equivalent album units|streaming numbers|sales week|riaa|platinum|gold certification)\b/i;
+// (Bare "billboard" used to be in this list, which let every Billboard
+// article — events calendars, award shows — through as a "chart" story.)
+
+/* Brand safety: never put these on a music station's front page.
+   Shopping/affiliate posts ("Apple Watch drops to $649") ride in on the music
+   feeds; the second list keeps the heaviest crime stories off the rails. */
+const EXCLUDE = [
+  /(\$\d[\d,.]*\s*off\b|\b(best|top|early|holiday|amazon|tech|daily) deals?\b|\bdeal alert|\bprime (big )?day\b|\bdrops? to\b|record[- ]low|lowest price|\bdiscount|\bon sale\b|\bsale price|black friday|cyber monday|gift guide|\bcoupon|\bpromo code|\bbest .{0,30} to buy\b|\bsponsored\b|\bapple watch\b|\bipad\b|\bairpods\b|\bsmartwatch|\bearbuds\b)/i,
+  /\b(child (sex(ual)? )?abuse|sex(ual)? abuse|molest|rape[ds]?|raping|sex trafficking)\b/i,
+];
+const isExcluded = (it) => EXCLUDE.some((re) => re.test(`${it.title} ${it.summary}`));
+
+/* What counts as "our" neighborhood for the Ditmas Park rail. */
+const DITMAS_MATCH =
+  /\b(ditmas|cortelyou|flatbush|kensington|midwood|prospect park south|beverley (road|square)|victorian flatbush|newkirk|church ave(nue)?|caton|lefferts|prospect lefferts|east flatbush|windsor terrace|parkside|coney island ave(nue)?)\b/i;
+
+/* What counts as an event / night-out story for "Brooklyn & Events". */
+const EVENT_MATCH =
+  /\b(things to do|this weekend|events?|festival|fest\b|concerts?|live music|show(s|case)?|performances?|tickets?|exhibit(ion)?s?|museum|gallery|open studios|parade|market|block party|screening|film|theat(er|re)|comedy|dance|jazz|hip[- ]hop|dj|party|celebrat|botanic|lightscape|halloween|holiday)\b/i;
 
 /* Feed groups -> site pools. Edit freely.
    - count       : how many items the pool should hold
@@ -83,19 +102,31 @@ const GROUPS = {
     feeds: [
       { url: "https://www.brooklynpaper.com/category/neighborhoods/ditmas-park/feed/", source: "Brooklyn Paper" },
       { url: "https://www.brooklynpaper.com/category/neighborhoods/flatbush/feed/", source: "Brooklyn Paper" },
+      { url: "https://www.brooklynpaper.com/category/neighborhoods/kensington/feed/", source: "Brooklyn Paper" },
+      { url: "https://www.brooklynpaper.com/category/neighborhoods/midwood/feed/", source: "Brooklyn Paper" },
+      // The borough-wide feed is far fresher than the neighborhood ones; only
+      // stories that actually name our streets/neighborhoods are kept from it.
+      { url: "https://www.brooklynpaper.com/feed/", source: "Brooklyn Paper", only: DITMAS_MATCH },
       { url: "https://bklyner.com/feed/", source: "Bklyner" },
     ],
     count: 3,
     maxAgeDays: 30,
+    match: DITMAS_MATCH,
   },
   brooklyn: {
     tag: "Brooklyn",
     feeds: [
-      { url: "https://www.brooklynpaper.com/feed/", source: "Brooklyn Paper" },
-      { url: "https://www.amny.com/feed/", source: "amNewYork" },
+      // Events-first: Brooklyn Paper's things-to-do, arts and music desks,
+      // with the general feeds kept only as a fallback.
+      { url: "https://www.brooklynpaper.com/category/things-to-do/feed/", source: "Brooklyn Paper" },
+      { url: "https://www.brooklynpaper.com/category/arts-entertainment/feed/", source: "Brooklyn Paper" },
+      { url: "https://www.brooklynpaper.com/category/music/feed/", source: "Brooklyn Paper" },
+      { url: "https://www.brooklynpaper.com/feed/", source: "Brooklyn Paper", only: EVENT_MATCH },
+      { url: "https://www.amny.com/feed/", source: "amNewYork", only: EVENT_MATCH },
     ],
     count: 4,
-    maxAgeDays: 21,
+    maxAgeDays: 14,
+    match: EVENT_MATCH,
   },
 };
 
@@ -277,11 +308,14 @@ const ageInDays = (it) =>
 
 /** Newest-first, de-duplicated, image-bearing items from a group's feeds. */
 async function pull(group, pool) {
-  const results = await Promise.allSettled(group.feeds.map((f) => withTimeout(parser.parseURL(f.url), 12000).then((feed) => ({ feed, source: f.source }))));
+  const results = await Promise.allSettled(group.feeds.map((f) => withTimeout(parser.parseURL(f.url), 12000).then((feed) => ({ feed, source: f.source, only: f.only }))));
   let items = [];
   for (const r of results) {
     if (r.status === "fulfilled" && r.value.feed?.items?.length) {
-      items.push(...r.value.feed.items.map((it) => normalize(it, group.tag, r.value.source, pool)));
+      const only = r.value.only;
+      items.push(...r.value.feed.items
+        .map((it) => normalize(it, group.tag, r.value.source, pool))
+        .filter((it) => !only || only.test(`${it.title} ${it.summary}`)));
     } else if (r.status === "rejected") {
       console.warn("  ! feed failed:", r.reason?.message || r.reason);
     }
@@ -289,7 +323,7 @@ async function pull(group, pool) {
   const seen = new Set();
   return items
     // A card without a picture looks broken next to three that have one.
-    .filter((it) => it.image && !seen.has(it.title.toLowerCase()) && seen.add(it.title.toLowerCase()))
+    .filter((it) => it.image && !isExcluded(it) && !seen.has(it.title.toLowerCase()) && seen.add(it.title.toLowerCase()))
     .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
 }
 

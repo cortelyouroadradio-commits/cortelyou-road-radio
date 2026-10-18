@@ -46,3 +46,18 @@ The daily refresh no longer commits to the repo. A GitHub Action
 a fresh Netlify build. Because nothing is committed by the bot, **only you ever
 write to `main`** — your manual pushes can never collide with the daily job.
 You can also trigger it by hand from the repo's Actions tab ("Run workflow").
+
+## Adding a DJ mix
+
+All mix content comes from one file: `build/mixes.json`.
+
+1. Add the new mix as the **first** object in `mixes` (copy an existing one;
+   `chips` must have exactly 4 names; `lengthSeconds` and `uploadDate` come
+   from the YouTube watch page; `tracklist` is optional but is what earns the
+   key-moments rich result).
+2. Run `node build/build-mixes.mjs` (Netlify also runs it on every deploy).
+
+That regenerates the `/mixes` cards and JSON-LD, a page per mix at
+`/mix/<slug>` (VideoObject + Clip + Breadcrumb schema), the homepage
+"Latest DJ mixes" strip, the ticker and the mix entries in `sitemap.xml`.
+Never hand-edit between the `<!-- …:START -->` / `<!-- …:END -->` markers.

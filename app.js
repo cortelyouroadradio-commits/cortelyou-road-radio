@@ -2,7 +2,7 @@
    Cortelyou Road Radio — player + content engine
    ============================================================ */
 const RADIO_STATUS = "https://public.radio.co/stations/s82969a5e0/status";
-const ART = (name) => `./assets/${name}.svg`;
+const ART = (name) => `/assets/${name}.svg`;
 
 /* ---------- Content pools (fallback / built-in) ---------- */
 const pools = {
@@ -430,7 +430,7 @@ const liveMeta = { generatedAt: null, livePools: new Set() };
 
 async function loadLiveContent() {
   try {
-    const res = await fetch("./content.json", { cache: "no-store" });
+    const res = await fetch("/content.json", { cache: "no-store" });
     if (!res.ok) return;
     const live = await res.json();
     Object.keys(live).forEach((k) => {
@@ -479,7 +479,7 @@ function itemAt(poolName, index) {
 }
 
 function storyHref(poolName, index) {
-  return `./story.html?section=${encodeURIComponent(poolName)}&index=${index}`;
+  return `/story?section=${encodeURIComponent(poolName)}&index=${index}`;
 }
 
 /* ---------- Dates ----------
@@ -786,7 +786,7 @@ function setupMediaSession() {
       title: "Cortelyou Road Radio — Live",
       artist: "Brooklyn",
       album: "Cortelyou Road Radio",
-      artwork: [{ src: location.origin + "/assets/logo.png", sizes: "512x512", type: "image/png" }]
+      artwork: [{ src: location.origin + "/assets/logo-512.jpg", sizes: "512x512", type: "image/jpeg" }]
     });
     navigator.mediaSession.setActionHandler("play", () => { if (!wantPlaying) togglePlay(); });
     navigator.mediaSession.setActionHandler("pause", () => { if (wantPlaying) togglePlay(); });
@@ -1152,7 +1152,7 @@ function histLongDate(key) {
 }
 async function loadHistory() {
   if (HISTORY) return HISTORY;
-  const res = await fetch("./music-history.json", { cache: "no-cache" });
+  const res = await fetch("/music-history.json", { cache: "no-cache" });
   HISTORY = await res.json();
   return HISTORY;
 }
@@ -1454,7 +1454,7 @@ ${scene}
    If no file is found, the animated scene below stays visible. ------------- */
 function histPhotoCandidates(key, entry) {
   if (entry && entry.image && entry.image.src) return [entry.image.src];
-  return ["jpg", "jpeg", "png", "webp"].map((x) => `./assets/history/${key}.${x}`);
+  return ["jpg", "jpeg", "png", "webp"].map((x) => `/assets/history/${key}.${x}`);
 }
 function histImgFallback(img) {
   let list = [];
@@ -1498,7 +1498,7 @@ function histCardHTML(key, entry, opts) {
   if (!entry) return "";
   const o = opts || {};
   const art = histArt(entry.art, entry.date + entry.title);
-  return `<a class="hist-card" href="./music-history.html?d=${key}">
+  return `<a class="hist-card" href="/music-history?d=${key}">
     <div class="hist-art">${art}${histPhotoHTML(key, entry)}<span class="hist-kind">${histKindLabel(entry.kind)}</span></div>
     <div class="hist-card-body">
       <div class="hist-meta"><span>${histLongDate(key)}</span><span>${entry.genre}</span><span>${entry.year}</span></div>
@@ -1597,7 +1597,7 @@ async function renderHistoryTeaser() {
   const entry = histEntry(key);
   if (!entry) return;
   el.innerHTML = `
-    <a class="hist-teaser" href="./music-history.html">
+    <a class="hist-teaser" href="/music-history">
       <div class="hist-art">${histArt(entry.art, entry.date + entry.title)}${histPhotoHTML(key, entry)}<span class="hist-kind">${histKindLabel(entry.kind)}</span></div>
       <div class="hist-teaser-body">
         <span class="kicker">Today in Music History · ${histLongDate(key)}</span>
@@ -1616,7 +1616,7 @@ const DAY_NAMES = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","
 
 async function loadSchedule() {
   if (SCHEDULE) return SCHEDULE;
-  const res = await fetch("./schedule.json", { cache: "no-cache" });
+  const res = await fetch("/schedule.json", { cache: "no-cache" });
   SCHEDULE = await res.json();
   return SCHEDULE;
 }
@@ -1737,10 +1737,13 @@ function renderAll() {
 // region, so internal links change the page content without a full reload and
 // playback never stops. Any failure falls back to a normal page load.
 function updateNavActive() {
-  const page = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+  // Normalise "/mixes", "./mixes.html", "/" and "/index.html" to one key.
+  const norm = (p) => (p || "").split(/[?#]/)[0].replace(/^\.?\/+/, "").replace(/\.html$/i, "").replace(/^index$/i, "").toLowerCase();
+  const path = norm(location.pathname);
+  // Individual mix pages (/mix/<slug>) light up the Mixes tab.
+  const page = path.startsWith("mix/") ? "mixes" : path;
   document.querySelectorAll("nav.links a").forEach((a) => {
-    const target = (a.getAttribute("href") || "").replace(/^\.\//, "").split(/[?#]/)[0].toLowerCase() || "index.html";
-    if (target === page || (page === "" && target === "index.html")) a.setAttribute("aria-current", "page");
+    if (norm(a.getAttribute("href")) === page) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
   });
 }
@@ -1800,10 +1803,24 @@ function isInternalPageLink(a) {
   return true;
 }
 
+/* Mobile menu: under 900px the nav collapses behind a toggle button. */
+function setMenu(open) {
+  const h = document.querySelector("header");
+  const b = document.querySelector(".nav-toggle");
+  if (!h || !b) return;
+  h.classList.toggle("nav-open", open);
+  b.setAttribute("aria-expanded", String(open));
+  b.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+}
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
+
 function setupNavigation() {
   document.addEventListener("click", (e) => {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     if (e.target.closest(".js-listen")) { e.preventDefault(); togglePlay(); return; }
+    const tog = e.target.closest(".nav-toggle");
+    if (tog) { e.preventDefault(); setMenu(!document.querySelector("header")?.classList.contains("nav-open")); return; }
+    if (e.target.closest("nav.links a")) setMenu(false);
     const vs = e.target.closest(".vs-btn");
     if (vs) { e.preventDefault(); histVote(vs.dataset.date, vs.dataset.side); return; }
     const cp = e.target.closest(".js-copy");

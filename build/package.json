@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Daily content builder for Cortelyou Road Radio — pulls fresh feeds and updates ../content.json.",
-  "scripts": { "build": "node build-content.js" },
-  "dependencies": { "rss-parser": "^3.13.0" }
+  "description": "Build step for Cortelyou Road Radio \u2014 regenerates the mix pages from mixes.json and pulls fresh feeds into ../content.json.",
+  "scripts": {
+    "build": "node build-mixes.mjs ; node build-content.js",
+    "mixes": "node build-mixes.mjs"
+  },
+  "dependencies": {
+    "rss-parser": "^3.13.0"
+  }
 }
