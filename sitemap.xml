@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://cortelyouroadradio.com/mixes</loc>
-    <lastmod>2026-09-27</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -59,6 +59,48 @@
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cortelyouroadradio.com/mix/soul-after-dark-rnb-hip-hop-mix</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/hkdoxklBc-Q/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Soul After Dark: R&amp;B &amp; Hip-Hop Mix</video:title>
+      <video:description>R&amp;B and hip-hop DJ mix: Alicia Keys, Erykah Badu, Usher, Lauryn Hill, Janet Jackson and Mary J. Blige. 55 minutes of neo-soul and throwback favorites.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/hkdoxklBc-Q</video:player_loc>
+      <video:duration>3314</video:duration>
+      <video:publication_date>2026-11-19T06:15:06-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://cortelyouroadradio.com/mix/2010s-pop-party-mix</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/G_tEZ0dSv_c/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>2010s Pop Party Mix</video:title>
+      <video:description>2010s pop party DJ mix from Cortelyou Road Radio: Flo Rida, Maroon 5 and more big-hook favorites, blended into one feel-good set.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/G_tEZ0dSv_c</video:player_loc>
+      <video:duration>1268</video:duration>
+      <video:publication_date>2026-11-01T08:14:52-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://cortelyouroadradio.com/mix/only-human-2019-pop-mix</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/zpR7lbZR5oY/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Only Human: A 2019 Pop Mix</video:title>
+      <video:description>2019 pop DJ mix from the Cortelyou Road Radio archives: Dua Lipa, Jonas Brothers, Tove Lo, Rita Ora and Carly Rae Jepsen. Full tracklist.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/zpR7lbZR5oY</video:player_loc>
+      <video:duration>1277</video:duration>
+      <video:publication_date>2026-10-22T19:17:38-07:00</video:publication_date>
+    </video:video>
   </url>
   <url>
     <loc>https://cortelyouroadradio.com/mix/old-school-reggae-mix</loc>

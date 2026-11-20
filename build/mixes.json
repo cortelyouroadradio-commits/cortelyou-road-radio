@@ -3,6 +3,159 @@
   "channel": "https://www.youtube.com/@CortelyouRoadRadio",
   "mixes": [
     {
+      "id": "hkdoxklBc-Q",
+      "title": "Soul After Dark: R&B & Hip-Hop Mix",
+      "genre": "R&B / Hip-Hop",
+      "blurb": "Fifty-five minutes of late-night soul. Alicia Keys opens, Erykah Badu and Common slow it down, Usher, Lauryn Hill and Janet Jackson keep it moving, then Mary J. Blige closes on the remix. R&B, neo-soul and hip-hop blended across twenty-four tracks, no dead air.",
+      "chips": [
+        "Alicia Keys",
+        "Erykah Badu",
+        "Mary J. Blige",
+        "Lauryn Hill"
+      ],
+      "alt": "Soul After Dark — R&B, neo-soul and hip-hop DJ mix from Cortelyou Road Radio",
+      "dur": "55:14",
+      "slug": "soul-after-dark-rnb-hip-hop-mix",
+      "seoTitle": "Soul After Dark: R&B & Hip-Hop Mix | Alicia Keys, Erykah Badu",
+      "seoDescription": "R&B and hip-hop DJ mix: Alicia Keys, Erykah Badu, Usher, Lauryn Hill, Janet Jackson and Mary J. Blige. 55 minutes of neo-soul and throwback favorites.",
+      "keywords": [
+        "r&b mix",
+        "hip hop r&b mix",
+        "neo soul mix",
+        "late night r&b",
+        "soul after dark",
+        "erykah badu mix"
+      ],
+      "lengthSeconds": 3314,
+      "uploadDate": "2026-11-19T06:15:06-08:00",
+      "tracklist": [],
+      "related": [
+        "2000s-rnb-mix",
+        "hip-hop-through-the-years-part-2",
+        "classic-funk-mix"
+      ]
+    },
+    {
+      "id": "G_tEZ0dSv_c",
+      "title": "2010s Pop Party Mix",
+      "genre": "Pop",
+      "blurb": "Twenty-one minutes of house-party pop. Flo Rida and Maroon 5 lead a run of big hooks and familiar 2010s favorites, blended end to end, no dead air.",
+      "chips": [
+        "Flo Rida",
+        "Maroon 5",
+        "2010s Pop",
+        "Party Mix"
+      ],
+      "alt": "2010s Pop Party Mix — feel-good pop DJ mix from Cortelyou Road Radio",
+      "dur": "21:08",
+      "slug": "2010s-pop-party-mix",
+      "seoTitle": "2010s Pop Party Mix: Flo Rida, Maroon 5 & More",
+      "seoDescription": "2010s pop party DJ mix from Cortelyou Road Radio: Flo Rida, Maroon 5 and more big-hook favorites, blended into one feel-good set.",
+      "keywords": [
+        "2010s pop mix",
+        "pop party mix",
+        "house party mix",
+        "flo rida mix",
+        "maroon 5 mix"
+      ],
+      "lengthSeconds": 1268,
+      "uploadDate": "2026-11-01T08:14:52-08:00",
+      "tracklist": [],
+      "related": [
+        "only-human-2019-pop-mix",
+        "throwback-club-remixes",
+        "2000s-rnb-mix"
+      ]
+    },
+    {
+      "id": "zpR7lbZR5oY",
+      "title": "Only Human: A 2019 Pop Mix",
+      "genre": "Pop (Archive)",
+      "blurb": "Twenty-one minutes from the July 2019 archive. Attraction, heartbreak and moving on, from Rita Ora and Tove Lo through Dua Lipa and Carly Rae Jepsen to the Jonas Brothers. Eleven tracks, one continuous session, no dead air.",
+      "chips": [
+        "Dua Lipa",
+        "Jonas Brothers",
+        "Tove Lo",
+        "Rita Ora"
+      ],
+      "alt": "Only Human — 2019 pop DJ mix from the Cortelyou Road Radio archives",
+      "dur": "21:17",
+      "slug": "only-human-2019-pop-mix",
+      "seoTitle": "Only Human: A 2019 Pop Mix | Dua Lipa, Jonas Brothers, Tove Lo",
+      "seoDescription": "2019 pop DJ mix from the Cortelyou Road Radio archives: Dua Lipa, Jonas Brothers, Tove Lo, Rita Ora and Carly Rae Jepsen. Full tracklist.",
+      "keywords": [
+        "2019 pop mix",
+        "only human mix",
+        "dua lipa mix",
+        "jonas brothers mix",
+        "pop dj mix"
+      ],
+      "lengthSeconds": 1277,
+      "uploadDate": "2026-10-22T19:17:38-07:00",
+      "tracklist": [
+        {
+          "t": "00:00",
+          "artist": "Elohim feat. Wiz Khalifa",
+          "title": "FYM (Rock Mafia Remix)"
+        },
+        {
+          "t": "02:08",
+          "artist": "Flight School & CVBZ",
+          "title": "Figure It Out"
+        },
+        {
+          "t": "04:10",
+          "artist": "AJ Mitchell",
+          "title": "All My Friends"
+        },
+        {
+          "t": "06:10",
+          "artist": "Rita Ora feat. Cardi B, Bebe Rexha & Charli XCX",
+          "title": "Girls"
+        },
+        {
+          "t": "08:09",
+          "artist": "Two Friends feat. Dani Poppitt",
+          "title": "Dollar Menu"
+        },
+        {
+          "t": "10:10",
+          "artist": "Tove Lo",
+          "title": "Glad He's Gone"
+        },
+        {
+          "t": "12:10",
+          "artist": "Grey & LÉON",
+          "title": "Want You Back"
+        },
+        {
+          "t": "14:10",
+          "artist": "Carly Rae Jepsen",
+          "title": "Too Much"
+        },
+        {
+          "t": "16:10",
+          "artist": "Dua Lipa",
+          "title": "Swan Song"
+        },
+        {
+          "t": "18:10",
+          "artist": "Jonas Brothers",
+          "title": "Only Human"
+        },
+        {
+          "t": "20:20",
+          "artist": "SHAED",
+          "title": "Trampoline"
+        }
+      ],
+      "related": [
+        "2010s-pop-party-mix",
+        "throwback-club-remixes",
+        "soft-rock-mix"
+      ]
+    },
+    {
       "id": "r9jey6x2fgk",
       "title": "Old School Reggae Mix",
       "genre": "Reggae / Dancehall",
